@@ -40,7 +40,7 @@ function updateActiveNav() {
     l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
   });
 }
-window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 // Scroll animations with stagger
 const observer = new IntersectionObserver(
@@ -136,37 +136,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Nav shadow on scroll + experience card stacking
+const nav = document.getElementById('nav');
 const expItems = document.querySelectorAll('.exp-item');
+let ticking = false;
 
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').style.boxShadow =
-    window.scrollY > 60 ? 'var(--shadow)' : 'none';
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      nav.style.boxShadow = window.scrollY > 60 ? 'var(--shadow)' : 'none';
 
-  // Experience stacking: gradual fade/shrink as next card covers
-  if (window.innerWidth > 768) {
-    expItems.forEach((item, i) => {
-      const nextItem = expItems[i + 1];
-      if (!nextItem) {
-        item.style.transform = '';
-        item.style.opacity = '';
-        item.style.filter = '';
-        return;
+      // Experience stacking: gradual fade/shrink as next card covers
+      if (window.innerWidth > 768) {
+        expItems.forEach((item, i) => {
+          const nextItem = expItems[i + 1];
+          if (!nextItem) {
+            item.style.transform = '';
+            item.style.opacity = '';
+            return;
+          }
+          const rect = item.getBoundingClientRect();
+          const nextRect = nextItem.getBoundingClientRect();
+          const overlap = (rect.top + rect.height) - nextRect.top;
+          const progress = Math.max(0, Math.min(1, overlap / rect.height));
+
+          const scale = 1 - (progress * 0.05);
+          const opacity = 1 - (progress * 0.6);
+
+          item.style.transform = `scale3d(${scale},${scale},1)`;
+          item.style.opacity = opacity;
+        });
       }
-      const rect = item.getBoundingClientRect();
-      const nextRect = nextItem.getBoundingClientRect();
-      const overlap = (rect.top + rect.height) - nextRect.top;
-      const progress = Math.max(0, Math.min(1, overlap / rect.height));
-
-      const scale = 1 - (progress * 0.06);
-      const opacity = 1 - (progress * 0.7);
-      const blur = progress * 2;
-
-      item.style.transform = `scale(${scale})`;
-      item.style.opacity = opacity;
-      item.style.filter = `blur(${blur}px)`;
+      ticking = false;
     });
+    ticking = true;
   }
-});
+}, { passive: true });
 
 // Lightbox for images
 const lightbox = document.getElementById('lightbox');
