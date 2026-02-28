@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saidul Alam Rahat — Senior BI Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">RAHAT<span class="logo-line"></span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <img src="" alt="" class="lb-img" id="lbImg">
+  </div>
+
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">Available for opportunities</div>
+        <h1>I turn <span class="text-gradient">raw data</span> into business decisions.</h1>
+        <p class="hero-sub">
+          Senior BI Analyst at FundedNext with 3+ years of building dashboards, automating reports,
+          and making teams self-sufficient with data. Based in Dhaka, Bangladesh.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">See My Work</a>
+          <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+        </div>
+        <div class="hero-quick-stats">
+          <div class="qs"><span class="qs-num">3+</span><span class="qs-label">Years in BI</span></div>
+          <div class="qs-divider"></div>
+          <div class="qs"><span class="qs-num">80%</span><span class="qs-label">Less ad-hoc requests</span></div>
+          <div class="qs-divider"></div>
+          <div class="qs"><span class="qs-num">30%</span><span class="qs-label">Faster reporting</span></div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring">
+          <img src="assets/profile.jpeg" alt="Saidul Alam Rahat" class="hero-photo">
+        </div>
+        <div class="hero-float-card float-1">
+          <span class="float-icon">&#9881;</span> Power BI
+        </div>
+        <div class="hero-float-card float-2">
+          <span class="float-icon">&#128202;</span> SQL
+        </div>
+        <div class="hero-float-card float-3">
+          <span class="float-icon">&#9889;</span> Python
+        </div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>"I may lose everything tomorrow, but what's the best thing I can do than trying!"</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <span class="section-label">Get to know me</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            I'm <strong>Saidul Alam Rahat</strong> — a Senior Business Intelligence Analyst at
+            <strong>FundedNext</strong>, one of the world's fastest-growing prop trading firms.
+            I focus on the core areas of data analytics, data analysis, and data engineering —
+            managing large-scale data operations and working closely with leadership to implement
+            strategies that drive data-informed decisions.
+          </p>
+          <p>
+            My path wasn't typical. I studied HRM, pivoted through business development,
+            and found my thing in data — specifically the part where you take an ambiguous
+            question like <em>"why did revenue drop?"</em> and turn it into a clear, visual answer
+            that changes how people act.
+          </p>
+          <p>
+            I've built self-service dashboards that cut recurring data requests by 80%,
+            designed custom retention taxonomies adopted as team standards, and created
+            automated alerting systems that catch anomalies before they become problems.
+            Recognized as a <strong>"data visualization maestro"</strong> by NEXT Ventures
+            with the Invent & Simplify award.
+          </p>
+        </div>
+        <div class="about-info-cards">
+          <div class="info-card">
+            <div class="info-icon">&#128205;</div>
+            <div>
+              <span class="info-label">Location</span>
+              <span class="info-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#127891;</div>
+            <div>
+              <span class="info-label">Education</span>
+              <span class="info-value">BBA — North South University</span>
+              <span class="info-sub">HRM Major | Finance Minor</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#127919;</div>
+            <div>
+              <span class="info-label">Focus</span>
+              <span class="info-value">Business Intelligence & Product Analytics</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#127760;</div>
+            <div>
+              <span class="info-label">Languages</span>
+              <span class="info-value">English, Bengali</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <span class="section-label">Where I've worked</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-timeline">
+
+        <div class="exp-item">
+          <div class="exp-marker">
+            <div class="exp-dot active"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-top">
+              <div>
+                <h3>Sr. Executive, Business Intelligence</h3>
+                <span class="exp-company">FundedNext</span>
+              </div>
+              <span class="exp-date">Apr 2025 — Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Lead data-driven initiatives supporting product development and strategic decisions across multiple business units</li>
+              <li>Build and maintain dashboards using Metabase, Power BI, Looker Studio, and advanced Google Sheets to monitor KPIs</li>
+              <li>Perform complex data analyses with SQL and Python to guide product feature decisions and operational improvements</li>
+              <li>Support hypothesis-driven experiments by collecting and analyzing data pre- and post-launch of new product features</li>
+            </ul>
+            <div class="exp-tags">
+              <span>SQL</span><span>Python</span><span>Power BI</span><span>Looker Studio</span><span>Metabase</span><span>PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-marker">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-top">
+              <div>
+                <h3>Sr. Executive (Data & RnD), Business Development</h3>
+                <span class="exp-company">NEXT Ventures</span>
+              </div>
+              <span class="exp-date">Jan 2024 — Mar 2025</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Performed product analysis, evaluated impact, and drove continuous improvement while extracting key insights</li>
+              <li>Designed KPI frameworks and created data structures for reporting across multiple business units</li>
+              <li>Automated recurring reporting workflows, reducing manual analysis time by 30%</li>
+              <li>Led ambiguity-heavy analytical initiatives — identifying root causes and delivering actionable insights</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Data Analytics</span><span>Communication</span><span>Product Analysis</span><span>KPI Design</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-marker">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-top">
+              <div>
+                <h3>Executive, Business Development</h3>
+                <span class="exp-company">NEXT Ventures</span>
+              </div>
+              <span class="exp-date">Sept 2022 — Dec 2023</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Provided detailed analyses and insights to key stakeholders, supporting strategic, data-driven decision-making</li>
+              <li>Partnered with product, marketing, and engineering teams to define metrics and deliver SQL-driven insights</li>
+              <li>Maintained documentation, workflows, and research repositories using Notion and internal tools</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Analytics</span><span>Data Management</span><span>SQL</span><span>Notion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-marker">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-top">
+              <div>
+                <h3>Intern</h3>
+                <span class="exp-company">Walton Hi-Tech Industries PLC</span>
+              </div>
+              <span class="exp-date">Oct 2021 — Jan 2022</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Designed Walton's revised "Recruitment & Selection" policy, projected to reduce the recruiting lifecycle by 47%</li>
+              <li>Negotiated MOU Corporate Agreements as part of the HR Branding team, managing a database of ~150 organizations</li>
+              <li>Contributed to the "Better Bangladesh Tomorrow" initiative — volunteer platform and branding plans</li>
+            </ul>
+            <div class="exp-tags">
+              <span>HR Policy</span><span>Database Management</span><span>Stakeholder Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-marker">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-top">
+              <div>
+                <h3>Facilitator</h3>
+                <span class="exp-company">Bangladesh Youth Leadership Center (BYLC)</span>
+              </div>
+              <span class="exp-date">Aug — Sept 2021</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led an 8-member team to develop a data-driven capstone project for the ICT Career Bootcamp</li>
+              <li>Achieved 95% stakeholder satisfaction rate</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Leadership</span><span>Team Facilitation</span>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <span class="section-label">What I've built</span>
+      <h2 class="section-title">Projects</h2>
+
+      <!-- Featured: Insight Agent -->
+      <div class="project-featured">
+        <div class="pf-badge">Featured Project</div>
+        <div class="pf-grid">
+          <div class="pf-info">
+            <h3>Insight Agent</h3>
+            <p>
+              A self-service analytics dashboard that replaced ad-hoc SQL queries for a prop trading firm.
+              6 purpose-built pages covering core metrics, breach analysis, customer flow tracking,
+              retention taxonomy, business knowledge base, and product update timelines.
+              Automated email alerts catch anomalies before they escalate.
+            </p>
+            <div class="pf-outcomes">
+              <div class="pf-outcome">
+                <span class="pf-outcome-num">~80%</span>
+                <span class="pf-outcome-text">reduction in recurring data requests</span>
+              </div>
+              <div class="pf-outcome">
+                <span class="pf-outcome-num">30%</span>
+                <span class="pf-outcome-text">less manual reporting time</span>
+              </div>
+              <div class="pf-outcome">
+                <span class="pf-outcome-num">6</span>
+                <span class="pf-outcome-text">analytical pages, zero SQL needed</span>
+              </div>
+            </div>
+            <div class="pf-tech">
+              <span>Python</span><span>Streamlit</span><span>PostgreSQL</span><span>Plotly</span><span>SMTP</span>
+            </div>
+            <a href="https://github.com/saidulalam01/insight-agent" target="_blank" class="btn btn-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other projects -->
+      <div class="projects-row">
+        <div class="project-card">
+          <div class="pc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>CodeBridge</h3>
+          <p>
+            A private-to-public code publishing pipeline. Scans codebases for secrets, schema names,
+            and business terms, builds an anonymization mapping (human-approved), then applies consistent
+            replacements across all files. Supports incremental updates for already-published repos.
+          </p>
+          <div class="pc-tech">
+            <span>Python</span><span>CLI</span><span>Regex</span><span>GitHub API</span>
+          </div>
+          <a href="https://github.com/saidulalam01/codebridge" target="_blank" class="pc-link">Source Code &rarr;</a>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>TrustPilot Web Scraper</h3>
+          <p>
+            Python scraper for extracting structured review data from Trustpilot.
+            Built for competitive analysis and learning web scraping fundamentals.
+          </p>
+          <div class="pc-tech">
+            <span>Python</span><span>BeautifulSoup</span><span>Web Scraping</span>
+          </div>
+          <a href="https://github.com/saidulalam01/TrustPilot-Webscrapping" target="_blank" class="pc-link">Source Code &rarr;</a>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Fun Projects</h3>
+          <p>
+            A collection of small web experiments and creative coding — built for fun
+            and to explore front-end technologies.
+          </p>
+          <div class="pc-tech">
+            <span>HTML</span><span>JavaScript</span><span>CSS</span>
+          </div>
+          <a href="https://github.com/saidulalam01/fun_projects_1" target="_blank" class="pc-link">Source Code &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Other portfolio work -->
+      <div class="portfolio-other">
+        <h3>Other Portfolio Work</h3>
+        <div class="po-grid">
+          <a href="https://lookerstudio.google.com/reporting/2db2c167-c579-414f-b7f1-b0c8356a09db/page/p_2kzb78sm6c" target="_blank" class="po-item">
+            <span class="po-icon">&#128202;</span>
+            <div>
+              <strong>Looker Studio Dashboard</strong>
+              <p>KPI monitoring dashboard with sample data for demonstration</p>
+            </div>
+            <span class="po-arrow">&rarr;</span>
+          </a>
+          <div class="po-item">
+            <span class="po-icon">&#128221;</span>
+            <div>
+              <strong>Google Sheets Reporting</strong>
+              <p>Advanced reporting system with automated formulas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="section section-alt" id="achievements">
+    <div class="container">
+      <span class="section-label">Recognition & milestones</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="ach-grid">
+
+        <div class="ach-card ach-featured">
+          <img src="assets/award.jpeg" alt="Invent & Simplify Award" class="ach-img clickable-img" data-full="assets/award.jpeg">
+          <div class="ach-info">
+            <span class="ach-type">Award</span>
+            <h3>Invent & Simplify — Stellar Night</h3>
+            <p>
+              Recognized by NEXT Ventures as a "data visualization maestro" for significantly amplifying
+              data-driven decisions, fueling revenue growth and abuser detection, while propelling
+              cross-functional data visibility.
+            </p>
+          </div>
+        </div>
+
+        <div class="ach-card">
+          <img src="assets/promotion.jpeg" alt="Sr. Executive Promotion" class="ach-img clickable-img" data-full="assets/promotion.jpeg">
+          <div class="ach-info">
+            <span class="ach-type">Promotion</span>
+            <h3>Promoted to Sr. Executive</h3>
+            <p>
+              Promoted to Sr. Executive, Business Development at NEXT Ventures. Signed by the CSO and CEO
+              for contribution towards making NEXT Ventures what it is today.
+            </p>
+          </div>
+        </div>
+
+        <div class="ach-card ach-small">
+          <img src="assets/cert-ennovators.jpeg" alt="Ennovators 4.0 Certificate" class="ach-img-small clickable-img" data-full="assets/cert-ennovators.jpeg">
+          <div class="ach-info">
+            <span class="ach-type">Competition — 2020</span>
+            <h3>Ennovators 4.0 — Banglalink</h3>
+            <p>Top 100 out of 16,000 participants in the C-Factor Gamification round.</p>
+          </div>
+        </div>
+
+        <div class="ach-card ach-small">
+          <div class="ach-info">
+            <span class="ach-type">Competition — 2021</span>
+            <h3>Excelsior — NSU Finance Club</h3>
+            <p>Top 50 out of 300 in an Inter-University MS Excel competition.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-section">
+        <h3>Certifications</h3>
+        <div class="certs-grid">
+          <div class="cert-card clickable-img" data-full="assets/cert-sql-advanced.png">
+            <img src="assets/cert-sql-advanced.png" alt="SQL Advanced Certificate" class="cert-img">
+            <div>
+              <strong>SQL (Advanced)</strong>
+              <span>HackerRank — Feb 2025</span>
+            </div>
+          </div>
+          <div class="cert-card clickable-img" data-full="assets/cert-sql-basic.png">
+            <img src="assets/cert-sql-basic.png" alt="SQL Basic Certificate" class="cert-img">
+            <div>
+              <strong>SQL (Basic)</strong>
+              <span>HackerRank — Feb 2025</span>
+            </div>
+          </div>
+          <div class="cert-card clickable-img" data-full="assets/cert-google.jpeg">
+            <img src="assets/cert-google.jpeg" alt="Google Digital Marketing" class="cert-img">
+            <div>
+              <strong>Fundamentals of Digital Marketing</strong>
+              <span>Google Digital Garage — Apr 2020</span>
+            </div>
+          </div>
+          <div class="cert-card clickable-img" data-full="assets/cert-excel.jpeg">
+            <img src="assets/cert-excel.jpeg" alt="Excel Skills Certificate" class="cert-img">
+            <div>
+              <strong>Excel Skills for Business: Essentials</strong>
+              <span>Coursera, Macquarie University — Sept 2020</span>
+            </div>
+          </div>
+          <div class="cert-card clickable-img" data-full="assets/cert-bylc.jpeg">
+            <img src="assets/cert-bylc.jpeg" alt="BYLC Facilitator Certificate" class="cert-img">
+            <div>
+              <strong>ICT Career Bootcamp — Facilitator</strong>
+              <span>BYLC — Aug-Sept 2021</span>
+            </div>
+          </div>
+          <div class="cert-card clickable-img" data-full="assets/cert-webdev.jpg">
+            <img src="assets/cert-webdev.jpg" alt="Skills for Employment Web Dev" class="cert-img">
+            <div>
+              <strong>Skills for Employment (Web Dev)</strong>
+              <span>Bangladesh Technical Education Board — 2017</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills">
+    <div class="container">
+      <span class="section-label">What I work with</span>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-layout">
+
+        <div class="skill-group">
+          <h3>Data Analysis</h3>
+          <div class="skill-pills">
+            <div class="pill"><span class="pill-level expert"></span>SQL</div>
+            <div class="pill"><span class="pill-level advanced"></span>Python</div>
+            <div class="pill"><span class="pill-level expert"></span>R</div>
+            <div class="pill"><span class="pill-level expert"></span>Pandas / NumPy</div>
+            <div class="pill"><span class="pill-level expert"></span>Excel / Google Sheets</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Visualization & BI</h3>
+          <div class="skill-pills">
+            <div class="pill"><span class="pill-level expert"></span>Power BI</div>
+            <div class="pill"><span class="pill-level expert"></span>Looker Studio</div>
+            <div class="pill"><span class="pill-level expert"></span>Metabase</div>
+            <div class="pill"><span class="pill-level intermediate"></span>Tableau</div>
+            <div class="pill"><span class="pill-level advanced"></span>Plotly</div>
+            <div class="pill"><span class="pill-level advanced"></span>Streamlit</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools & Databases</h3>
+          <div class="skill-pills">
+            <div class="pill"><span class="pill-level expert"></span>PostgreSQL</div>
+            <div class="pill"><span class="pill-level advanced"></span>MySQL</div>
+            <div class="pill"><span class="pill-level advanced"></span>Git / GitHub</div>
+            <div class="pill"><span class="pill-level advanced"></span>Web Scraping</div>
+            <div class="pill"><span class="pill-level advanced"></span>Notion</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Domain & Soft Skills</h3>
+          <div class="skill-pills domain">
+            <div class="pill">FinTech / Prop Trading</div>
+            <div class="pill">Product Analytics</div>
+            <div class="pill">Revenue & Retention</div>
+            <div class="pill">Cohort Analysis</div>
+            <div class="pill">KPI Frameworks</div>
+            <div class="pill">Data Storytelling</div>
+            <div class="pill">Cross-functional Collaboration</div>
+            <div class="pill">Automated Reporting</div>
+            <div class="pill">Leadership</div>
+            <div class="pill">Product Management</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="skill-legend">
+        <span><span class="pill-level expert"></span> Expert</span>
+        <span><span class="pill-level advanced"></span> Advanced</span>
+        <span><span class="pill-level intermediate"></span> Basic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="container contact-container">
+      <span class="section-label">Say hello</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-desc">
+        I'm always open to discussing data, BI projects, or new opportunities.
+        Whether you have a question or just want to connect — reach out.
+      </p>
+      <div class="contact-circles">
+        <a href="mailto:saidul.alam5437@gmail.com" class="contact-circle" aria-label="Email">
+          <div class="cc-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="cc-label">Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/saidul-alam01/" target="_blank" class="contact-circle" aria-label="LinkedIn">
+          <div class="cc-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="cc-label">LinkedIn</span>
+        </a>
+        <a href="https://github.com/saidulalam01" target="_blank" class="contact-circle" aria-label="GitHub">
+          <div class="cc-ring">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <span class="cc-label">GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Saidul Alam Rahat</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saidul-alam01/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saidulalam01" target="_blank">GitHub</a>
+        <a href="mailto:saidul.alam5437@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

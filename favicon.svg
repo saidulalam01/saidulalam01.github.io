@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0b0f14"/>
+  <text x="16" y="18" text-anchor="middle" dominant-baseline="central"
+    font-family="Outfit, sans-serif" font-weight="800" font-size="10" fill="#e8ecf0"
+    letter-spacing="1.5">RAHAT</text>
+  <rect x="4" y="24" width="24" height="2" rx="1" fill="#e8a838"/>
+</svg>
