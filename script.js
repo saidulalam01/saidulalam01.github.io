@@ -142,7 +142,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').style.boxShadow =
     window.scrollY > 60 ? 'var(--shadow)' : 'none';
 
-  // Experience stacking: gradual fade/shrink as next card covers (desktop only)
+  // Experience stacking: gradual fade/shrink as next card covers
   if (window.innerWidth > 768) {
     expItems.forEach((item, i) => {
       const nextItem = expItems[i + 1];
