@@ -142,7 +142,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').style.boxShadow =
     window.scrollY > 60 ? 'var(--shadow)' : 'none';
 
-  // Experience stacking: gradual fade/shrink as next card covers
+  // Experience stacking: gradual fade/shrink as next card covers (desktop only)
   if (window.innerWidth > 768) {
     expItems.forEach((item, i) => {
       const nextItem = expItems[i + 1];
@@ -164,6 +164,13 @@ window.addEventListener('scroll', () => {
       item.style.transform = `scale(${scale})`;
       item.style.opacity = opacity;
       item.style.filter = `blur(${blur}px)`;
+    });
+  } else {
+    // Clear any inline styles on mobile so CSS takes over
+    expItems.forEach(item => {
+      item.style.transform = '';
+      item.style.opacity = '';
+      item.style.filter = '';
     });
   }
 });
