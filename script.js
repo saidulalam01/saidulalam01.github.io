@@ -165,13 +165,6 @@ window.addEventListener('scroll', () => {
       item.style.opacity = opacity;
       item.style.filter = `blur(${blur}px)`;
     });
-  } else {
-    // Clear any inline styles on mobile so CSS takes over
-    expItems.forEach(item => {
-      item.style.transform = '';
-      item.style.opacity = '';
-      item.style.filter = '';
-    });
   }
 });
 

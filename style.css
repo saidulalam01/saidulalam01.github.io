@@ -778,89 +778,26 @@ a.po-item:hover { border-color: var(--accent); }
     position: relative; top: auto !important;
     margin-bottom: 16px;
   }
-  .exp-item { will-change: auto; filter: none !important; opacity: 1 !important; transform: none !important; }
-  .exp-card { padding: 20px 22px; }
+  .exp-item { will-change: auto; filter: none !important; }
   .exp-top { flex-direction: column; }
-  .exp-bullets li { font-size: 0.85rem; }
   .project-featured { padding: 24px; }
-  .pf-info h3 { font-size: 1.3rem; }
   .pf-outcomes { gap: 20px; }
-  .pf-outcome-num { font-size: 1.3rem; }
-  .project-card { padding: 22px; }
-  .about-text p { font-size: 0.92rem; }
-  .info-card { padding: 14px 16px; }
-  .skill-group { padding: 20px; }
-  .ach-info { padding: 18px; }
-  .ach-small .ach-info { padding: 16px 18px; }
-  .ach-info h3 { font-size: 0.95rem; }
-  .ach-info p { font-size: 0.84rem; }
-  .cert-card { padding: 12px 16px; }
-  .contact-desc { font-size: 0.95rem; margin-bottom: 32px; }
   .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-  /* Ensure all scroll animations work on mobile */
-  .fade-in-left { transform: translateX(-24px); }
-  .fade-in-right { transform: translateX(24px); }
-  .fade-in { transform: translateY(20px); }
-  .fade-in-scale { transform: scale(0.95); }
 }
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .nav-inner { padding: 0 16px; }
   .nav-logo { font-size: 1rem; letter-spacing: 3px; }
-  .hero { padding-top: calc(var(--nav-h) + 16px); }
-  .hero h1 { font-size: 1.8rem; letter-spacing: -1px; margin-bottom: 16px; }
-  .hero-sub { font-size: 0.95rem; }
-  .hero-badge { font-size: 0.72rem; margin-bottom: 16px; }
+  .hero h1 { font-size: 1.9rem; }
   .hero-photo-ring { width: 200px; height: 200px; }
-  .hero-cta { flex-direction: column; align-items: center; gap: 10px; margin-bottom: 36px; }
-  .btn { width: 100%; justify-content: center; padding: 14px 24px; }
   .hero-quick-stats { flex-direction: column; gap: 12px; }
-  .qs-num { font-size: 1.3rem; }
   .qs-divider { width: 36px; height: 1px; }
-  .section { padding: 52px 0; }
-  .section-label { font-size: 0.72rem; }
-  .section-title { font-size: 1.5rem; margin-bottom: 28px; }
-  .about-text p { font-size: 0.88rem; }
-  .exp-card { padding: 16px 18px; }
-  .exp-card h3 { font-size: 0.95rem; }
-  .exp-company { font-size: 0.82rem; }
-  .exp-date { font-size: 0.75rem; }
-  .exp-bullets li { font-size: 0.82rem; margin-bottom: 4px; }
-  .exp-tags span { font-size: 0.68rem; padding: 2px 8px; }
-  .project-featured { padding: 20px; }
-  .pf-info h3 { font-size: 1.15rem; }
-  .pf-info p { font-size: 0.88rem; }
-  .pf-outcome-num { font-size: 1.15rem; }
-  .pf-outcome-text { font-size: 0.75rem; }
-  .project-card { padding: 20px; }
-  .project-card h3 { font-size: 1rem; }
-  .project-card p { font-size: 0.84rem; }
-  .ach-featured .ach-img { height: 200px; }
-  .ach-card:not(.ach-featured):not(.ach-small) .ach-img { height: 160px; }
-  .ach-img-small { height: 140px; }
-  .ach-info { padding: 16px; }
-  .ach-info h3 { font-size: 0.9rem; }
-  .ach-info p { font-size: 0.82rem; }
-  .cert-img { width: 44px; height: 44px; }
-  .cert-card strong { font-size: 0.84rem; }
-  .cert-card span { font-size: 0.72rem; }
-  .skill-group { padding: 18px; }
-  .skill-group h3 { font-size: 0.85rem; margin-bottom: 14px; }
-  .pill { padding: 6px 12px; font-size: 0.78rem; }
-  .skill-legend { gap: 14px; }
-  .skill-legend span { font-size: 0.72rem; }
-  .contact-circles { gap: 24px; }
-  .cc-ring { width: 56px; height: 56px; }
-  .cc-label { font-size: 0.75rem; }
+  .hero-cta { flex-direction: column; align-items: center; }
+  .btn { width: 100%; justify-content: center; }
+  .hero-badge { font-size: 0.72rem; }
   .lightbox { padding: 16px; }
   .lb-img { max-width: 95vw; max-height: 90vh; }
-  .po-item { min-width: 0; padding: 14px 16px; }
-  .po-item strong { font-size: 0.84rem; }
-  .po-item p { font-size: 0.75rem; }
-  .hero-quote p { font-size: 0.85rem; }
-  .footer { padding: 20px 0; }
-  .footer-inner span { font-size: 0.75rem; }
-  .footer-links a { font-size: 0.75rem; }
-  .mobile-menu { padding: 16px 20px; gap: 8px; }
+  .contact-circles { gap: 24px; }
+  .po-item { min-width: 0; }
 }
