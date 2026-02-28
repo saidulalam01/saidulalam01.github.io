@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saidulalam01.github.io/sitemap.xml
