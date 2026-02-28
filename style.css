@@ -66,7 +66,7 @@
    ============================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-overflow-scrolling: touch; }
 
 body {
   font-family: var(--font);
@@ -234,10 +234,14 @@ ul { list-style: none; }
   color: #0b0f14;
 }
 .btn-ghost {
-  background: transparent; color: var(--text);
-  border: 1px solid var(--border);
+  background: var(--accent-bg); color: var(--accent);
+  border: 1px solid var(--tag-border);
 }
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.btn-ghost:hover {
+  background: var(--accent-bg-2); border-color: var(--accent);
+  color: var(--accent); transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(232, 168, 56, 0.15);
+}
 
 .btn-sm {
   padding: 8px 18px; font-size: 0.85rem;
@@ -608,25 +612,41 @@ ul { list-style: none; }
 
 .contact-container { max-width: 700px; text-align: center; margin: 0 auto; }
 .contact-desc {
-  color: var(--text-2); font-size: 1.05rem; margin-bottom: 40px;
+  color: var(--text-2); font-size: 1.1rem; margin-bottom: 36px; line-height: 1.7;
+}
+
+.contact-cta {
+  margin-bottom: 48px;
+}
+.contact-cta .btn {
+  padding: 16px 36px; font-size: 1rem;
+}
+
+.contact-divider {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 36px; color: var(--text-3); font-size: 0.8rem; font-weight: 500;
+}
+.contact-divider::before, .contact-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
 }
 
 .contact-circles {
-  display: flex; gap: 36px; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
 }
 
 .contact-circle {
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
   color: var(--text); text-decoration: none;
 }
 
 .cc-ring {
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 72px; height: 72px; border-radius: 50%;
   border: 2px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   color: var(--text-2); background: var(--bg-card);
   transition: all 0.4s var(--ease);
 }
+.cc-ring svg { width: 26px; height: 26px; }
 
 .contact-circle:hover .cc-ring {
   border-color: var(--accent); color: var(--accent);
@@ -636,7 +656,7 @@ ul { list-style: none; }
 }
 
 .cc-label {
-  font-size: 0.8rem; font-weight: 600; color: var(--text-3);
+  font-size: 0.85rem; font-weight: 600; color: var(--text-3);
   transition: color 0.3s;
 }
 .contact-circle:hover .cc-label { color: var(--accent); }
