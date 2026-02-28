@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "title": "Saidul Alam Rahat — Senior BI Analyst | Portfolio",
+    "description": "Saidul Alam Rahat — Senior Business Intelligence Analyst at FundedNext. 3+ years building dashboards, automating reports, and driving data-informed decisions. Based in Dhaka, Bangladesh.",
+    "keywords": "Saidul Alam Rahat, BI Analyst, Business Intelligence, Data Analyst, FundedNext, Power BI, SQL, Python, Dhaka Bangladesh",
+    "author": "Saidul Alam Rahat",
+    "google_verification": "Gv1FAxl2eZcLn4Y1khg58qcaYjwtRwAIO63vewgL_DA",
+    "canonical_url": "https://saidulalam01.github.io/",
+    "ga_id": "G-8CERXVPZXC",
+    "og": {
+      "type": "website",
+      "title": "Saidul Alam Rahat — Senior BI Analyst",
+      "description": "Senior Business Intelligence Analyst at FundedNext. Building dashboards, automating reports, and driving data-informed decisions.",
+      "url": "https://saidulalam01.github.io/",
+      "site_name": "Saidul Alam Rahat"
+    },
+    "twitter": {
+      "card": "summary",
+      "title": "Saidul Alam Rahat — Senior BI Analyst",
+      "description": "Senior Business Intelligence Analyst at FundedNext. Building dashboards, automating reports, and driving data-informed decisions."
+    }
+  },
+
+  "nav": {
+    "logo": "RAHAT",
+    "links": ["About", "Experience", "Projects", "Achievements", "Skills", "Contact"]
+  },
+
+  "hero": {
+    "badge": "Available for opportunities",
+    "headline_pre": "I turn ",
+    "headline_highlight": "raw data",
+    "headline_post": " into business decisions.",
+    "sub": "Senior BI Analyst at FundedNext with 3+ years of building dashboards, automating reports, and making teams self-sufficient with data. Based in Dhaka, Bangladesh.",
+    "cta_primary": {"text": "See My Work", "href": "#projects"},
+    "cta_secondary": {"text": "Let's Talk", "href": "#contact"},
+    "quick_stats": [
+      {"num": "3+", "label": "Years in BI"},
+      {"num": "80%", "label": "Less ad-hoc requests"},
+      {"num": "30%", "label": "Faster reporting"}
+    ],
+    "photo": "assets/profile.jpeg",
+    "photo_alt": "Saidul Alam Rahat",
+    "float_cards": [
+      {"icon": "&#9881;", "text": "Power BI"},
+      {"icon": "&#128202;", "text": "SQL"},
+      {"icon": "&#9889;", "text": "Python"}
+    ],
+    "quote": "I may lose everything tomorrow, but what's the best thing I can do than trying!"
+  },
+
+  "about": {
+    "section_label": "Get to know me",
+    "section_title": "About Me",
+    "paragraphs": [
+      "I'm <strong>Saidul Alam Rahat</strong> — a Senior Business Intelligence Analyst at <strong>FundedNext</strong>, one of the world's fastest-growing prop trading firms. I focus on the core areas of data analytics, data analysis, and data engineering — managing large-scale data operations and working closely with leadership to implement strategies that drive data-informed decisions.",
+      "My path wasn't typical. I studied HRM, pivoted through business development, and found my thing in data — specifically the part where you take an ambiguous question like <em>\"why did revenue drop?\"</em> and turn it into a clear, visual answer that changes how people act.",
+      "I've built self-service dashboards that cut recurring data requests by 80%, designed custom retention taxonomies adopted as team standards, and created automated alerting systems that catch anomalies before they become problems. Recognized as a <strong>\"data visualization maestro\"</strong> by NEXT Ventures with the Invent & Simplify award."
+    ],
+    "info_cards": [
+      {"id": "location", "icon": "&#128205;", "label": "Location", "value": "Dhaka, Bangladesh"},
+      {"id": "education", "icon": "&#127891;", "label": "Education", "value": "BBA — North South University", "sub": "HRM Major | Finance Minor"},
+      {"id": "focus", "icon": "&#127919;", "label": "Focus", "value": "Business Intelligence & Product Analytics"},
+      {"id": "languages", "icon": "&#127760;", "label": "Languages", "value": "English, Bengali"}
+    ]
+  },
+
+  "experience": {
+    "section_label": "Where I've worked",
+    "section_title": "Experience",
+    "items": [
+      {
+        "id": "fundednext-sr-bi",
+        "title": "Sr. Executive, Business Intelligence",
+        "company": "FundedNext",
+        "date": "Apr 2025 — Present",
+        "active": true,
+        "bullets": [
+          "Lead data-driven initiatives supporting product development and strategic decisions across multiple business units",
+          "Build and maintain dashboards using Metabase, Power BI, Looker Studio, and advanced Google Sheets to monitor KPIs",
+          "Perform complex data analyses with SQL and Python to guide product feature decisions and operational improvements",
+          "Support hypothesis-driven experiments by collecting and analyzing data pre- and post-launch of new product features"
+        ],
+        "tags": ["SQL", "Python", "Power BI", "Looker Studio", "Metabase", "PostgreSQL"]
+      },
+      {
+        "id": "next-sr-data",
+        "title": "Sr. Executive (Data & RnD), Business Development",
+        "company": "NEXT Ventures",
+        "date": "Jan 2024 — Mar 2025",
+        "active": false,
+        "bullets": [
+          "Performed product analysis, evaluated impact, and drove continuous improvement while extracting key insights",
+          "Designed KPI frameworks and created data structures for reporting across multiple business units",
+          "Automated recurring reporting workflows, reducing manual analysis time by 30%",
+          "Led ambiguity-heavy analytical initiatives — identifying root causes and delivering actionable insights"
+        ],
+        "tags": ["Data Analytics", "Communication", "Product Analysis", "KPI Design"]
+      },
+      {
+        "id": "next-exec-bd",
+        "title": "Executive, Business Development",
+        "company": "NEXT Ventures",
+        "date": "Sept 2022 — Dec 2023",
+        "active": false,
+        "bullets": [
+          "Provided detailed analyses and insights to key stakeholders, supporting strategic, data-driven decision-making",
+          "Partnered with product, marketing, and engineering teams to define metrics and deliver SQL-driven insights",
+          "Maintained documentation, workflows, and research repositories using Notion and internal tools"
+        ],
+        "tags": ["Analytics", "Data Management", "SQL", "Notion"]
+      },
+      {
+        "id": "walton-intern",
+        "title": "Intern",
+        "company": "Walton Hi-Tech Industries PLC",
+        "date": "Oct 2021 — Jan 2022",
+        "active": false,
+        "bullets": [
+          "Designed Walton's revised \"Recruitment & Selection\" policy, projected to reduce the recruiting lifecycle by 47%",
+          "Negotiated MOU Corporate Agreements as part of the HR Branding team, managing a database of ~150 organizations",
+          "Contributed to the \"Better Bangladesh Tomorrow\" initiative — volunteer platform and branding plans"
+        ],
+        "tags": ["HR Policy", "Database Management", "Stakeholder Communication"]
+      },
+      {
+        "id": "bylc-facilitator",
+        "title": "Facilitator",
+        "company": "Bangladesh Youth Leadership Center (BYLC)",
+        "date": "Aug — Sept 2021",
+        "active": false,
+        "bullets": [
+          "Led an 8-member team to develop a data-driven capstone project for the ICT Career Bootcamp",
+          "Achieved 95% stakeholder satisfaction rate"
+        ],
+        "tags": ["Leadership", "Team Facilitation"]
+      }
+    ]
+  },
+
+  "projects": {
+    "section_label": "What I've built",
+    "section_title": "Projects",
+    "featured": {
+      "id": "insight-agent",
+      "badge": "Featured Project",
+      "title": "Insight Agent",
+      "description": "A self-service analytics dashboard that replaced ad-hoc SQL queries for a prop trading firm. 6 purpose-built pages covering core metrics, breach analysis, customer flow tracking, retention taxonomy, business knowledge base, and product update timelines. Automated email alerts catch anomalies before they escalate.",
+      "outcomes": [
+        {"num": "~80%", "text": "reduction in recurring data requests"},
+        {"num": "30%", "text": "less manual reporting time"},
+        {"num": "6", "text": "analytical pages, zero SQL needed"}
+      ],
+      "tech": ["Python", "Streamlit", "PostgreSQL", "Plotly", "SMTP"],
+      "github_url": "https://github.com/saidulalam01/insight-agent"
+    },
+    "cards": [
+      {
+        "id": "codebridge",
+        "icon": "code",
+        "title": "CodeBridge",
+        "description": "A private-to-public code publishing pipeline. Scans codebases for secrets, schema names, and business terms, builds an anonymization mapping (human-approved), then applies consistent replacements across all files. Supports incremental updates for already-published repos.",
+        "tech": ["Python", "CLI", "Regex", "GitHub API"],
+        "github_url": "https://github.com/saidulalam01/codebridge"
+      },
+      {
+        "id": "trustpilot-scraper",
+        "icon": "document",
+        "title": "TrustPilot Web Scraper",
+        "description": "Python scraper for extracting structured review data from Trustpilot. Built for competitive analysis and learning web scraping fundamentals.",
+        "tech": ["Python", "BeautifulSoup", "Web Scraping"],
+        "github_url": "https://github.com/saidulalam01/TrustPilot-Webscrapping"
+      },
+      {
+        "id": "fun-projects",
+        "icon": "layers",
+        "title": "Fun Projects",
+        "description": "A collection of small web experiments and creative coding — built for fun and to explore front-end technologies.",
+        "tech": ["HTML", "JavaScript", "CSS"],
+        "github_url": "https://github.com/saidulalam01/fun_projects_1"
+      }
+    ],
+    "portfolio": [
+      {
+        "id": "looker-dashboard",
+        "icon": "&#128202;",
+        "title": "Looker Studio Dashboard",
+        "description": "KPI monitoring dashboard with sample data for demonstration",
+        "url": "https://lookerstudio.google.com/reporting/2db2c167-c579-414f-b7f1-b0c8356a09db/page/p_2kzb78sm6c"
+      },
+      {
+        "id": "gsheets-reporting",
+        "icon": "&#128221;",
+        "title": "Google Sheets Reporting",
+        "description": "Advanced reporting system with automated formulas",
+        "url": null
+      }
+    ]
+  },
+
+  "achievements": {
+    "section_label": "Recognition & milestones",
+    "section_title": "Achievements",
+    "items": [
+      {
+        "id": "invent-simplify",
+        "type": "Award",
+        "title": "Invent & Simplify — Stellar Night",
+        "description": "Recognized by NEXT Ventures as a \"data visualization maestro\" for significantly amplifying data-driven decisions, fueling revenue growth and abuser detection, while propelling cross-functional data visibility.",
+        "image": "assets/award.jpeg",
+        "image_alt": "Invent & Simplify Award",
+        "featured": true
+      },
+      {
+        "id": "sr-exec-promotion",
+        "type": "Promotion",
+        "title": "Promoted to Sr. Executive",
+        "description": "Promoted to Sr. Executive, Business Development at NEXT Ventures. Signed by the CSO and CEO for contribution towards making NEXT Ventures what it is today.",
+        "image": "assets/promotion.jpeg",
+        "image_alt": "Sr. Executive Promotion",
+        "featured": false
+      },
+      {
+        "id": "ennovators",
+        "type": "Competition — 2020",
+        "title": "Ennovators 4.0 — Banglalink",
+        "description": "Top 100 out of 16,000 participants in the C-Factor Gamification round.",
+        "image": "assets/cert-ennovators.jpeg",
+        "image_alt": "Ennovators 4.0 Certificate",
+        "small": true,
+        "featured": false
+      },
+      {
+        "id": "excelsior",
+        "type": "Competition — 2021",
+        "title": "Excelsior — NSU Finance Club",
+        "description": "Top 50 out of 300 in an Inter-University MS Excel competition.",
+        "image": null,
+        "small": true,
+        "featured": false
+      }
+    ]
+  },
+
+  "certifications": {
+    "title": "Certifications",
+    "items": [
+      {
+        "id": "sql-advanced",
+        "name": "SQL (Advanced)",
+        "issuer": "HackerRank — Feb 2025",
+        "image": "assets/cert-sql-advanced.png",
+        "image_alt": "SQL Advanced Certificate"
+      },
+      {
+        "id": "sql-basic",
+        "name": "SQL (Basic)",
+        "issuer": "HackerRank — Feb 2025",
+        "image": "assets/cert-sql-basic.png",
+        "image_alt": "SQL Basic Certificate"
+      },
+      {
+        "id": "google-marketing",
+        "name": "Fundamentals of Digital Marketing",
+        "issuer": "Google Digital Garage — Apr 2020",
+        "image": "assets/cert-google.jpeg",
+        "image_alt": "Google Digital Marketing"
+      },
+      {
+        "id": "excel-coursera",
+        "name": "Excel Skills for Business: Essentials",
+        "issuer": "Coursera, Macquarie University — Sept 2020",
+        "image": "assets/cert-excel.jpeg",
+        "image_alt": "Excel Skills Certificate"
+      },
+      {
+        "id": "bylc-facilitator",
+        "name": "ICT Career Bootcamp — Facilitator",
+        "issuer": "BYLC — Aug-Sept 2021",
+        "image": "assets/cert-bylc.jpeg",
+        "image_alt": "BYLC Facilitator Certificate"
+      },
+      {
+        "id": "webdev-bteb",
+        "name": "Skills for Employment (Web Dev)",
+        "issuer": "Bangladesh Technical Education Board — 2017",
+        "image": "assets/cert-webdev.jpg",
+        "image_alt": "Skills for Employment Web Dev"
+      }
+    ]
+  },
+
+  "skills": {
+    "section_label": "What I work with",
+    "section_title": "Skills & Tools",
+    "groups": [
+      {
+        "id": "data-analysis",
+        "name": "Data Analysis",
+        "pills": [
+          {"name": "SQL", "level": "expert"},
+          {"name": "Python", "level": "advanced"},
+          {"name": "R", "level": "expert"},
+          {"name": "Pandas / NumPy", "level": "expert"},
+          {"name": "Excel / Google Sheets", "level": "expert"}
+        ]
+      },
+      {
+        "id": "visualization",
+        "name": "Visualization & BI",
+        "pills": [
+          {"name": "Power BI", "level": "expert"},
+          {"name": "Looker Studio", "level": "expert"},
+          {"name": "Metabase", "level": "expert"},
+          {"name": "Tableau", "level": "intermediate"},
+          {"name": "Plotly", "level": "advanced"},
+          {"name": "Streamlit", "level": "advanced"}
+        ]
+      },
+      {
+        "id": "tools-databases",
+        "name": "Tools & Databases",
+        "pills": [
+          {"name": "PostgreSQL", "level": "expert"},
+          {"name": "MySQL", "level": "advanced"},
+          {"name": "Git / GitHub", "level": "advanced"},
+          {"name": "Web Scraping", "level": "advanced"},
+          {"name": "Notion", "level": "advanced"}
+        ]
+      },
+      {
+        "id": "domain-soft",
+        "name": "Domain & Soft Skills",
+        "domain": true,
+        "pills": [
+          {"name": "FinTech / Prop Trading"},
+          {"name": "Product Analytics"},
+          {"name": "Revenue & Retention"},
+          {"name": "Cohort Analysis"},
+          {"name": "KPI Frameworks"},
+          {"name": "Data Storytelling"},
+          {"name": "Cross-functional Collaboration"},
+          {"name": "Automated Reporting"},
+          {"name": "Leadership"},
+          {"name": "Product Management"}
+        ]
+      }
+    ],
+    "legend": [
+      {"level": "expert", "label": "Expert"},
+      {"level": "advanced", "label": "Advanced"},
+      {"level": "intermediate", "label": "Basic"}
+    ]
+  },
+
+  "contact": {
+    "section_label": "Say hello",
+    "section_title": "Get In Touch",
+    "description": "I'm always open to discussing data, BI projects, or new opportunities. Whether you have a question or just want to connect — reach out.",
+    "email": "saidul.alam4286@gmail.com",
+    "socials": [
+      {"id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/saidul-alam01/", "icon": "linkedin"},
+      {"id": "github", "label": "GitHub", "url": "https://github.com/saidulalam01", "icon": "github"}
+    ]
+  },
+
+  "footer": {
+    "copyright": "2026 Saidul Alam Rahat",
+    "links": [
+      {"label": "LinkedIn", "url": "https://www.linkedin.com/in/saidul-alam01/"},
+      {"label": "GitHub", "url": "https://github.com/saidulalam01"},
+      {"label": "Email", "url": "mailto:saidul.alam4286@gmail.com"}
+    ]
+  }
+}
