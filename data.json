@@ -1,23 +1,23 @@
 {
   "meta": {
-    "title": "Saidul Alam Rahat — Senior BI Analyst | Portfolio",
-    "description": "Saidul Alam Rahat — Senior Business Intelligence Analyst at FundedNext. 3+ years building dashboards, automating reports, and driving data-informed decisions. Based in Dhaka, Bangladesh.",
-    "keywords": "Saidul Alam Rahat, BI Analyst, Business Intelligence, Data Analyst, FundedNext, Power BI, SQL, Python, Dhaka Bangladesh",
+    "title": "Saidul Alam Rahat — Analytics Engineer | Portfolio",
+    "description": "Saidul Alam Rahat — Analytics Engineer at FundedNext. 3+ years building data tools, automating analytics pipelines, and turning raw databases into self-service platforms. Based in Dhaka, Bangladesh.",
+    "keywords": "Saidul Alam Rahat, Analytics Engineer, Data Engineering, Data Analyst, FundedNext, SQL, Python, Streamlit, PostgreSQL, Automation, Dhaka Bangladesh",
     "author": "Saidul Alam Rahat",
     "google_verification": "Gv1FAxl2eZcLn4Y1khg58qcaYjwtRwAIO63vewgL_DA",
     "canonical_url": "https://saidulalam01.github.io/",
     "ga_id": "G-8CERXVPZXC",
     "og": {
       "type": "website",
-      "title": "Saidul Alam Rahat — Senior BI Analyst",
-      "description": "Senior Business Intelligence Analyst at FundedNext. Building dashboards, automating reports, and driving data-informed decisions.",
+      "title": "Saidul Alam Rahat — Analytics Engineer",
+      "description": "Analytics Engineer at FundedNext. Building data tools, automating analytics, and turning raw databases into self-service platforms.",
       "url": "https://saidulalam01.github.io/",
       "site_name": "Saidul Alam Rahat"
     },
     "twitter": {
       "card": "summary",
-      "title": "Saidul Alam Rahat — Senior BI Analyst",
-      "description": "Senior Business Intelligence Analyst at FundedNext. Building dashboards, automating reports, and driving data-informed decisions."
+      "title": "Saidul Alam Rahat — Analytics Engineer",
+      "description": "Analytics Engineer at FundedNext. Building data tools, automating analytics, and turning raw databases into self-service platforms."
     }
   },
 
@@ -30,12 +30,12 @@
     "badge": "Available for opportunities",
     "headline_pre": "I turn ",
     "headline_highlight": "raw data",
-    "headline_post": " into business decisions.",
-    "sub": "Senior BI Analyst at FundedNext with 3+ years of building dashboards, automating reports, and making teams self-sufficient with data. Based in Dhaka, Bangladesh.",
+    "headline_post": " into self-service platforms.",
+    "sub": "Analytics Engineer at FundedNext with 3+ years of building data tools, automating analytics, and making teams self-sufficient with data. Based in Dhaka, Bangladesh.",
     "cta_primary": {"text": "See My Work", "href": "#projects"},
     "cta_secondary": {"text": "Let's Talk", "href": "#contact"},
     "quick_stats": [
-      {"num": "3+", "label": "Years in BI"},
+      {"num": "3+", "label": "Years in Analytics"},
       {"num": "80%", "label": "Less ad-hoc requests"},
       {"num": "30%", "label": "Faster reporting"}
     ],
@@ -53,14 +53,14 @@
     "section_label": "Get to know me",
     "section_title": "About Me",
     "paragraphs": [
-      "I'm <strong>Saidul Alam Rahat</strong> — a Senior Business Intelligence Analyst at <strong>FundedNext</strong>, one of the world's fastest-growing prop trading firms. I focus on the core areas of data analytics, data analysis, and data engineering — managing large-scale data operations and working closely with leadership to implement strategies that drive data-informed decisions.",
+      "I'm <strong>Saidul Alam Rahat</strong> — an Analytics Engineer at <strong>FundedNext</strong>, one of the world's fastest-growing prop trading firms. I sit at the intersection of data engineering and analytics — building tools, automating pipelines, and designing systems that make teams self-sufficient with data rather than dependent on analysts.",
       "My path wasn't typical. I studied HRM, pivoted through business development, and found my thing in data — specifically the part where you take an ambiguous question like <em>\"why did revenue drop?\"</em> and turn it into a clear, visual answer that changes how people act.",
-      "I've built self-service dashboards that cut recurring data requests by 80%, designed custom retention taxonomies adopted as team standards, and created automated alerting systems that catch anomalies before they become problems. Recognized as a <strong>\"data visualization maestro\"</strong> by NEXT Ventures with the Invent & Simplify award."
+      "I've built self-service analytics platforms that cut recurring data requests by 80%, designed custom retention taxonomies adopted as team standards, and created automated alerting systems that catch anomalies before they become problems. Recognized as a <strong>\"data visualization maestro\"</strong> by NEXT Ventures with the Invent & Simplify award."
     ],
     "info_cards": [
       {"id": "location", "icon": "&#128205;", "label": "Location", "value": "Dhaka, Bangladesh"},
       {"id": "education", "icon": "&#127891;", "label": "Education", "value": "BBA — North South University", "sub": "HRM Major | Finance Minor"},
-      {"id": "focus", "icon": "&#127919;", "label": "Focus", "value": "Business Intelligence & Product Analytics"},
+      {"id": "focus", "icon": "&#127919;", "label": "Focus", "value": "Analytics Engineering & Product Analytics"},
       {"id": "languages", "icon": "&#127760;", "label": "Languages", "value": "English, Bengali"}
     ]
   },
@@ -356,7 +356,7 @@
   "contact": {
     "section_label": "Say hello",
     "section_title": "Get In Touch",
-    "description": "I'm always open to discussing data, BI projects, or new opportunities. Whether you have a question or just want to connect — reach out.",
+    "description": "I'm always open to discussing data engineering, analytics tools, or new opportunities. Whether you have a question or just want to connect — reach out.",
     "email": "saidul.alam4286@gmail.com",
     "socials": [
       {"id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/saidul-alam01/", "icon": "linkedin"},
