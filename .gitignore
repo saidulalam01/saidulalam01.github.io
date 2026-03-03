@@ -6,3 +6,6 @@ backups/
 logs/
 __pycache__/
 *.pyc
+optimal_version/
+.claude/
+.DS_Store

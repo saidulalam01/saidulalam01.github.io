@@ -7,12 +7,12 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/python3</string>
-        <string>/Users/next/work/portfolio-website/bot.py</string>
+        <string>/Users/saidulalamrahat/anaconda3/bin/python3</string>
+        <string>/Users/saidulalamrahat/work/portfolio-website/bot.py</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <string>/Users/next/work/portfolio-website</string>
+    <string>/Users/saidulalamrahat/work/portfolio-website</string>
 
     <key>RunAtLoad</key>
     <true/>
@@ -21,10 +21,10 @@
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/Users/next/work/portfolio-website/logs/bot-stdout.log</string>
+    <string>/Users/saidulalamrahat/work/portfolio-website/logs/bot-stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/next/work/portfolio-website/logs/bot-stderr.log</string>
+    <string>/Users/saidulalamrahat/work/portfolio-website/logs/bot-stderr.log</string>
 
     <key>EnvironmentVariables</key>
     <dict>

@@ -56,7 +56,7 @@ CLI_PATH = ENV.get("AGENT_CLI_PATH", "")
 
 # Resolve CLI path
 if not CLI_PATH:
-    for p in ("/Users/next/.local/bin/claude", "/usr/local/bin/claude"):
+    for p in ("/Users/saidulalamrahat/.local/bin/claude", "/usr/local/bin/claude"):
         if Path(p).exists():
             CLI_PATH = p
             break
