@@ -76,11 +76,13 @@ def render_head(d):
   <meta property="og:description" content="{og['description']}">
   <meta property="og:url" content="{og['url']}">
   <meta property="og:site_name" content="{og['site_name']}">
+  <meta property="og:image" content="{og['image']}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="{tw['card']}">
   <meta name="twitter:title" content="{tw['title']}">
   <meta name="twitter:description" content="{tw['description']}">
+  <meta name="twitter:image" content="{tw['image']}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,7 +227,7 @@ def render_experience(d):
             <div class="exp-top">
               <div>
                 <h3>{item['title']}</h3>
-                <span class="exp-company">{item['company']}</span>
+                {'<a href="' + item['company_url'] + '" target="_blank" class="exp-company exp-company-link">' + item['company'] + '</a>' if item.get('company_url') else '<span class="exp-company">' + item['company'] + '</span>'}
               </div>
               <span class="exp-date">{item['date']}</span>
             </div>
@@ -480,12 +482,28 @@ def render_contact(d):
       <p class="contact-desc">
         {c['description']}
       </p>
-      <div class="contact-cta">
-        <a href="mailto:{c['email']}" class="btn btn-primary">
-          {SVG_EMAIL}
-          Send Me an Email
-        </a>
-      </div>
+      <form class="contact-form" action="{c['formspree_endpoint']}" method="POST" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <div class="form-success" id="formSuccess">Message sent! I'll get back to you soon.</div>
+      </form>
       <div class="contact-divider">or find me on</div>
       <div class="contact-circles">
 {circles.rstrip()}

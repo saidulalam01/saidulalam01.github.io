@@ -12,12 +12,14 @@
       "title": "Saidul Alam Rahat — Analytics Engineer",
       "description": "Analytics Engineer at FundedNext. Building data tools, automating analytics, and turning raw databases into self-service platforms.",
       "url": "https://saidulalam01.github.io/",
-      "site_name": "Saidul Alam Rahat"
+      "site_name": "Saidul Alam Rahat",
+      "image": "https://saidulalam01.github.io/assets/og-image.png"
     },
     "twitter": {
-      "card": "summary",
+      "card": "summary_large_image",
       "title": "Saidul Alam Rahat — Analytics Engineer",
-      "description": "Analytics Engineer at FundedNext. Building data tools, automating analytics, and turning raw databases into self-service platforms."
+      "description": "Analytics Engineer at FundedNext. Building data tools, automating analytics, and turning raw databases into self-service platforms.",
+      "image": "https://saidulalam01.github.io/assets/og-image.png"
     }
   },
 
@@ -27,7 +29,7 @@
   },
 
   "hero": {
-    "badge": "Available for opportunities",
+    "badge": "Open to New Opportunities",
     "headline_pre": "I turn ",
     "headline_highlight": "raw data",
     "headline_post": " into self-service platforms.",
@@ -73,6 +75,7 @@
         "id": "fundednext-sr-bi",
         "title": "Sr. Executive, Business Intelligence",
         "company": "FundedNext",
+        "company_url": "https://fundednext.com",
         "date": "Apr 2025 — Present",
         "active": true,
         "bullets": [
@@ -87,6 +90,7 @@
         "id": "next-sr-data",
         "title": "Sr. Executive (Data & RnD), Business Development",
         "company": "NEXT Ventures",
+        "company_url": "https://nextventures.io",
         "date": "Jan 2024 — Mar 2025",
         "active": false,
         "bullets": [
@@ -101,6 +105,7 @@
         "id": "next-exec-bd",
         "title": "Executive, Business Development",
         "company": "NEXT Ventures",
+        "company_url": "https://nextventures.io",
         "date": "Sept 2022 — Dec 2023",
         "active": false,
         "bullets": [
@@ -114,6 +119,7 @@
         "id": "walton-intern",
         "title": "Intern",
         "company": "Walton Hi-Tech Industries PLC",
+        "company_url": "https://waltonbd.com",
         "date": "Oct 2021 — Jan 2022",
         "active": false,
         "bullets": [
@@ -127,6 +133,7 @@
         "id": "bylc-facilitator",
         "title": "Facilitator",
         "company": "Bangladesh Youth Leadership Center (BYLC)",
+        "company_url": "https://bylc.org",
         "date": "Aug — Sept 2021",
         "active": false,
         "bullets": [
@@ -193,7 +200,7 @@
         "icon": "&#128221;",
         "title": "Google Sheets Reporting",
         "description": "Advanced reporting system with automated formulas",
-        "url": null
+        "url": "https://docs.google.com/spreadsheets/d/1XFN_Cg3DW5HlNLv5TYsybOz713o9ib8D8RYEkl__46w/edit"
       }
     ]
   },
@@ -357,7 +364,7 @@
     "section_label": "Say hello",
     "section_title": "Get In Touch",
     "description": "I'm always open to discussing data engineering, analytics tools, or new opportunities. Whether you have a question or just want to connect — reach out.",
-    "email": "saidul.alam4286@gmail.com",
+    "formspree_endpoint": "https://formspree.io/f/xeelywzj",
     "socials": [
       {"id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/saidul-alam01/", "icon": "linkedin"},
       {"id": "github", "label": "GitHub", "url": "https://github.com/saidulalam01", "icon": "github"}
@@ -368,8 +375,7 @@
     "copyright": "2026 Saidul Alam Rahat",
     "links": [
       {"label": "LinkedIn", "url": "https://www.linkedin.com/in/saidul-alam01/"},
-      {"label": "GitHub", "url": "https://github.com/saidulalam01"},
-      {"label": "Email", "url": "mailto:saidul.alam4286@gmail.com"}
+      {"label": "GitHub", "url": "https://github.com/saidulalam01"}
     ]
   }
 }

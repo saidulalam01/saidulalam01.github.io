@@ -206,3 +206,37 @@ document.addEventListener('keydown', e => {
     if (lightbox.classList.contains('active')) closeLightbox();
   }
 });
+
+// Contact form — AJAX submit via Formspree
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        contactForm.reset();
+        formSuccess.style.display = 'block';
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      } else {
+        btn.textContent = 'Failed. Try again.';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Failed. Try again.';
+      btn.disabled = false;
+    }
+  });
+}
