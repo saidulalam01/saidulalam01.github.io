@@ -320,8 +320,7 @@ const CS_DATA = [
   }
 
   function goTo(index) {
-    if (index < 0 || index >= CS_DATA.length) return;
-    current = index;
+    current = ((index % CS_DATA.length) + CS_DATA.length) % CS_DATA.length;
     const cs = CS_DATA[current];
 
     iframe.src   = cs.slides;
@@ -338,8 +337,8 @@ const CS_DATA = [
 
     readBtn.href = cs.doc.readUrl;
 
-    btnPrev.disabled = current === 0;
-    btnNext.disabled = current === CS_DATA.length - 1;
+    btnPrev.disabled = false;
+    btnNext.disabled = false;
 
     renderMore();
   }
