@@ -386,41 +386,65 @@ if (contactForm) {
 }
 
 // ── Case Study Share ──────────────────────────────────────────────────────────
+const CS_PORTFOLIO_BASE = 'https://saidulalam01.github.io';
+
+function csGetShareUrl() {
+  const readBtn = document.getElementById('csReadBtn');
+  const relUrl  = readBtn ? readBtn.getAttribute('href') : '';
+  return CS_PORTFOLIO_BASE + '/' + relUrl;
+}
+
+function csGetTitle() {
+  const el = document.getElementById('csTitle');
+  return el ? el.textContent : 'Case Study';
+}
+
+function csCloseMenu() {
+  const menu = document.getElementById('csShareMenu');
+  if (menu) menu.classList.remove('open');
+}
+
+function csOpenLinkedIn() {
+  const url = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(csGetShareUrl());
+  window.open(url, '_blank', 'noopener');
+  csCloseMenu();
+}
+
+function csOpenWhatsApp() {
+  const text = csGetTitle() + ' — ' + csGetShareUrl();
+  const url  = 'https://wa.me/?text=' + encodeURIComponent(text);
+  window.open(url, '_blank', 'noopener');
+  csCloseMenu();
+}
+
+function csCopyLink() {
+  const fullUrl = csGetShareUrl();
+  const textEl  = document.getElementById('csCopyText');
+  navigator.clipboard.writeText(fullUrl).then(() => {
+    textEl.textContent = 'Copied!';
+    setTimeout(() => { textEl.textContent = 'Copy Link'; }, 2000);
+  }).catch(() => {
+    textEl.textContent = 'Copy failed';
+    setTimeout(() => { textEl.textContent = 'Copy Link'; }, 2000);
+  });
+  csCloseMenu();
+}
+
 (function initShareMenu() {
-  const btn     = document.getElementById('csShareBtn');
-  const menu    = document.getElementById('csShareMenu');
-  const liLink  = document.getElementById('csShareLinkedIn');
-  const waLink  = document.getElementById('csShareWhatsApp');
-
+  const btn  = document.getElementById('csShareBtn');
+  const menu = document.getElementById('csShareMenu');
   if (!btn || !menu) return;
-
-  const PORTFOLIO_BASE = 'https://saidulalam01.github.io';
-
-  function getShareUrl() {
-    const readBtn = document.getElementById('csReadBtn');
-    const relUrl  = readBtn ? readBtn.getAttribute('href') : '';
-    return PORTFOLIO_BASE + '/' + relUrl;
-  }
-
-  function updateLinks() {
-    const url   = getShareUrl();
-    const title = (document.getElementById('csTitle') || {}).textContent || 'Case Study';
-    liLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-    waLink.href = `https://wa.me/?text=${encodeURIComponent(title + ' — ' + url)}`;
-  }
 
   btn.addEventListener('click', e => {
     e.stopPropagation();
-    const isOpen = !menu.classList.contains('open');
-    if (isOpen) {
-      updateLinks();
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open');
+    } else {
       const r = btn.getBoundingClientRect();
       menu.style.right  = (window.innerWidth - r.right) + 'px';
       menu.style.top    = (r.bottom + 8) + 'px';
       menu.style.bottom = '';
       menu.classList.add('open');
-    } else {
-      menu.classList.remove('open');
     }
   });
 
@@ -430,20 +454,3 @@ if (contactForm) {
     }
   });
 })();
-
-function csCopyLink() {
-  const readBtn = document.getElementById('csReadBtn');
-  const relUrl  = readBtn ? readBtn.getAttribute('href') : '';
-  const fullUrl = 'https://saidulalam01.github.io/' + relUrl;
-  const textEl  = document.getElementById('csCopyText');
-
-  navigator.clipboard.writeText(fullUrl).then(() => {
-    textEl.textContent = 'Copied!';
-    setTimeout(() => { textEl.textContent = 'Copy Link'; }, 2000);
-  }).catch(() => {
-    textEl.textContent = 'Copy failed';
-    setTimeout(() => { textEl.textContent = 'Copy Link'; }, 2000);
-  });
-
-  document.getElementById('csShareMenu').classList.remove('open');
-}
