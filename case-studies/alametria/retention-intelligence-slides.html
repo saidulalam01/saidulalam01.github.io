@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Retention Intelligence — Alametria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0d1f35; --bg2:#112540; --card:#1a2e48; --card2:#1f3555;
+  --border:rgba(255,255,255,0.05); --border2:rgba(255,255,255,0.09);
+  --text:#eaeff4; --text2:#b8c8d8; --text3:#6a8090;
+  --gold:#f0a830; --gold2:#fcd860; --orange:#e07020;
+  --green:#34d399; --violet:#a78bfa;
+  --glow:rgba(240,168,48,0.12);
+}
+body{background:var(--bg);overflow:hidden;width:100vw;height:100vh;font-family:'Outfit',sans-serif;color:var(--text);user-select:none;}
+
+/* ── CANVAS ── */
+#universe{position:absolute;top:0;left:0;transform-origin:0 0;transition:transform 1.15s cubic-bezier(0.86,0,0.07,1);will-change:transform;}
+
+/* ── SLIDE ── */
+.slide{
+  position:absolute;width:860px;padding:52px 62px 46px;
+  background:var(--card);border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:0 0 60px rgba(240,168,48,0.05),0 24px 64px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.03);
+  transition:box-shadow 0.5s,border-color 0.5s;
+}
+.slide.active{border-color:rgba(240,168,48,0.2);box-shadow:0 0 100px rgba(240,168,48,0.14),0 24px 64px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.05);}
+
+/* ── TYPE ── */
+.kicker{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.bar{width:44px;height:3px;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:2px;margin-bottom:26px;}
+h1{font-size:56px;font-weight:900;line-height:1.06;letter-spacing:-2px;}
+h1 em{font-style:normal;color:var(--gold);}
+h2{font-size:38px;font-weight:800;line-height:1.1;letter-spacing:-1.5px;}
+h2 em{font-style:normal;color:var(--gold);}
+.lead{font-size:15px;color:var(--text2);line-height:1.7;margin-top:16px;max-width:580px;}
+.foot{margin-top:32px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.foot-brand{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--text3);}
+.foot-brand::after{content:" · Saidul Alam Rahat";font-weight:500;letter-spacing:1.5px;font-size:9px;color:#8aa8c0;opacity:1;}
+.foot-pg{font-size:10px;color:var(--text3);}
+
+/* ── PROBLEM ── */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;}
+.prob-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:12px;padding:18px 20px;}
+.prob-card h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+.prob-card p{font-size:12px;color:var(--text2);line-height:1.5;}
+.risk-box{margin-top:16px;background:rgba(224,112,32,0.07);border:1px solid rgba(224,112,32,0.18);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.risk-box strong{color:var(--orange);}
+
+/* ── FRAMEWORK ── */
+.fw-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:24px;}
+.fw-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.fw-item:nth-child(5),.fw-item:nth-child(10){border-bottom:none;}
+.fw-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.fw-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+.fw-range{font-size:11px;color:var(--text3);}
+.d1{background:#f0a830;} .d2{background:#f5c34d;} .d3{background:#e07020;} .d4{background:#c86010;}
+.d5{background:#a85010;} .d6{background:#884018;} .d7{background:#683020;} .d8{background:#482018;}
+.d9{background:var(--green);box-shadow:0 0 6px rgba(52,211,153,0.5);}
+.d10{background:var(--violet);box-shadow:0 0 6px rgba(167,139,250,0.5);}
+
+/* ── DECISION TREE ── */
+.tree{margin-top:24px;display:flex;flex-direction:column;gap:0;}
+.tree-row{display:flex;align-items:center;gap:0;padding:9px 0;border-bottom:1px solid var(--border);}
+.tree-row:last-child{border-bottom:none;}
+.tree-q{font-size:12px;color:var(--text2);flex:1;padding-right:12px;}
+.tree-arrow{font-size:11px;color:var(--text3);margin-right:10px;}
+.tree-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.tag-gold  {background:rgba(240,168,48,0.1); color:var(--gold);   border:1px solid rgba(240,168,48,0.25);}
+.tag-orange{background:rgba(224,112,32,0.1); color:var(--orange); border:1px solid rgba(224,112,32,0.25);}
+.tag-green {background:rgba(52,211,153,0.1); color:var(--green);  border:1px solid rgba(52,211,153,0.25);}
+.tag-violet{background:rgba(167,139,250,0.1);color:var(--violet); border:1px solid rgba(167,139,250,0.25);}
+.tag-dim   {background:rgba(106,128,144,0.1);color:var(--text3);  border:1px solid rgba(106,128,144,0.2);}
+.tree-note{margin-top:14px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.15);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.tree-note strong{color:var(--gold);}
+
+/* ── DISTINCTION ── */
+.dist-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;}
+.dist-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 22px;}
+.dist-card.green{border-top:3px solid var(--green);}
+.dist-card.violet{border-top:3px solid var(--violet);}
+.dist-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.dist-label.green{color:var(--green);} .dist-label.violet{color:var(--violet);}
+.dist-title{font-size:17px;font-weight:800;margin-bottom:8px;}
+.dist-range{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px;}
+.dist-range.green{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.25);}
+.dist-range.violet{background:rgba(167,139,250,0.1);color:var(--violet);border:1px solid rgba(167,139,250,0.25);}
+.dist-body{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;}
+.dist-verdict{font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;}
+.dist-verdict.green{background:rgba(52,211,153,0.08);color:var(--green);}
+.dist-verdict.violet{background:rgba(167,139,250,0.08);color:var(--violet);}
+.dist-note{margin-top:18px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.15);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.dist-note strong{color:var(--gold);}
+
+/* ── WHO USES IT ── */
+.teams-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
+.team-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 20px;}
+.team-icon{font-size:20px;margin-bottom:8px;}
+.team-name{font-size:13px;font-weight:800;margin-bottom:10px;color:var(--gold);}
+.team-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.team-list li{font-size:12px;color:var(--text2);padding-left:12px;position:relative;}
+.team-list li::before{content:'→';position:absolute;left:0;color:var(--text3);font-size:10px;top:1px;}
+
+/* ── GOLDEN SEGMENT ── */
+.gold-hero{margin-top:24px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.18);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:28px;}
+.gold-num{font-size:72px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-3px;flex-shrink:0;}
+.gold-text h4{font-size:16px;font-weight:800;margin-bottom:6px;}
+.gold-text p{font-size:13px;color:var(--text2);line-height:1.6;}
+.funnel{margin-top:20px;display:flex;flex-direction:column;gap:6px;}
+.funnel-row{display:flex;align-items:center;gap:12px;}
+.funnel-label{font-size:11px;color:var(--text3);min-width:140px;}
+.funnel-bar-wrap{flex:1;background:rgba(255,255,255,0.04);border-radius:4px;height:14px;overflow:hidden;}
+.funnel-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--orange));}
+.funnel-val{font-size:11px;font-weight:700;color:var(--gold);min-width:50px;text-align:right;}
+
+/* ── NUMBERS ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 20px;}
+.stat-label{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+.stat-num{font-size:38px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.stat-desc{font-size:12px;color:var(--text2);margin-top:7px;line-height:1.4;}
+
+/* ── STACKING ── */
+.stack-hero{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;}
+.stack-num{font-size:80px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-3px;}
+.stack-text h4{font-size:15px;font-weight:800;margin-bottom:8px;}
+.stack-text p{font-size:13px;color:var(--text2);line-height:1.6;}
+.stack-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;}
+.stack-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 14px;}
+.stack-day{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.stack-action{font-size:12px;color:var(--text2);line-height:1.4;}
+
+/* ── RESULTS ── */
+.res-rows{margin-top:26px;}
+.res-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.res-row:last-child{border-bottom:none;}
+.res-action{font-size:13px;color:var(--text2);flex:1;}
+.res-arrow{font-size:11px;color:var(--text3);}
+.res-result{font-size:16px;font-weight:800;min-width:76px;text-align:right;}
+.res-result.up{color:var(--green);} .res-result.down{color:var(--violet);}
+.res-dollar{font-size:12px;font-weight:700;min-width:88px;text-align:right;color:var(--gold);opacity:0.85;letter-spacing:0.3px;}
+
+/* ── WHY ALAMETRIA ── */
+.pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px;}
+.pillar{background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:24px 20px;text-align:center;}
+.pillar-icon{font-size:26px;margin-bottom:10px;}
+.pillar-title{font-size:14px;font-weight:800;margin-bottom:8px;}
+.pillar-desc{font-size:12px;color:var(--text2);line-height:1.5;}
+.closing{margin-top:22px;padding:16px 20px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.18);border-radius:10px;font-size:14px;font-weight:600;color:var(--text);line-height:1.6;text-align:center;}
+.closing em{font-style:normal;color:var(--gold);}
+
+/* ── OVERLAY ── */
+#overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;z-index:50;opacity:0;transition:opacity 0.9s ease 0.5s;}
+#overlay.show{opacity:1;}
+.ov-tag{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.ov-title{font-size:30px;font-weight:900;letter-spacing:-1px;color:var(--text);text-align:center;text-shadow:0 0 80px rgba(240,168,48,0.5);}
+.ov-title em{color:var(--gold);font-style:normal;}
+.ov-sub{font-size:12px;color:var(--text3);margin-top:12px;letter-spacing:2px;text-transform:uppercase;}
+
+/* ── NAV ── */
+#nav{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:100;background:rgba(13,31,53,0.85);padding:8px 14px;border-radius:30px;border:1px solid var(--border);backdrop-filter:blur(10px);}
+.nd{width:6px;height:6px;border-radius:50%;background:var(--text3);cursor:pointer;transition:all 0.3s;}
+.nd.on{background:var(--gold);box-shadow:0 0 8px var(--gold);transform:scale(1.5);}
+#counter{position:fixed;top:22px;right:26px;font-size:11px;font-weight:600;letter-spacing:2px;color:var(--text3);z-index:100;background:rgba(13,31,53,0.85);padding:5px 13px;border-radius:20px;border:1px solid var(--border);backdrop-filter:blur(10px);}
+#brand{position:fixed;top:22px;left:26px;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--text3);z-index:100;text-transform:uppercase;}
+#fs-btn{position:fixed;bottom:26px;right:26px;z-index:100;display:flex;align-items:center;gap:6px;background:rgba(13,31,53,0.85);border:1px solid rgba(240,168,48,0.25);border-radius:8px;color:var(--gold);font-size:10px;font-weight:600;letter-spacing:1px;padding:6px 12px;cursor:pointer;font-family:'Outfit',sans-serif;backdrop-filter:blur(10px);transition:background 0.2s;}
+#fs-btn:hover{background:rgba(240,168,48,0.12);}
+#hint{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;z-index:100;transition:opacity 0.4s;animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:0.9}}
+</style>
+</head>
+<body>
+
+<div id="brand">Alametria</div>
+<div id="counter">01 / 12</div>
+<div id="hint">← → navigate</div>
+<button id="fs-btn" onclick="document.documentElement.requestFullscreen()">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+  Fullscreen
+</button>
+<div id="nav">
+  <div class="nd on" onclick="goTo(0)"></div>
+  <div class="nd" onclick="goTo(1)"></div>
+  <div class="nd" onclick="goTo(2)"></div>
+  <div class="nd" onclick="goTo(3)"></div>
+  <div class="nd" onclick="goTo(4)"></div>
+  <div class="nd" onclick="goTo(5)"></div>
+  <div class="nd" onclick="goTo(6)"></div>
+  <div class="nd" onclick="goTo(7)"></div>
+  <div class="nd" onclick="goTo(8)"></div>
+  <div class="nd" onclick="goTo(9)"></div>
+  <div class="nd" onclick="goTo(10)"></div>
+  <div class="nd" onclick="goTo(11)"></div>
+</div>
+
+<div id="overlay">
+  <div class="ov-tag">Alametria · Strategy &amp; Analytics</div>
+  <div class="ov-title">A Framework Built on <em>Behavior,</em><br>Not Assumptions.</div>
+  <div class="ov-sub">Retention Intelligence · Prop Firm Analytics · FY 2026</div>
+</div>
+
+<!-- ══════════════ CANVAS ══════════════ -->
+<div id="universe">
+
+  <!-- S1 · TITLE · (200,-200) r=0 -->
+  <div class="slide active" style="left:200px;top:-200px;">
+    <div class="kicker">Alametria · Retention Intelligence</div>
+    <div class="bar"></div>
+    <h1>"87% Retention."<br>But <em>What Does</em><br>That Actually Mean?</h1>
+    <p class="lead">One number was hiding 10 completely different trader behaviors. This is the story of how we built a framework to finally see all of them — and act on each one differently.</p>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">01 / 11</span></div>
+  </div>
+
+  <!-- S2 · PROBLEM · (-2600,-600) r=-7 -->
+  <div class="slide" style="left:-2600px;top:-600px;transform:rotate(-7deg);">
+    <div class="kicker">The Problem</div>
+    <div class="bar"></div>
+    <h2>Retention Was<br>a <em>Black Box</em></h2>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <h4>One Label for Everything</h4>
+        <p>Every repeat purchase — 2 days or 200 days later — lumped into the same "retained" bucket.</p>
+      </div>
+      <div class="prob-card">
+        <h4>Wrong Messages, Wrong People</h4>
+        <p>Stackers, funded winners, and dormant traders all receiving the identical campaign email.</p>
+      </div>
+      <div class="prob-card">
+        <h4>3 Days for One Answer</h4>
+        <p>A simple segmentation question required 3 days of manual record-checking to resolve.</p>
+      </div>
+      <div class="prob-card">
+        <h4>Gut Over Data</h4>
+        <p>Retention decisions driven by assumption. No behavioral model. No timing intelligence.</p>
+      </div>
+    </div>
+    <div class="risk-box"><strong>Primary Risk:</strong> A growing firm making expensive marketing decisions without ever truly understanding its customers.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">02 / 11</span></div>
+  </div>
+
+  <!-- S3 · FRAMEWORK · (2800,-800) r=+5 -->
+  <div class="slide" style="left:2800px;top:-800px;transform:rotate(5deg);">
+    <div class="kicker">The Framework</div>
+    <div class="bar"></div>
+    <h2>We Built a <em>Lifecycle,</em><br>Not a Label</h2>
+    <div class="fw-cols">
+      <div>
+        <div class="fw-item"><div class="fw-dot d1"></div><div><div class="fw-name">First Purchase</div><div class="fw-range">Very first transaction ever</div></div></div>
+        <div class="fw-item"><div class="fw-dot d2"></div><div><div class="fw-name">Acquisition Burst</div><div class="fw-range">Multiple buys · first 7 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d3"></div><div><div class="fw-name">Weekly Retention</div><div class="fw-range">Returns in 0–7 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d4"></div><div><div class="fw-name">Bi-weekly Retention</div><div class="fw-range">Returns in 8–14 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d5"></div><div><div class="fw-name">Monthly Retention</div><div class="fw-range">Returns in 15–30 days</div></div></div>
+      </div>
+      <div>
+        <div class="fw-item"><div class="fw-dot d6"></div><div><div class="fw-name">Quarterly Retention</div><div class="fw-range">Returns in 31–90 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d7"></div><div><div class="fw-name">Bi-annual Retention</div><div class="fw-range">Returns in 91–180 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d8"></div><div><div class="fw-name">Annual Retention</div><div class="fw-range">Returns in 181–365 days</div></div></div>
+        <div class="fw-item"><div class="fw-dot d9"></div><div><div class="fw-name">Late Retention</div><div class="fw-range">365+ days · still trading ⚡</div></div></div>
+        <div class="fw-item"><div class="fw-dot d10"></div><div><div class="fw-name">Reacquisition</div><div class="fw-range">181+ days · was fully dormant ★</div></div></div>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">03 / 11</span></div>
+  </div>
+
+  <!-- S4 · DECISION LOGIC · (-3400,800) r=+7 -->
+  <div class="slide" style="left:-3400px;top:800px;transform:rotate(7deg);">
+    <div class="kicker">How It Works</div>
+    <div class="bar"></div>
+    <h2>Every Purchase<br>Gets a <em>Story</em></h2>
+    <div class="tree">
+      <div class="tree-row">
+        <div class="tree-q">Is this their very first transaction ever?</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-gold">First Purchase</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">Multiple purchases within 7 days of joining?</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-gold">Acquisition Burst</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">0–7 days since last purchase</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-orange">Weekly Retention</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">8–30 days since last purchase</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-orange">Bi-weekly / Monthly</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">31–180 days since last purchase</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-dim">Quarterly / Bi-annual</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">181+ days · still actively trading?</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-green">Late Retention</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">181+ days · was completely dormant?</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-violet">Reacquisition ★</div>
+      </div>
+    </div>
+    <div class="tree-note"><strong>The critical step:</strong> For long gaps, we check trading activity — not just purchase history. That one check is what separates a success story from a win-back.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">04 / 11</span></div>
+  </div>
+
+  <!-- S5 · DISTINCTION · (3400,600) r=-6 -->
+  <div class="slide" style="left:3400px;top:600px;transform:rotate(-6deg);">
+    <div class="kicker">The Critical Insight</div>
+    <div class="bar"></div>
+    <h2>Not All Long Gaps<br>Are the <em>Same</em></h2>
+    <div class="dist-cols">
+      <div class="dist-card green">
+        <div class="dist-label green">Late Retention</div>
+        <div class="dist-title">Still Winning</div>
+        <div class="dist-range green">365+ days · no new purchase</div>
+        <p class="dist-body">These traders haven't bought in over a year — but they're still actively trading. They're funded and succeeding. They don't need a new challenge account.</p>
+        <div class="dist-verdict green">Don't disturb. They're winning.</div>
+      </div>
+      <div class="dist-card violet">
+        <div class="dist-label violet">Reacquisition</div>
+        <div class="dist-title">Truly Gone. Came Back.</div>
+        <div class="dist-range violet">181+ days · stopped everything</div>
+        <p class="dist-body">These traders stopped buying AND stopped trading. Completely disengaged. Then something — a campaign, a promo, word of mouth — brought them back.</p>
+        <div class="dist-verdict violet">Study every single one of these.</div>
+      </div>
+    </div>
+    <div class="dist-note"><strong>The separator is activity, not time.</strong> Same long gap. Completely different situations. Sending the wrong message to either group would have been a costly mistake.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">05 / 11</span></div>
+  </div>
+
+  <!-- S6 · WHO USES IT · (-3000,2200) r=-5 -->
+  <div class="slide" style="left:-3000px;top:2200px;transform:rotate(-5deg);">
+    <div class="kicker">Team Use Cases</div>
+    <div class="bar"></div>
+    <h2>One Framework.<br><em>Four Teams.</em></h2>
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-icon">📣</div>
+        <div class="team-name">Marketing</div>
+        <ul class="team-list">
+          <li>Which segment needs a retention campaign right now?</li>
+          <li>Are our coupons driving real win-backs?</li>
+          <li>What triggered each Reacquisition?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">📦</div>
+        <div class="team-name">Product</div>
+        <ul class="team-list">
+          <li>Which products have the strongest retention?</li>
+          <li>Where do traders drop off in the journey?</li>
+          <li>What's the natural graduation path?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">📊</div>
+        <div class="team-name">Finance</div>
+        <ul class="team-list">
+          <li>What revenue is predictable this month?</li>
+          <li>Do coupons hurt lifetime value?</li>
+          <li>Which cohorts are the most profitable?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🛡️</div>
+        <div class="team-name">Risk &amp; Ops</div>
+        <ul class="team-list">
+          <li>Are stackers higher risk than single buyers?</li>
+          <li>Where is withdrawal concentration sitting?</li>
+          <li>Any promo abuse patterns emerging?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">06 / 11</span></div>
+  </div>
+
+  <!-- S7 · GOLDEN SEGMENT · (-200,2200) r=+4 -->
+  <div class="slide" style="left:-200px;top:2200px;transform:rotate(4deg);">
+    <div class="kicker">Key Discovery</div>
+    <div class="bar"></div>
+    <h2>Meet Your Most<br><em>Valuable</em> Traders</h2>
+    <div class="gold-hero">
+      <div class="gold-num">71%</div>
+      <div class="gold-text">
+        <h4>Monthly Retention — The Golden Segment</h4>
+        <p>~13,800 purchases/month. Traders who've found their rhythm, typically tied to their withdrawal cycle. Predictable, loyal, and the benchmark every other segment should be moved toward.</p>
+      </div>
+    </div>
+    <div class="funnel" style="margin-top:18px;">
+      <div class="funnel-row"><div class="funnel-label">First Purchase</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%"></div></div><div class="funnel-val">~18,500</div></div>
+      <div class="funnel-row"><div class="funnel-label">Acquisition Burst</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:84%"></div></div><div class="funnel-val">~15,500</div></div>
+      <div class="funnel-row"><div class="funnel-label">Monthly Retention</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:75%"></div></div><div class="funnel-val">~13,800</div></div>
+      <div class="funnel-row"><div class="funnel-label">Quarterly Retention</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:48%"></div></div><div class="funnel-val">~8,800</div></div>
+      <div class="funnel-row"><div class="funnel-label">Late Retention</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:6%"></div></div><div class="funnel-val">~1,150</div></div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">07 / 11</span></div>
+  </div>
+
+  <!-- S8 · NUMBERS · (2800,2000) r=-7 -->
+  <div class="slide" style="left:2800px;top:2000px;transform:rotate(-7deg);">
+    <div class="kicker">What the Data Revealed</div>
+    <div class="bar"></div>
+    <h2>The Numbers That<br><em>Changed</em> Everything</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Acquisition Burst Rate</div>
+        <div class="stat-num">83%</div>
+        <div class="stat-desc">of new traders stack multiple accounts in week one — stacking is the norm, not the exception</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">The Golden Segment</div>
+        <div class="stat-num">~71%</div>
+        <div class="stat-desc">Monthly Retention — the largest and most predictable segment in the entire lifecycle</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Peak Growth Period</div>
+        <div class="stat-num">17×</div>
+        <div class="stat-desc">volume growth vs baseline — new product launch combined with a seasonal promotion</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Win-Back + Promo Link</div>
+        <div class="stat-num">42%</div>
+        <div class="stat-desc">of Reacquisition traders used a promo code — campaigns directly triggered genuine comebacks</div>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">08 / 11</span></div>
+  </div>
+
+  <!-- S9 · STACKING INSIGHT · (-1800,3600) r=+6 -->
+  <div class="slide" style="left:-1800px;top:3600px;transform:rotate(6deg);">
+    <div class="kicker">Discovery #1</div>
+    <div class="bar"></div>
+    <h2>Stacking Isn't a Bug.<br>It's a <em>Feature.</em></h2>
+    <div class="stack-hero">
+      <div class="stack-num">83%</div>
+      <div class="stack-text">
+        <h4>of new traders buy multiple accounts in their first week</h4>
+        <p>It's a deliberate strategy — run multiple challenges simultaneously to maximize the odds of passing. Once we understood this, we stopped treating stackers as anomalies and started building for them.</p>
+      </div>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-day">Days 1–3</div>
+        <div class="stack-action">Peak buying. Welcome them with bundle messaging — "Maximize Your Chances."</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-day">Days 4–7</div>
+        <div class="stack-action">Evaluating early results. Send tips: "Managing multiple accounts effectively."</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-day">Day 7+</div>
+        <div class="stack-action">Loyalty hook: "Your next account is 10% off." Lock in the relationship early.</div>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">09 / 11</span></div>
+  </div>
+
+  <!-- S10 · RESULTS · (1400,3800) r=-4 -->
+  <div class="slide" style="left:1400px;top:3800px;transform:rotate(-4deg);">
+    <div class="kicker">Impact</div>
+    <div class="bar"></div>
+    <h2>What Changed When<br>We <em>Acted</em> On It</h2>
+    <div class="res-rows">
+      <div class="res-row">
+        <div class="res-action">Stacker-specific bundle campaign ("Maximize Your Chances")</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+23% bundles</div>
+        <div class="res-dollar">+$4.1M / yr</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">VIP loyalty program launched for Monthly Retention segment</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+8% retention</div>
+        <div class="res-dollar">+$2.3M / yr</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Stopped win-back emails to Late Retention (still active) traders</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result down">−40% complaints</div>
+        <div class="res-dollar">$310K saved</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Regional premium tier built for Gulf (38% higher AOV)</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+22% revenue</div>
+        <div class="res-dollar">+$1.6M / yr</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Entry funnel: Rapid 2-Phase → graduate to Rapid 1-Phase</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+15% conversion</div>
+        <div class="res-dollar">+$1.9M / yr</div>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">10 / 11</span></div>
+  </div>
+
+  <!-- S11 · WHY ALAMETRIA · (400,5200) r=0 -->
+  <div class="slide" style="left:400px;top:5200px;transform:rotate(0deg);">
+    <div class="kicker">The Positioning</div>
+    <div class="bar"></div>
+    <h2>Built for Businesses<br>That Think in <em>Behavior</em></h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🏷️</div>
+        <div class="pillar-title">Classify</div>
+        <div class="pillar-desc">Not just dates — every transaction gets a behavioral label that reveals where the customer truly is.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚖️</div>
+        <div class="pillar-title">Distinguish</div>
+        <div class="pillar-desc">Activity matters, not just time. Two identical gaps can mean completely opposite things.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <div class="pillar-title">Act</div>
+        <div class="pillar-desc">Right message, right customer, right moment. Precision over volume. Every time.</div>
+      </div>
+    </div>
+    <div class="closing">
+      Retention Intelligence is <em>not a dashboard.</em> It's a behavioral operating system —<br>built once, used by every team, compounding in value over time.
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">11 / 11</span></div>
+  </div>
+
+</div><!-- #universe -->
+
+<script>
+const steps = [
+  { cx:   630, cy:   60, scale: 1,    rotate:  0 }, // S1  Title
+  { cx: -2170, cy: -340, scale: 1,    rotate:  7 }, // S2  Problem
+  { cx:  3230, cy: -540, scale: 1,    rotate: -5 }, // S3  Framework
+  { cx: -2970, cy: 1060, scale: 1,    rotate: -7 }, // S4  Decision Logic
+  { cx:  3830, cy:  860, scale: 1,    rotate:  6 }, // S5  Distinction
+  { cx: -2570, cy: 2460, scale: 1,    rotate:  5 }, // S6  Who Uses It
+  { cx:   230, cy: 2460, scale: 1,    rotate: -4 }, // S7  Golden Segment
+  { cx:  3230, cy: 2260, scale: 1,    rotate:  7 }, // S8  Numbers
+  { cx: -1370, cy: 3860, scale: 1,    rotate: -6 }, // S9  Stacking
+  { cx:  1830, cy: 4060, scale: 1,    rotate:  4 }, // S10 Results
+  { cx:   830, cy: 5460, scale: 1,    rotate:  0 }, // S11 Why Alametria
+  { cx:   430, cy: 2460, scale: 0.125,rotate:  0 }, // Overview
+];
+
+let current = 0;
+const universe = document.getElementById('universe');
+const dots     = [...document.querySelectorAll('.nd')];
+const counter  = document.getElementById('counter');
+const slides   = [...document.querySelectorAll('.slide')];
+const overlay  = document.getElementById('overlay');
+const hint     = document.getElementById('hint');
+
+function goTo(i) {
+  if (i < 0 || i >= steps.length) return;
+  if (current < slides.length) slides[current].classList.remove('active');
+  dots[current].classList.remove('on');
+  current = i;
+  const s = steps[i];
+  const vw = window.innerWidth  / 2;
+  const vh = window.innerHeight / 2;
+  const fit = Math.min(1, window.innerWidth / 1160, window.innerHeight / 700);
+  universe.style.transform =
+    `translateX(${vw}px) translateY(${vh}px) ` +
+    `scale(${s.scale * fit}) rotate(${s.rotate}deg) ` +
+    `translateX(${-s.cx}px) translateY(${-s.cy}px)`;
+  if (i < slides.length) slides[i].classList.add('active');
+  dots[i].classList.add('on');
+  counter.textContent = `${String(i+1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
+  overlay.classList.toggle('show', i === steps.length - 1);
+  hint.style.opacity = i === steps.length - 1 ? '0' : '';
+}
+
+window.addEventListener('load',   () => goTo(0));
+window.addEventListener('resize', () => goTo(current));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(current+1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(current-1); }
+});
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; },{passive:true});
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (dx < -50) goTo(current+1);
+  if (dx >  50) goTo(current-1);
+});
+</script>
+</body>
+</html>

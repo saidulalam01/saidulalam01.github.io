@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Project Boomerang — Case Study · Alametria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta property="og:title" content="Project Boomerang — Case Study · Alametria"/>
+<meta property="og:description" content="1 in 3 customers who drop off come back. We built the system to predict, track, and act on every cycle — turning accidental returns into a $8.3M opportunity."/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://saidulalam01.github.io/assets/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saidulalam01.github.io/assets/og-image.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#111318; --ink2:#3d4452; --ink3:#7a8394;
+  --bg:#faf9f7; --bg2:#f2f0ec; --bg3:#e8e4de;
+  --gold:#c87a14; --gold2:#e8961a; --goldbg:rgba(200,122,20,0.07); --goldbr:rgba(200,122,20,0.2);
+  --green:#0d7a55; --greenbg:rgba(13,122,85,0.07);
+  --violet:#5b3db0; --vbg:rgba(91,61,176,0.07);
+  --red:#b83232; --redbg:rgba(184,50,50,0.07); --redbr:rgba(184,50,50,0.2);
+  --border:#e0dbd4; --max:720px;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.7;font-size:16px;}
+@page{size:A4;margin:18mm 16mm;}
+@media print{
+  .no-print{display:none!important;}
+  body{font-size:11.5px;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;orphans:4;widows:4;}
+  .body-wrap{max-width:100%;padding:0;}
+  .cover{min-height:0!important;height:261mm!important;break-after:page;page-break-after:always;}
+  .exec-summary{break-after:page;page-break-after:always;}
+  .section{break-before:page;page-break-before:always;}
+  .two-col{display:block!important;}
+  .two-col > *{margin-bottom:12px;}
+  .stat-boxes{display:block!important;}
+  .stat-boxes > *{margin-bottom:10px;}
+  h2{break-after:avoid;} h3{break-after:avoid;}
+  .callout{break-inside:avoid;} .prob-card{break-inside:avoid;}
+  table{break-inside:avoid;} tr{break-inside:avoid;}
+}
+/* LAYOUT */
+.body-wrap{max-width:var(--max);margin:0 auto;padding:48px 24px 80px;}
+/* COVER */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:60px 0 48px;}
+.cover-top{}
+.cover-tag{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
+.cover-rule{width:56px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;margin-bottom:36px;}
+.cover-title{font-size:56px;font-weight:900;line-height:1.04;letter-spacing:-2px;color:var(--ink);margin-bottom:20px;}
+.cover-title span{color:var(--gold);}
+.cover-sub{font-size:17px;color:var(--ink2);font-weight:400;line-height:1.55;max-width:520px;margin-bottom:36px;}
+.cover-tagline{font-family:'Lora',serif;font-size:15px;font-style:italic;color:var(--ink3);border-left:3px solid var(--goldbr);padding-left:16px;line-height:1.6;max-width:480px;}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;}
+.cover-meta{font-size:12px;color:var(--ink3);line-height:1.8;}
+.cover-meta strong{color:var(--ink2);font-weight:700;}
+.cover-badge{background:var(--ink);color:#fff;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 18px;border-radius:6px;}
+/* EXEC SUMMARY */
+.exec-summary{padding:48px 0 40px;}
+.exec-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.exec-title{font-size:28px;font-weight:800;letter-spacing:-0.8px;margin-bottom:24px;line-height:1.2;}
+.exec-bullets{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
+.exec-bullets li{display:flex;gap:14px;font-size:15px;color:var(--ink2);line-height:1.5;}
+.exec-bullets li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px;}
+.exec-stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.exec-stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 18px;text-align:center;}
+.exec-stat-num{font-size:32px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1;}
+.exec-stat-label{font-size:11px;color:var(--ink3);margin-top:6px;line-height:1.4;}
+/* SECTIONS */
+.section{padding:48px 0 16px;}
+.sec-num{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.sec-title{font-size:30px;font-weight:800;letter-spacing:-0.8px;margin-bottom:28px;line-height:1.15;}
+.sec-title span{color:var(--gold);}
+h3{font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink);letter-spacing:-0.3px;}
+h4{font-size:14px;font-weight:700;margin:20px 0 8px;color:var(--ink2);}
+p{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:14px;}
+p:last-child{margin-bottom:0;}
+/* PROBLEM CARDS */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+.prob-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:10px;padding:18px 18px;}
+.prob-card h4{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px;}
+.prob-card p{font-size:13px;color:var(--ink3);margin:0;line-height:1.5;}
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 20px;margin:20px 0;border-left:3px solid;}
+.callout p{font-size:14px;margin:0;line-height:1.6;}
+.callout-gold{border-color:var(--goldbr);background:var(--goldbg);}
+.callout-gold p{color:var(--ink2);}
+.callout-gold strong{color:var(--gold);}
+.callout-green{border-color:rgba(13,122,85,0.3);background:var(--greenbg);}
+.callout-green p{color:var(--ink2);}
+.callout-green strong{color:var(--green);}
+.callout-violet{border-color:rgba(91,61,176,0.25);background:var(--vbg);}
+.callout-violet p{color:var(--ink2);}
+.callout-violet strong{color:var(--violet);}
+.callout-red{border-color:var(--redbr);background:var(--redbg);}
+.callout-red p{color:var(--ink2);}
+.callout-red strong{color:var(--red);}
+/* TREE */
+.tree{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 0;}
+.tree-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--border);background:var(--bg);}
+.tree-row:last-child{border-bottom:none;}
+.tree-row:first-child{background:var(--bg2);}
+.tree-q{font-size:13px;color:var(--ink2);flex:1;}
+.tree-arrow{font-size:12px;color:var(--ink3);}
+.tree-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.tag-gold{background:var(--goldbg);color:var(--gold);border:1px solid var(--goldbr);}
+.tag-orange{background:rgba(200,100,20,0.08);color:#b05010;border:1px solid rgba(200,100,20,0.2);}
+.tag-green{background:var(--greenbg);color:var(--green);border:1px solid rgba(13,122,85,0.25);}
+.tag-violet{background:var(--vbg);color:var(--violet);border:1px solid rgba(91,61,176,0.2);}
+.tag-dim{background:var(--bg2);color:var(--ink3);border:1px solid var(--border);}
+/* STATES TABLE */
+.states-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:20px 0;}
+.state-card{border-radius:10px;padding:20px 18px;}
+.state-card.drop{background:rgba(200,100,20,0.06);border:1px solid rgba(200,100,20,0.2);border-top:3px solid #b05010;}
+.state-card.ret{background:var(--greenbg);border:1px solid rgba(13,122,85,0.2);border-top:3px solid var(--green);}
+.state-card.escape{background:var(--vbg);border:1px solid rgba(91,61,176,0.2);border-top:3px solid var(--violet);}
+.state-lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.state-lbl.drop{color:#b05010;} .state-lbl.ret{color:var(--green);} .state-lbl.escape{color:var(--violet);}
+.state-title{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.state-body{font-size:12px;color:var(--ink3);line-height:1.5;}
+/* FRAMEWORK TABLE */
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px;}
+thead tr{background:var(--ink);color:#fff;}
+thead th{padding:11px 14px;text-align:left;font-weight:700;font-size:11px;letter-spacing:0.5px;}
+tbody tr{border-bottom:1px solid var(--border);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:nth-child(even){background:var(--bg2);}
+tbody td{padding:10px 14px;color:var(--ink2);line-height:1.4;vertical-align:top;}
+tbody td:first-child{font-weight:700;color:var(--ink);white-space:nowrap;}
+/* IMPACT TABLE */
+.impact-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px;}
+.impact-table thead tr{background:var(--ink);}
+.impact-table thead th{padding:11px 14px;text-align:left;font-weight:700;font-size:11px;letter-spacing:0.5px;color:#fff;}
+.impact-table tbody tr{border-bottom:1px solid var(--border);}
+.impact-table tbody tr:last-child{border-bottom:2px solid var(--ink);font-weight:800;}
+.impact-table tbody td{padding:10px 14px;color:var(--ink2);line-height:1.4;vertical-align:top;}
+.impact-table tbody td.action{color:var(--ink);font-size:13px;}
+.impact-table tbody td.impact{color:var(--gold);font-weight:700;white-space:nowrap;}
+/* STAT BOXES */
+.stat-boxes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0;}
+.stat-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 18px;text-align:center;}
+.stat-box-num{font-size:30px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1;}
+.stat-box-label{font-size:11px;color:var(--ink3);margin-top:6px;line-height:1.4;}
+/* CYCLE TRACK */
+.cycle-track{margin:20px 0;display:flex;flex-direction:column;gap:10px;}
+.cycle-row{display:flex;align-items:center;gap:0;}
+.cycle-lbl{font-size:11px;color:var(--ink3);font-weight:600;min-width:60px;flex-shrink:0;}
+.cycle-seg{padding:6px 12px;font-size:11px;font-weight:700;border-radius:6px;}
+.cycle-seg.active{background:var(--goldbg);color:var(--gold);border:1px solid var(--goldbr);}
+.cycle-seg.gap{background:rgba(200,100,20,0.07);color:#b05010;border:1px solid rgba(200,100,20,0.2);}
+.cycle-seg.back{background:var(--greenbg);color:var(--green);border:1px solid rgba(13,122,85,0.25);}
+.cycle-seg.now{background:rgba(13,122,85,0.12);color:var(--green);border:1px solid rgba(13,122,85,0.35);font-weight:800;}
+.cycle-arrow{color:var(--ink3);font-size:12px;padding:0 6px;flex-shrink:0;}
+/* CHECKLIST */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.checklist li{display:flex;gap:10px;font-size:14px;color:var(--ink2);line-height:1.5;align-items:flex-start;}
+.check-dot{width:18px;height:18px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.check-dot svg{display:block;}
+/* CLOSING */
+.closing-wrap{padding:40px 0;}
+.closing-quote{font-family:'Lora',serif;font-size:18px;font-style:italic;line-height:1.7;color:var(--ink2);border-left:3px solid var(--gold);padding-left:24px;margin:28px 0;}
+.closing-sig{font-size:13px;color:var(--ink3);margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+.closing-sig strong{color:var(--ink2);}
+/* APPENDIX */
+.appendix-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12px;}
+.appendix-table th{background:var(--bg2);padding:9px 12px;text-align:left;font-weight:700;font-size:11px;border:1px solid var(--border);color:var(--ink);}
+.appendix-table td{padding:8px 12px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.4;}
+.appendix-table td:first-child{font-family:monospace;font-size:11px;color:var(--gold);white-space:nowrap;background:var(--bg2);}
+/* DOC ACTION BAR */
+.doc-bar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:rgba(17,19,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.doc-bar-back{display:flex;align-items:center;gap:7px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);background:none;border:none;cursor:pointer;text-decoration:none;transition:color 0.2s;padding:0;}
+.doc-bar-back:hover{color:#f0a830;}
+.doc-bar-save{display:flex;align-items:center;gap:7px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.5px;color:#fff;background:#c87a14;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;transition:background 0.2s;}
+.doc-bar-save:hover{background:#e8961a;}
+body{padding-top:52px;}
+</style>
+</head>
+<body>
+<div class="doc-bar no-print">
+  <button class="doc-bar-back" onclick="window.close()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Portfolio
+  </button>
+  <button class="doc-bar-save" onclick="window.print()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Save as PDF
+  </button>
+</div>
+<div class="body-wrap">
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-tag">Alametria · Customer Lifecycle Intelligence</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">Project<br><span>Boomerang</span></div>
+    <div class="cover-sub">Customer Lifecycle Analysis — Drop, Return &amp; Escape<br>Understanding How Customers Leave, Return, and Stay</div>
+    <div class="cover-tagline">"1 in 3 customers who leave, come back. We built the system to find them first — and act before it happens by accident."</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-meta">
+      <strong>Analyst</strong> · Saidul Alam Rahat, Data Analyst<br>
+      <strong>Platform</strong> · Alametria · Prop Trading<br>
+      <strong>Year</strong> · 2026<br>
+      <strong>Scope</strong> · 500,000 customers · 5-cycle tracking · Daily refresh
+    </div>
+    <div class="cover-badge">Case Study</div>
+  </div>
+</div>
+
+<!-- ══ EXECUTIVE SUMMARY ══ -->
+<div class="exec-summary">
+  <div class="exec-label">Executive Summary</div>
+  <div class="exec-title">What Boomerang Found — and What It Built</div>
+  <ul class="exec-bullets">
+    <li>500,000 customers tracked across up to 5 complete lifecycle cycles, with every drop-off classified by behavioral timing rather than a simple "churned" label</li>
+    <li>1 in 3 customers who drop off return on their own — generating 30–35% of total annual revenue that was previously unattributed and unmeasured</li>
+    <li>Return rates improve with each cycle: ~30% first return, ~38% second return, ~45%+ by cycle 3 — multi-return customers are the most loyal segment, not the most volatile</li>
+    <li>$8.3M estimated annual opportunity across 5 data-driven interventions, from early engagement prompts to Super Boomerang VIP programs</li>
+  </ul>
+  <div class="exec-stat-row">
+    <div class="exec-stat">
+      <div class="exec-stat-num">~1 in 3</div>
+      <div class="exec-stat-label">drop-offs return without any targeted campaign</div>
+    </div>
+    <div class="exec-stat">
+      <div class="exec-stat-num">30–35%</div>
+      <div class="exec-stat-label">of total revenue from returning customers</div>
+    </div>
+    <div class="exec-stat">
+      <div class="exec-stat-num">$8.3M</div>
+      <div class="exec-stat-label">estimated annual opportunity</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 01 · THE CHALLENGE ══ -->
+<div class="section">
+  <div class="sec-num">01 · The Challenge</div>
+  <div class="sec-title">Churn Was a <span>One-Way Door</span></div>
+
+  <h3>The Story of Sarah</h3>
+  <p>Imagine a customer who signed up last March. She made her first purchase, traded actively for about six weeks, and then — silence. No logins, no trades, no purchases for 45 days. In the old model, Sarah was marked as "churned" and moved to a suppression list. Lost cause. Campaign budget wasted on her.</p>
+  <p>But here's what the data showed: Sarah came back. Two months later, she logged in, made another purchase, and started trading again. She wasn't gone — she was taking a break. And Sarah wasn't alone. Roughly 1 in 3 customers who "drop off" eventually return. We call them Boomerang customers.</p>
+  <p>The problem wasn't that Sarah left. The problem was that we had no system to predict her drop, no tailored campaign to bring her back at the right moment, and no way to recognise her return as a meaningful behavioral event rather than a random fluke.</p>
+
+  <div class="callout callout-red">
+    <p><strong>The core failure:</strong> Every drop-off looked identical. A customer who'd been inactive for 2 days and one who'd been gone for 6 months received the same treatment — because we had no mechanism to tell them apart or act differently.</p>
+  </div>
+
+  <h3>Four Things That Were Broken</h3>
+  <div class="two-col">
+    <div class="prob-card">
+      <h4>"Gone Forever" Assumption</h4>
+      <p>Every inactive customer was marked churned and removed from active segments. No recovery model. 130,000 returns were happening invisibly — with zero credit going to any campaign.</p>
+    </div>
+    <div class="prob-card">
+      <h4>Same Message, Every Segment</h4>
+      <p>A 2-day dropout and a 6-month dropout received identical win-back emails. Timing was ignored. Cycle history was ignored. Context was ignored entirely.</p>
+    </div>
+    <div class="prob-card">
+      <h4>No Early Warning System</h4>
+      <p>Drop-offs were only visible after the 31-day mark. By the time the data showed a customer had dropped, the most effective intervention window had already closed.</p>
+    </div>
+    <div class="prob-card">
+      <h4>Revenue Left Unmeasured</h4>
+      <p>With no lifecycle tracking, nobody knew that returning customers were already generating 30–35% of total annual revenue. That revenue had no source attribution — it was invisible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 02 · METHODOLOGY ══ -->
+<div class="section">
+  <div class="sec-num">02 · Methodology</div>
+  <div class="sec-title">How the <span>Pipeline Works</span></div>
+
+  <p>Boomerang_v1 pulls from three data sources and merges them into a single unified timeline per customer. The pipeline runs daily, so the output table is always current.</p>
+
+  <h3>The Six-Step Pipeline</h3>
+  <h4>Step 1 — Clean the Data</h4>
+  <p>Standardise all email addresses (lowercase, trim whitespace). Keep only valid transactions from approved payment methods. Remove test accounts and policy-flagged customers.</p>
+
+  <h4>Step 2 — Find Each Customer's Starting Point</h4>
+  <p>For every customer: identify their first purchase date (their "birthday" on the platform), which coupon brought them in, and what country they're from. This anchors the entire lifecycle.</p>
+
+  <h4>Step 3 — Build a Unified Activity Timeline</h4>
+  <p>Combine purchase dates and trading activity days into a single chronological timeline. This gives a complete picture of when the customer was genuinely active — not just when they transacted.</p>
+
+  <h4>Step 4 — Detect Gaps of 31+ Days</h4>
+  <p>Scan the timeline for consecutive periods of 31 or more days with no activity. Each such gap is one Drop event. The 31-day threshold was empirically derived — long enough to confirm real disengagement, short enough to act before the recovery window closes.</p>
+
+  <h4>Step 5 — Classify Each Drop by LTD Bucket</h4>
+  <p>For each Drop event, calculate how long the customer was active before the gap began. This "Lifetime to Drop" (LTD) value determines which bucket the customer falls into:</p>
+
+  <div class="tree">
+    <div class="tree-row">
+      <div class="tree-q" style="font-weight:700;color:var(--ink);">How long was the customer active before dropping?</div>
+      <div class="tree-arrow"></div>
+      <div class="tree-tag tag-dim">LTD Bucket</div>
+    </div>
+    <div class="tree-row">
+      <div class="tree-q">0–45 days active before drop</div>
+      <div class="tree-arrow">→</div>
+      <div class="tree-tag tag-orange">LTD45d · Early Drop</div>
+    </div>
+    <div class="tree-row">
+      <div class="tree-q">46–90 days active before drop</div>
+      <div class="tree-arrow">→</div>
+      <div class="tree-tag tag-dim">LTD90d · Short-Term</div>
+    </div>
+    <div class="tree-row">
+      <div class="tree-q">91–180 days active before drop</div>
+      <div class="tree-arrow">→</div>
+      <div class="tree-tag tag-dim">LTD180d · Mid-Term</div>
+    </div>
+    <div class="tree-row">
+      <div class="tree-q">181–300 days active before drop</div>
+      <div class="tree-arrow">→</div>
+      <div class="tree-tag tag-gold">LTD300d · Long-Term</div>
+    </div>
+    <div class="tree-row">
+      <div class="tree-q">300+ days active before drop</div>
+      <div class="tree-arrow">→</div>
+      <div class="tree-tag tag-green">LTD300d+ · Power User</div>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <p><strong>Why LTD matters:</strong> The bucket tells us who the customer was before they left — not just that they left. An LTD300d+ dropout receives a completely different win-back approach, message, and offer than an LTD45d who never fully onboarded.</p>
+  </div>
+
+  <h4>Step 6 — Track Returns and Open New Cycles</h4>
+  <p>When a customer re-engages after a Drop (makes a purchase or resumes trading), a Return event is logged and a new cycle opens. Each cycle tracks its own LTD bucket, days active, days inactive, revenue, withdrawals, and purchase count. Up to 5 complete cycles are tracked per customer.</p>
+</div>
+
+<!-- ══ 03 · THE FRAMEWORK ══ -->
+<div class="section">
+  <div class="sec-num">03 · The Framework</div>
+  <div class="sec-title">Drop + Return + <span>Escape</span></div>
+
+  <p>Every customer at any point in time exists in one of three states. The Boomerang framework tracks movement between them continuously.</p>
+
+  <div class="states-grid">
+    <div class="state-card drop">
+      <div class="state-lbl drop">State · Drop</div>
+      <div class="state-title">The Gap</div>
+      <div class="state-body">31+ consecutive days with no purchase or trading activity. Customer enters the recovery window. Not gone — just absent. A Drop is not a verdict.</div>
+    </div>
+    <div class="state-card ret">
+      <div class="state-lbl ret">State · Return</div>
+      <div class="state-title">The Boomerang</div>
+      <div class="state-body">Customer re-engages after a Drop. Makes a purchase or resumes trading. Every return opens a new cycle with its own complete data record.</div>
+    </div>
+    <div class="state-card escape">
+      <div class="state-lbl escape">State · Escape</div>
+      <div class="state-title">True Churn</div>
+      <div class="state-body">Extended absence of 365+ days with no return signal. Tracked separately from active drops to avoid campaign spend on customers who are genuinely gone.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-violet">
+    <p><strong>Key principle:</strong> Boomerang_v1 does not label a customer as "churned" permanently. Every Drop is a state — not a verdict. The distinction between Drop and Escape is what enables targeted win-back campaigns without wasted spend.</p>
+  </div>
+
+  <h3>The State Transition Table</h3>
+  <table>
+    <thead><tr><th>State</th><th>Trigger</th><th>What It Means</th><th>Response</th></tr></thead>
+    <tbody>
+      <tr><td>DROP</td><td>31 consecutive days no activity</td><td>Customer has entered a gap — may or may not return</td><td>Enter win-back sequence at Day 35, 60, 90</td></tr>
+      <tr><td>RETURN</td><td>Any purchase or trading activity after DROP</td><td>Boomerang event — new cycle begins immediately</td><td>Recognise return, trigger loyalty hook</td></tr>
+      <tr><td>ESCAPE</td><td>Absence of 365+ days, no return signal</td><td>True churn — distinct from active Drop state</td><td>Lower-frequency, lower-cost re-engagement only</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5-Cycle Tracking</h3>
+  <p>Customers don't just drop once. Some drop and return multiple times. Boomerang tracks up to 5 complete cycles per customer, with each cycle storing independent metrics. A "Super Boomerang" customer who completes five cycles is not a churn risk — they are demonstrating the most consistent loyalty pattern on the platform.</p>
+</div>
+
+<!-- ══ 04 · CRITICAL INSIGHT ══ -->
+<div class="section">
+  <div class="sec-num">04 · The Critical Insight</div>
+  <div class="sec-title">Return Rates Get <span>Better, Not Worse</span></div>
+
+  <p>Most churn frameworks assume that the longer a customer has been gone, the less likely they are to come back. And that customers who have churned once are inherently less reliable than customers who haven't. Boomerang data shows the opposite on both counts.</p>
+
+  <h3>Return Rates by Cycle</h3>
+  <table>
+    <thead><tr><th>Cycle</th><th>Drop Occurrence</th><th>Return Rate</th><th>What It Means</th></tr></thead>
+    <tbody>
+      <tr><td>1st Drop</td><td>~400,000 customers</td><td>~30%</td><td>Baseline boomerang rate — 1 in 3 come back naturally</td></tr>
+      <tr><td>2nd Drop</td><td>~100,000 customers</td><td>~38%</td><td>Return rate improves — these customers know the platform</td></tr>
+      <tr><td>3rd Drop</td><td>~35,000 customers</td><td>~45%+</td><td>More likely to return than a first-timer was</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-green">
+    <p><strong>The counterintuitive finding:</strong> Customers who return once are not marginal users. They're demonstrating a pattern of loyalty that compounds. A customer on their third return cycle is more likely to come back again than a brand-new customer who has just dropped for the first time.</p>
+  </div>
+
+  <h3>The Super Boomerang Pattern</h3>
+  <p>Customers who complete multiple cycles show a consistent pattern: active periods get longer, and gaps between cycles get shorter. This is not volatility — it is a recognisable loyalty rhythm that the platform had never previously identified or rewarded.</p>
+
+  <div class="cycle-track">
+    <div class="cycle-row">
+      <div class="cycle-lbl">Cycle 1</div>
+      <div class="cycle-seg active">Active 60d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg gap">Gap 45d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg back">Returned</div>
+    </div>
+    <div class="cycle-row">
+      <div class="cycle-lbl">Cycle 2</div>
+      <div class="cycle-seg active">Active 90d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg gap">Gap 30d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg back">Returned</div>
+    </div>
+    <div class="cycle-row">
+      <div class="cycle-lbl">Cycle 3</div>
+      <div class="cycle-seg active">Active 120d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg gap">Gap 22d</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-seg now">Currently Active ✓</div>
+    </div>
+  </div>
+
+  <div class="callout callout-violet">
+    <p><strong>The mistake was treating a returning customer like a new one.</strong> They already know the platform. They've already passed the onboarding friction point. The right intervention for a 3rd-cycle returnee is a loyalty reward — not a welcome email.</p>
+  </div>
+</div>
+
+<!-- ══ 05 · KEY FINDINGS ══ -->
+<div class="section">
+  <div class="sec-num">05 · Key Findings</div>
+  <div class="sec-title">Four Things We <span>Didn't Know Before</span></div>
+
+  <h3>Finding 1 — The 45-Day Critical Window</h3>
+  <p>The largest single LTD bucket is LTD45d. Customers who drop before Day 45 never fully onboarded — they made a purchase (or a few), encountered friction, and left before establishing a rhythm. They are the most numerous group, the hardest to win back (low engagement history means low platform attachment), and — crucially — the most preventable.</p>
+  <div class="callout callout-gold">
+    <p>If a customer is still active at Day 45, their likelihood of becoming a long-term retained user increases significantly. The first six weeks are make-or-break. Interventions at Day 14, 21, and 30 target this window before the drop occurs — not after.</p>
+  </div>
+
+  <h3>Finding 2 — Returning Customers Are Not Higher Risk</h3>
+  <p>The withdrawal-to-revenue ratio holds steady at 52–54% across all lifecycle stages — including customers on their 4th or 5th return cycle. A returning customer behaves financially identically to a new customer. This finding directly eliminates the business justification for applying premium restrictions or reduced offers to win-back customers.</p>
+  <div class="callout callout-green">
+    <p><strong>Policy implication:</strong> There is no financial risk argument for treating returning customers differently from new customers. Removing offer restrictions for this segment unlocks a conversion improvement with no corresponding increase in withdrawal exposure.</p>
+  </div>
+
+  <h3>Finding 3 — The Revenue Reality</h3>
+  <p>30–35% of total annual revenue already comes from returning customers. This was entirely invisible before Boomerang. Every campaign budget that ignored returnees was leaving a third of revenue unattributed — and therefore unoptimised. The platform's retention performance was being systematically underreported.</p>
+
+  <h3>Finding 4 — Promo Codes Drive Real Returns</h3>
+  <p>Approximately 42% of returning customers used a promo code for their comeback purchase. Win-back campaigns work — but only when the campaign reaches the right customer at the right timing relative to their LTD bucket, not when sent as a blanket email to every inactive address on a list.</p>
+</div>
+
+<!-- ══ 06 · RESULTS ══ -->
+<div class="section">
+  <div class="sec-num">06 · The Opportunity</div>
+  <div class="sec-title">$8.3M in <span>Estimated Annual Impact</span></div>
+
+  <p style="font-size:13px;color:var(--ink3);font-style:italic;margin-bottom:20px;">The following represents estimated annual impact based on Alametria's transaction volume and average order value baseline. All figures are projections derived from behavioral modeling, not measured actuals.</p>
+
+  <table class="impact-table">
+    <thead><tr><th>Action</th><th>Mechanism</th><th>Est. Metric Change</th><th>Est. Annual Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="action">Engagement prompts at Day 14, 21, and 30</td>
+        <td>Reach at-risk customers before the 31-day drop threshold</td>
+        <td>−18% early churn</td>
+        <td class="impact">$2.8M/yr retained</td>
+      </tr>
+      <tr>
+        <td class="action">Targeted win-back campaigns at Day 35, 60, and 90</td>
+        <td>Timing-based outreach segmented by LTD bucket</td>
+        <td>+12% return rate</td>
+        <td class="impact">$3.1M/yr recovered</td>
+      </tr>
+      <tr>
+        <td class="action">Multi-return loyalty program for 2+ cycle customers</td>
+        <td>Recognise and reward Boomerang customers explicitly</td>
+        <td>+22% multi-cycle LTV</td>
+        <td class="impact">$1.6M/yr</td>
+      </tr>
+      <tr>
+        <td class="action">Remove offer restrictions for returning customers</td>
+        <td>52–54% withdrawal stability proven across all stages</td>
+        <td>+9% conversion</td>
+        <td class="impact">$0.5M/yr</td>
+      </tr>
+      <tr>
+        <td class="action">Super Boomerang VIP identification and treatment</td>
+        <td>Dedicated programme for 3+ cycle customers</td>
+        <td>+31% 3rd-cycle retention</td>
+        <td class="impact">$0.3M/yr</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;color:var(--ink);">Total Estimated Opportunity</td>
+        <td></td>
+        <td></td>
+        <td class="impact" style="font-size:15px;">~$8.3M/yr</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="stat-boxes">
+    <div class="stat-box">
+      <div class="stat-box-num">$8.3M</div>
+      <div class="stat-box-label">Estimated annual opportunity across 5 interventions</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num">30–35%</div>
+      <div class="stat-box-label">Revenue from returnees — unmeasured before Boomerang</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-num">~1 in 3</div>
+      <div class="stat-box-label">Drop-offs that return without any targeted campaign</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 07 · ORGANISATIONAL IMPACT ══ -->
+<div class="section">
+  <div class="sec-num">07 · Organisational Impact</div>
+  <div class="sec-title">One System. <span>Four Teams.</span></div>
+
+  <h3>Marketing</h3>
+  <ul class="checklist">
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Filter customers by LTD bucket to build precision win-back sequences rather than blanket campaigns</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Identify which promo codes are driving genuine returns vs. one-time price-sensitive visits</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Build a dedicated loyalty program for multi-return (Boomerang) customers with increasing rewards per cycle</li>
+  </ul>
+
+  <h3>Analytics</h3>
+  <ul class="checklist">
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Run cohort analysis by first purchase month to track retention curve performance over time</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Measure win-back campaign ROI by LTD bucket to identify which segments respond best</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Build a churn propensity score using cycle 1 behavioural data to predict future drops before they happen</li>
+  </ul>
+
+  <h3>Product</h3>
+  <ul class="checklist">
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Identify exactly where in the first 45 days customers disengage — and what feature or friction causes it</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Map the complete Super Boomerang journey to understand what the most loyal customers have in common</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Prioritise product improvements against which LTD bucket they would most impact</li>
+  </ul>
+
+  <h3>Risk &amp; Finance</h3>
+  <ul class="checklist">
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Confirm the 52–54% withdrawal stability finding to remove risk premiums on returning customer offers</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Use LTD bucket data to improve revenue forecasting — returnee revenue is now a measurable, predictable line item</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>Assess whether multi-cycle customers represent a concentration risk or a diversification of revenue</li>
+  </ul>
+</div>
+
+<!-- ══ 08 · SCALABILITY ══ -->
+<div class="section">
+  <div class="sec-num">08 · Scalability</div>
+  <div class="sec-title">Built Once. <span>Grows With the Business.</span></div>
+
+  <p>The Boomerang_v1 framework is not a one-time analysis. It is a living system designed to scale as the business grows and as the data matures.</p>
+
+  <ul class="checklist">
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><strong>Applicable to any product line</strong> with repeat-purchase or repeat-engagement behaviour — not limited to the current challenge account model</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><strong>Cycle count can extend beyond 5</strong> as the customer base matures and multi-return behaviour becomes more common</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><strong>LTD buckets can be recalibrated</strong> if the empirical 31-day threshold shifts as product cadence changes</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><strong>Propensity scoring</strong> can be layered on top — using cycle 1 LTD bucket and activity patterns to predict future drops before they happen</li>
+    <li><div class="check-dot"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div><strong>Regional segmentation</strong> (country-level LTD analysis) can be added as a second dimension once the base model is fully embedded</li>
+  </ul>
+</div>
+
+<!-- ══ APPENDIX A ══ -->
+<div class="section">
+  <div class="sec-num">A · Data Reference</div>
+  <div class="sec-title">Table Schema &amp; <span>Key Terms</span></div>
+
+  <h3>Output Table</h3>
+  <p><strong>Location:</strong> warehouse_db_v1.boomerang_v1 &nbsp;·&nbsp; <strong>Refresh:</strong> Daily &nbsp;·&nbsp; <strong>Coverage:</strong> All customers since May 2023</p>
+
+  <table class="appendix-table">
+    <thead><tr><th>Field</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>customer_id</td><td>Unique customer identifier</td></tr>
+      <tr><td>email</td><td>Standardised (lowercase, trimmed)</td></tr>
+      <tr><td>signup_date</td><td>Date of account creation</td></tr>
+      <tr><td>first_purchase_date</td><td>Date of very first transaction — lifecycle "birthday"</td></tr>
+      <tr><td>country</td><td>Customer country at acquisition</td></tr>
+      <tr><td>coupon_code</td><td>Acquisition coupon used on first purchase</td></tr>
+      <tr><td>account_status</td><td>Active / Inactive (current state)</td></tr>
+      <tr><td>ltd_bucket_c1..c5</td><td>LTD classification for each of 5 drop cycles</td></tr>
+      <tr><td>days_active_c1..c5</td><td>Days active before drop, per cycle</td></tr>
+      <tr><td>days_inactive_c1..c5</td><td>Days in gap before return, per cycle</td></tr>
+      <tr><td>revenue_c1..c5</td><td>Revenue generated during each active cycle</td></tr>
+      <tr><td>withdrawals_c1..c5</td><td>Withdrawals during each active cycle</td></tr>
+      <tr><td>purchase_count_c1..c5</td><td>Purchase count during each active cycle</td></tr>
+      <tr><td>policy_flagged</td><td>Boolean — exclude from campaigns if true</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Terms</h3>
+  <table class="appendix-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>LTD</td><td>Lifetime to Drop — how many days a customer was active before the gap began</td></tr>
+      <tr><td>Drop</td><td>31+ consecutive days with no purchase or trading activity</td></tr>
+      <tr><td>Return</td><td>Any purchase or trading activity after a Drop event — opens a new cycle</td></tr>
+      <tr><td>Escape</td><td>Absence of 365+ days with no return signal — true long-term churn</td></tr>
+      <tr><td>Boomerang</td><td>A customer who has completed at least one full Drop → Return cycle</td></tr>
+      <tr><td>Super Boomerang</td><td>A customer who has completed 3 or more Drop → Return cycles</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ APPENDIX B ══ -->
+<div class="section">
+  <div class="sec-num">B · Behind the Build</div>
+  <div class="sec-title">Methodology <span>in Detail</span></div>
+
+  <h3>Why 31 Days?</h3>
+  <p>The 31-day inactivity threshold was chosen empirically based on Alametria's transaction rhythm. It is long enough to distinguish a genuine disengagement from a normal gap between trading activity — customers who transact monthly will not be incorrectly flagged. It is short enough to identify the recovery window before it closes: data shows that win-back campaigns sent at Day 35 significantly outperform those sent at Day 60 or 90, and campaigns beyond Day 90 show sharply diminishing returns for most LTD buckets.</p>
+
+  <h3>How the Timeline Is Constructed</h3>
+  <p>Three data types are merged into a single daily activity marker per customer: purchase transaction dates, trading activity days (any day where the customer placed or managed a trade), and the first purchase date as a lifecycle anchor. A customer is considered "active" on any day where at least one of these three signals is present. The timeline is then scanned chronologically for gaps.</p>
+
+  <h3>How Gaps Are Detected</h3>
+  <p>For each customer, the pipeline walks through the activity timeline day by day. When a gap of 31 or more consecutive inactive days is found, a Drop event is recorded. The LTD is calculated as the number of active days between the previous Return (or the first purchase date for cycle 1) and the first day of the gap. The gap length (days inactive) is calculated from the first inactive day to the first active day of the subsequent Return — or to the current date if no Return has occurred.</p>
+
+  <h3>Edge Cases</h3>
+  <p>If a customer shows activity on exactly Day 31 of a gap, they are not flagged as a Drop — the threshold requires 31 full consecutive days. If a customer purchases on a day they were not trading, that purchase day counts as an active day. Customers on the policy violation list are included in the data table but flagged so marketing can exclude them from all outreach.</p>
+
+  <h3>Data Quality Decisions</h3>
+  <p>Test accounts (identifiable by internal email patterns) are removed before the pipeline runs. Transactions from unsupported payment methods are excluded. Email addresses are standardised to lowercase with leading and trailing whitespace removed before deduplication, preventing the same customer from appearing twice under slightly different email formats.</p>
+</div>
+
+<!-- ══ CLOSING ══ -->
+<div class="closing-wrap">
+  <div class="sec-num">Closing</div>
+  <div class="closing-quote">
+    "Before Boomerang, a customer who left stayed lost. They were marked churned, removed from active segments, and forgotten — despite 1 in 3 of them returning on their own. Boomerang_v1 changes that. Every drop-off now has a recovery plan. Every return is recognised and rewarded. Every Super Boomerang is identified before they become one. Churn is no longer a verdict. It's a state — and like all states, it changes."
+  </div>
+  <div class="closing-sig">
+    <strong>Saidul Alam Rahat</strong> · Data Analyst · Alametria · 2026<br>
+    Dashboard: BI Portal → Customer Analytics → Boomerang_v1<br>
+    Table: warehouse_db_v1.boomerang_v1
+  </div>
+</div>
+
+</div><!-- body-wrap -->
+</body>
+</html>

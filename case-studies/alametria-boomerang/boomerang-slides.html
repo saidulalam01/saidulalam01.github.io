@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Project Boomerang — Alametria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0d1f35; --bg2:#112540; --card:#1a2e48; --card2:#1f3555;
+  --border:rgba(255,255,255,0.05); --border2:rgba(255,255,255,0.09);
+  --text:#eaeff4; --text2:#b8c8d8; --text3:#6a8090;
+  --gold:#f0a830; --gold2:#fcd860; --orange:#e07020;
+  --green:#34d399; --violet:#a78bfa;
+  --glow:rgba(240,168,48,0.12);
+}
+body{background:var(--bg);overflow:hidden;width:100vw;height:100vh;font-family:'Outfit',sans-serif;color:var(--text);user-select:none;}
+#universe{position:absolute;top:0;left:0;transform-origin:0 0;transition:transform 1.15s cubic-bezier(0.86,0,0.07,1);will-change:transform;}
+.slide{position:absolute;width:860px;padding:52px 62px 46px;background:var(--card);border-radius:20px;border:1px solid var(--border);box-shadow:0 0 60px rgba(240,168,48,0.05),0 24px 64px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.03);transition:box-shadow 0.5s,border-color 0.5s;}
+.slide.active{border-color:rgba(240,168,48,0.2);box-shadow:0 0 100px rgba(240,168,48,0.14),0 24px 64px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.05);}
+.kicker{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.bar{width:44px;height:3px;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:2px;margin-bottom:26px;}
+h1{font-size:56px;font-weight:900;line-height:1.06;letter-spacing:-2px;}
+h1 em{font-style:normal;color:var(--gold);}
+h2{font-size:38px;font-weight:800;line-height:1.1;letter-spacing:-1.5px;}
+h2 em{font-style:normal;color:var(--gold);}
+.lead{font-size:15px;color:var(--text2);line-height:1.7;margin-top:16px;max-width:580px;}
+.foot{margin-top:32px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.foot-brand{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--text3);}
+.foot-brand::after{content:" · Saidul Alam Rahat";font-weight:500;letter-spacing:1.5px;font-size:9px;color:#8aa8c0;}
+.foot-pg{font-size:10px;color:var(--text3);}
+/* PROBLEM */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;}
+.prob-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:12px;padding:18px 20px;}
+.prob-card h4{font-size:13px;font-weight:700;margin-bottom:5px;}
+.prob-card p{font-size:12px;color:var(--text2);line-height:1.5;}
+.risk-box{margin-top:16px;background:rgba(224,112,32,0.07);border:1px solid rgba(224,112,32,0.18);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.risk-box strong{color:var(--orange);}
+/* TREE */
+.tree{margin-top:24px;display:flex;flex-direction:column;gap:0;}
+.tree-row{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);}
+.tree-row:last-child{border-bottom:none;}
+.tree-q{font-size:12px;color:var(--text2);flex:1;padding-right:12px;}
+.tree-arrow{font-size:11px;color:var(--text3);margin-right:10px;}
+.tree-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.tag-gold{background:rgba(240,168,48,0.1);color:var(--gold);border:1px solid rgba(240,168,48,0.25);}
+.tag-orange{background:rgba(224,112,32,0.1);color:var(--orange);border:1px solid rgba(224,112,32,0.25);}
+.tag-green{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.25);}
+.tag-violet{background:rgba(167,139,250,0.1);color:var(--violet);border:1px solid rgba(167,139,250,0.25);}
+.tag-dim{background:rgba(106,128,144,0.1);color:var(--text3);border:1px solid rgba(106,128,144,0.2);}
+.tree-note{margin-top:14px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.15);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.tree-note strong{color:var(--gold);}
+/* DISTINCTION */
+.dist-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;}
+.dist-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 22px;}
+.dist-card.green{border-top:3px solid var(--green);}
+.dist-card.violet{border-top:3px solid var(--violet);}
+.dist-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.dist-label.green{color:var(--green);} .dist-label.violet{color:var(--violet);}
+.dist-title{font-size:17px;font-weight:800;margin-bottom:8px;}
+.dist-range{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px;}
+.dist-range.green{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.25);}
+.dist-range.violet{background:rgba(167,139,250,0.1);color:var(--violet);border:1px solid rgba(167,139,250,0.25);}
+.dist-body{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;}
+.dist-verdict{font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;}
+.dist-verdict.green{background:rgba(52,211,153,0.08);color:var(--green);}
+.dist-verdict.violet{background:rgba(167,139,250,0.08);color:var(--violet);}
+.dist-note{margin-top:18px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.15);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.dist-note strong{color:var(--gold);}
+/* TEAMS */
+.teams-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
+.team-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.team-icon{font-size:20px;margin-bottom:8px;}
+.team-name{font-size:13px;font-weight:800;margin-bottom:10px;color:var(--gold);}
+.team-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.team-list li{font-size:12px;color:var(--text2);padding-left:12px;position:relative;}
+.team-list li::before{content:'→';position:absolute;left:0;color:var(--text3);font-size:10px;top:1px;}
+/* GOLD HERO */
+.gold-hero{margin-top:24px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.18);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:28px;}
+.gold-num{font-size:72px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-3px;flex-shrink:0;}
+.gold-text h4{font-size:16px;font-weight:800;margin-bottom:6px;}
+.gold-text p{font-size:13px;color:var(--text2);line-height:1.6;}
+.funnel{margin-top:20px;display:flex;flex-direction:column;gap:6px;}
+.funnel-row{display:flex;align-items:center;gap:12px;}
+.funnel-label{font-size:11px;color:var(--text3);min-width:160px;}
+.funnel-bar-wrap{flex:1;background:rgba(255,255,255,0.04);border-radius:4px;height:14px;overflow:hidden;}
+.funnel-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--orange));}
+.funnel-val{font-size:11px;font-weight:700;color:var(--gold);min-width:80px;text-align:right;}
+/* STATS */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 20px;}
+.stat-label{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
+.stat-num{font-size:38px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.stat-desc{font-size:12px;color:var(--text2);margin-top:7px;line-height:1.4;}
+/* STACK HERO */
+.stack-hero{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;}
+.stack-num{font-size:80px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-3px;}
+.stack-text h4{font-size:15px;font-weight:800;margin-bottom:8px;}
+.stack-text p{font-size:13px;color:var(--text2);line-height:1.6;}
+/* RESULTS */
+.res-rows{margin-top:26px;}
+.res-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.res-row:last-child{border-bottom:none;}
+.res-action{font-size:13px;color:var(--text2);flex:1;}
+.res-arrow{font-size:11px;color:var(--text3);}
+.res-result{font-size:15px;font-weight:800;min-width:110px;text-align:right;}
+.res-result.up{color:var(--green);}
+.res-dollar{font-size:12px;font-weight:700;min-width:96px;text-align:right;color:var(--gold);opacity:0.85;}
+.res-note{margin-top:12px;font-size:10px;color:var(--text3);font-style:italic;}
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:28px;}
+.pillar{background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:24px 20px;text-align:center;}
+.pillar-icon{font-size:26px;margin-bottom:10px;}
+.pillar-title{font-size:14px;font-weight:800;margin-bottom:8px;}
+.pillar-desc{font-size:12px;color:var(--text2);line-height:1.5;}
+.closing{margin-top:22px;padding:16px 20px;background:rgba(240,168,48,0.06);border:1px solid rgba(240,168,48,0.18);border-radius:10px;font-size:13px;font-weight:500;color:var(--text);line-height:1.7;text-align:center;}
+.closing em{font-style:normal;color:var(--gold);}
+/* STATES */
+.states-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:28px;}
+.state-card{border-radius:14px;padding:22px 20px;}
+.state-card.drop{background:rgba(224,112,32,0.08);border:1px solid rgba(224,112,32,0.25);border-top:3px solid var(--orange);}
+.state-card.ret{background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.25);border-top:3px solid var(--green);}
+.state-card.escape{background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.25);border-top:3px solid var(--violet);}
+.state-lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.state-lbl.drop{color:var(--orange);} .state-lbl.ret{color:var(--green);} .state-lbl.escape{color:var(--violet);}
+.state-title{font-size:16px;font-weight:800;margin-bottom:8px;}
+.state-body{font-size:12px;color:var(--text2);line-height:1.5;}
+.state-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:10px;}
+.state-tag.drop{background:rgba(224,112,32,0.12);color:var(--orange);border:1px solid rgba(224,112,32,0.3);}
+.state-tag.ret{background:rgba(52,211,153,0.12);color:var(--green);border:1px solid rgba(52,211,153,0.3);}
+.state-tag.escape{background:rgba(167,139,250,0.12);color:var(--violet);border:1px solid rgba(167,139,250,0.3);}
+/* CYCLE */
+.cycle-wrap{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.cycle-row{display:flex;align-items:center;}
+.cycle-lbl{font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;min-width:64px;flex-shrink:0;}
+.cycle-seg{padding:7px 13px;font-size:11px;font-weight:700;border-radius:8px;white-space:nowrap;}
+.cycle-seg.active{background:rgba(240,168,48,0.12);color:var(--gold);border:1px solid rgba(240,168,48,0.25);}
+.cycle-seg.gap{background:rgba(224,112,32,0.08);color:var(--orange);border:1px solid rgba(224,112,32,0.2);}
+.cycle-seg.back{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);}
+.cycle-seg.now{background:rgba(52,211,153,0.18);color:var(--green);border:1px solid rgba(52,211,153,0.4);font-weight:800;}
+.cycle-arrow{color:var(--text3);font-size:12px;padding:0 7px;flex-shrink:0;}
+.cycle-note{margin-top:16px;background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);}
+.cycle-note strong{color:var(--green);}
+/* OVERLAY / NAV */
+#overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;z-index:50;opacity:0;transition:opacity 0.9s ease 0.5s;}
+#overlay.show{opacity:1;}
+.ov-tag{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.ov-title{font-size:30px;font-weight:900;letter-spacing:-1px;color:var(--text);text-align:center;text-shadow:0 0 80px rgba(240,168,48,0.5);}
+.ov-title em{color:var(--gold);font-style:normal;}
+.ov-sub{font-size:12px;color:var(--text3);margin-top:12px;letter-spacing:2px;text-transform:uppercase;}
+#nav{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:100;background:rgba(13,31,53,0.85);padding:8px 14px;border-radius:30px;border:1px solid var(--border);backdrop-filter:blur(10px);}
+.nd{width:6px;height:6px;border-radius:50%;background:var(--text3);cursor:pointer;transition:all 0.3s;}
+.nd.on{background:var(--gold);box-shadow:0 0 8px var(--gold);transform:scale(1.5);}
+#counter{position:fixed;top:22px;right:26px;font-size:11px;font-weight:600;letter-spacing:2px;color:var(--text3);z-index:100;background:rgba(13,31,53,0.85);padding:5px 13px;border-radius:20px;border:1px solid var(--border);backdrop-filter:blur(10px);}
+#brand{position:fixed;top:22px;left:26px;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--text3);z-index:100;text-transform:uppercase;}
+#fs-btn{position:fixed;bottom:26px;right:26px;z-index:100;display:flex;align-items:center;gap:6px;background:rgba(13,31,53,0.85);border:1px solid rgba(240,168,48,0.25);border-radius:8px;color:var(--gold);font-size:10px;font-weight:600;letter-spacing:1px;padding:6px 12px;cursor:pointer;font-family:'Outfit',sans-serif;backdrop-filter:blur(10px);transition:background 0.2s;}
+#fs-btn:hover{background:rgba(240,168,48,0.12);}
+#hint{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;z-index:100;transition:opacity 0.4s;animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:0.9}}
+</style>
+</head>
+<body>
+
+<div id="brand">Alametria · Boomerang</div>
+<div id="counter">01 / 12</div>
+<div id="hint">← → navigate</div>
+<button id="fs-btn" onclick="document.documentElement.requestFullscreen()">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+  Fullscreen
+</button>
+<div id="nav">
+  <div class="nd on" onclick="goTo(0)"></div>
+  <div class="nd" onclick="goTo(1)"></div>
+  <div class="nd" onclick="goTo(2)"></div>
+  <div class="nd" onclick="goTo(3)"></div>
+  <div class="nd" onclick="goTo(4)"></div>
+  <div class="nd" onclick="goTo(5)"></div>
+  <div class="nd" onclick="goTo(6)"></div>
+  <div class="nd" onclick="goTo(7)"></div>
+  <div class="nd" onclick="goTo(8)"></div>
+  <div class="nd" onclick="goTo(9)"></div>
+  <div class="nd" onclick="goTo(10)"></div>
+  <div class="nd" onclick="goTo(11)"></div>
+</div>
+
+<div id="overlay">
+  <div class="ov-tag">Alametria · Customer Lifecycle Intelligence</div>
+  <div class="ov-title">Churn Is a Door,<br>Not a <em>Wall.</em></div>
+  <div class="ov-sub">Project Boomerang · Behavioral Analytics · FY 2026</div>
+</div>
+
+<div id="universe">
+
+  <!-- S1 TITLE -->
+  <div class="slide active" style="left:200px;top:-200px;">
+    <div class="kicker">Alametria · Project Boomerang</div>
+    <div class="bar"></div>
+    <h1>"Gone Forever."<br>We Checked.<br>They <em>Came Back.</em></h1>
+    <p class="lead">1 in 3 customers who drop off return on their own. But without a system to predict, track, and act on each cycle — that recovery happens by accident, not by design.</p>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">01 / 11</span></div>
+  </div>
+
+  <!-- S2 PROBLEM -->
+  <div class="slide" style="left:-2600px;top:-600px;transform:rotate(-7deg);">
+    <div class="kicker">The Problem</div>
+    <div class="bar"></div>
+    <h2>Churn Was a<br><em>One-Way Door</em></h2>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <h4>"Gone Forever" Assumption</h4>
+        <p>Every inactive customer was marked churned and forgotten. No recovery model. 130,000 returns were already happening — completely invisibly.</p>
+      </div>
+      <div class="prob-card">
+        <h4>Same Message, Every Segment</h4>
+        <p>A 2-day dropout and a 6-month dropout received identical win-back emails. Timing ignored. Cycle history ignored. Context ignored.</p>
+      </div>
+      <div class="prob-card">
+        <h4>No Early Warning</h4>
+        <p>Drop-offs were only visible after the 31-day mark. By the time we knew, the window to intervene had already closed.</p>
+      </div>
+      <div class="prob-card">
+        <h4>Revenue Left Unmeasured</h4>
+        <p>With no lifecycle tracking, nobody knew that returning customers were already generating 30–35% of total annual revenue.</p>
+      </div>
+    </div>
+    <div class="risk-box"><strong>Primary Risk:</strong> Treating all drop-offs as permanent losses — and missing 130,000 recovery opportunities already happening in the data.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">02 / 11</span></div>
+  </div>
+
+  <!-- S3 FRAMEWORK -->
+  <div class="slide" style="left:2800px;top:-800px;transform:rotate(5deg);">
+    <div class="kicker">The System</div>
+    <div class="bar"></div>
+    <h2>Drop + Return +<br><em>Escape</em></h2>
+    <div class="states-row">
+      <div class="state-card drop">
+        <div class="state-lbl drop">State · Drop</div>
+        <div class="state-title">The Gap</div>
+        <div class="state-body">31+ consecutive days with no purchase or trading activity. Customer enters the recovery window. Not gone — just absent.</div>
+        <div class="state-tag drop">Trigger: 31-day silence</div>
+      </div>
+      <div class="state-card ret">
+        <div class="state-lbl ret">State · Return</div>
+        <div class="state-title">The Boomerang</div>
+        <div class="state-body">Customer re-engages after a Drop. Makes a purchase or resumes trading. Every return opens a new cycle with its own data.</div>
+        <div class="state-tag ret">Event: Boomerang ↺</div>
+      </div>
+      <div class="state-card escape">
+        <div class="state-lbl escape">State · Escape</div>
+        <div class="state-title">True Churn</div>
+        <div class="state-body">Extended absence with no return signal. Tracked separately from active drops — avoids wasted campaign spend on those truly gone.</div>
+        <div class="state-tag escape">Signal: No re-engagement</div>
+      </div>
+    </div>
+    <div class="tree-note" style="margin-top:20px;"><strong>5-cycle tracking:</strong> Each customer's Drop → Return journey is tracked across up to 5 complete cycles. Every cycle stores its own LTD bucket, revenue, withdrawals, and purchase count.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">03 / 11</span></div>
+  </div>
+
+  <!-- S4 MECHANISM -->
+  <div class="slide" style="left:-3400px;top:800px;transform:rotate(7deg);">
+    <div class="kicker">How We Classify</div>
+    <div class="bar"></div>
+    <h2>Every Drop Gets<br>a <em>Time Label</em></h2>
+    <div class="tree">
+      <div class="tree-row">
+        <div class="tree-q" style="font-weight:700;color:var(--text);">How long was the customer active before dropping?</div>
+        <div class="tree-arrow"></div>
+        <div class="tree-tag tag-dim">LTD Bucket</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">0–45 days active before drop</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-orange">LTD45d · Early Drop</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">46–90 days active before drop</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-dim">LTD90d · Short-Term</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">91–180 days active before drop</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-dim">LTD180d · Mid-Term</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">181–300 days active before drop</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-gold">LTD300d · Long-Term</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">300+ days active before drop</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-green">LTD300d+ · Power User</div>
+      </div>
+      <div class="tree-row">
+        <div class="tree-q">Returned after any drop?</div>
+        <div class="tree-arrow">→</div>
+        <div class="tree-tag tag-violet">New Cycle Opens ↺</div>
+      </div>
+    </div>
+    <div class="tree-note"><strong>The LTD bucket matters:</strong> An LTD300d+ dropout gets a completely different win-back approach than an LTD45d. The bucket tells us who they were before they left — not just that they left.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">04 / 11</span></div>
+  </div>
+
+  <!-- S5 CRITICAL INSIGHT -->
+  <div class="slide" style="left:3400px;top:600px;transform:rotate(-6deg);">
+    <div class="kicker">The Critical Insight</div>
+    <div class="bar"></div>
+    <h2>Coming Back Once Makes<br>You <em>More Likely</em> to Return</h2>
+    <div class="dist-cols">
+      <div class="dist-card green">
+        <div class="dist-label green">First Return</div>
+        <div class="dist-title">Cautious Comeback</div>
+        <div class="dist-range green">~30% of all drop-offs return</div>
+        <p class="dist-body">The baseline boomerang rate. These customers came back on their own — driven by habit, promotion, or platform pull. They need recognition and a loyalty hook to stay for the next cycle.</p>
+        <div class="dist-verdict green">Win them back. Then keep them.</div>
+      </div>
+      <div class="dist-card violet">
+        <div class="dist-label violet">Third Return+</div>
+        <div class="dist-title">True Loyalists</div>
+        <div class="dist-range violet">~45%+ return rate by cycle 3</div>
+        <p class="dist-body">Return rates improve with every cycle. A customer who's come back twice is more likely to return a third time than a first-timer is to return at all. They're not flaky — they're loyal in their own rhythm.</p>
+        <div class="dist-verdict violet">Don't treat them like new customers.</div>
+      </div>
+    </div>
+    <div class="dist-note"><strong>The separator is cycle history, not recency.</strong> Same gap length. Completely different return likelihood. Sending the same win-back email to both wastes spend on the one who was coming back anyway.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">05 / 11</span></div>
+  </div>
+
+  <!-- S6 TEAMS -->
+  <div class="slide" style="left:-3000px;top:2200px;transform:rotate(-5deg);">
+    <div class="kicker">Team Use Cases</div>
+    <div class="bar"></div>
+    <h2>One System.<br><em>Four Teams.</em></h2>
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-icon">📣</div>
+        <div class="team-name">Marketing</div>
+        <ul class="team-list">
+          <li>Which LTD bucket should we target this week?</li>
+          <li>Which promo codes drive genuine returns vs. one-offs?</li>
+          <li>Who qualifies for the multi-return loyalty program?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">📊</div>
+        <div class="team-name">Analytics</div>
+        <ul class="team-list">
+          <li>What's our cohort return rate by acquisition month?</li>
+          <li>Which LTD buckets have the highest win-back ROI?</li>
+          <li>Can we build a churn propensity score from cycle 1 data?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">📦</div>
+        <div class="team-name">Product</div>
+        <ul class="team-list">
+          <li>At what point in the first 45 days do users disengage?</li>
+          <li>Which features correlate with LTD90d+ retention?</li>
+          <li>What does a Super Boomerang journey look like?</li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🛡️</div>
+        <div class="team-name">Risk &amp; Finance</div>
+        <ul class="team-list">
+          <li>Is the withdrawal ratio different for returning customers?</li>
+          <li>Are multi-cycle customers higher or lower financial risk?</li>
+          <li>Can LTD data improve revenue forecasting models?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">06 / 11</span></div>
+  </div>
+
+  <!-- S7 45-DAY WINDOW -->
+  <div class="slide" style="left:-200px;top:2200px;transform:rotate(4deg);">
+    <div class="kicker">Key Discovery</div>
+    <div class="bar"></div>
+    <h2>The First 45 Days<br>Are <em>Make or Break</em></h2>
+    <div class="gold-hero">
+      <div class="gold-num">45</div>
+      <div class="gold-text">
+        <h4>Days — The Critical Window</h4>
+        <p>The largest single group of drop-offs happens before Day 45. These customers never fully onboarded. Moving them past this window is the highest-ROI retention intervention in the entire lifecycle.</p>
+      </div>
+    </div>
+    <div class="funnel" style="margin-top:18px;">
+      <div class="funnel-row"><div class="funnel-label">All new customers</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%"></div></div><div class="funnel-val">500,000</div></div>
+      <div class="funnel-row"><div class="funnel-label">Still active at Day 45</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:78%"></div></div><div class="funnel-val">~390,000</div></div>
+      <div class="funnel-row"><div class="funnel-label">Still active at Day 90</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:61%"></div></div><div class="funnel-val">~305,000</div></div>
+      <div class="funnel-row"><div class="funnel-label">Still active at Day 180</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:44%"></div></div><div class="funnel-val">~220,000</div></div>
+      <div class="funnel-row"><div class="funnel-label">Still active at Day 365</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:31%"></div></div><div class="funnel-val">~155,000</div></div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">07 / 11</span></div>
+  </div>
+
+  <!-- S8 NUMBERS -->
+  <div class="slide" style="left:2800px;top:2000px;transform:rotate(-7deg);">
+    <div class="kicker">What the Data Revealed</div>
+    <div class="bar"></div>
+    <h2>Four Numbers That<br><em>Reframe</em> Churn</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Drop Rate</div>
+        <div class="stat-num">80%</div>
+        <div class="stat-desc">of all customers eventually drop off — but "eventually" is the word that changes everything</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">The Boomerang Rate</div>
+        <div class="stat-num">~1 in 3</div>
+        <div class="stat-desc">drop-offs return without any targeted campaign. This is the floor — not the ceiling.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Revenue Share</div>
+        <div class="stat-num">30–35%</div>
+        <div class="stat-desc">of total annual revenue already comes from returning customers — invisible until Boomerang tracked it</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Withdrawal Stability</div>
+        <div class="stat-num">52–54%</div>
+        <div class="stat-desc">withdrawal-to-revenue ratio, stable across all lifecycle stages. Returnees carry no additional financial risk.</div>
+      </div>
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">08 / 11</span></div>
+  </div>
+
+  <!-- S9 SUPER BOOMERANG -->
+  <div class="slide" style="left:-1800px;top:3600px;transform:rotate(6deg);">
+    <div class="kicker">Discovery #2</div>
+    <div class="bar"></div>
+    <h2>The Super Boomerang<br>Isn't Flaky. They're <em>Loyal.</em></h2>
+    <div class="stack-hero">
+      <div class="stack-num">5×</div>
+      <div class="stack-text">
+        <h4>Some customers drop and return five complete times</h4>
+        <p>They're not unreliable — they trade in their own rhythm. And with each cycle, they come back faster and stay active longer. This is a loyalty pattern, not a churn pattern.</p>
+      </div>
+    </div>
+    <div class="cycle-wrap">
+      <div class="cycle-row">
+        <div class="cycle-lbl">Cycle 1</div>
+        <div class="cycle-seg active">Active 60d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg gap">Gap 45d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg back">Returned</div>
+      </div>
+      <div class="cycle-row">
+        <div class="cycle-lbl">Cycle 2</div>
+        <div class="cycle-seg active">Active 90d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg gap">Gap 30d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg back">Returned</div>
+      </div>
+      <div class="cycle-row">
+        <div class="cycle-lbl">Cycle 3</div>
+        <div class="cycle-seg active">Active 120d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg gap">Gap 22d</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-seg now">Currently Active ✓</div>
+      </div>
+    </div>
+    <div class="cycle-note"><strong>Active periods lengthen. Gaps shorten.</strong> This customer isn't a churn risk — they're a loyalty signal hiding inside a pattern nobody was reading before Boomerang.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">09 / 11</span></div>
+  </div>
+
+  <!-- S10 RESULTS -->
+  <div class="slide" style="left:1400px;top:3800px;transform:rotate(-4deg);">
+    <div class="kicker">What It Enables</div>
+    <div class="bar"></div>
+    <h2>Five Actions. Now<br><em>Data-Driven.</em></h2>
+    <div class="res-rows">
+      <div class="res-row">
+        <div class="res-action">Engagement prompts at Day 14, 21, and 30 for at-risk customers</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">−18% early churn</div>
+        <div class="res-dollar">$2.8M/yr retained</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Targeted win-back campaigns at Day 35, 60, and 90 post-drop</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+12% return rate</div>
+        <div class="res-dollar">$3.1M/yr recovered</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Multi-return loyalty program for 2+ cycle customers</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+22% multi-cycle LTV</div>
+        <div class="res-dollar">$1.6M/yr</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Removed offer restrictions for returning customers (same risk profile proven)</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+9% conversion</div>
+        <div class="res-dollar">$0.5M/yr</div>
+      </div>
+      <div class="res-row">
+        <div class="res-action">Super Boomerang VIP identification and dedicated treatment</div>
+        <div class="res-arrow">→</div>
+        <div class="res-result up">+31% 3rd-cycle retention</div>
+        <div class="res-dollar">$0.3M/yr</div>
+      </div>
+    </div>
+    <div class="res-note">Estimated annual projections based on Alametria transaction volume and AOV baseline.</div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">10 / 11</span></div>
+  </div>
+
+  <!-- S11 CLOSING -->
+  <div class="slide" style="left:400px;top:5200px;transform:rotate(0deg);">
+    <div class="kicker">The Framework</div>
+    <div class="bar"></div>
+    <h2>Churn Is a Door,<br>Not a <em>Wall</em></h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-title">Predict</div>
+        <div class="pillar-desc">Not just who dropped — but who is about to, based on LTD bucket and day-in-cycle position.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">↩️</div>
+        <div class="pillar-title">Win Back</div>
+        <div class="pillar-desc">Timing-based campaigns built on 31-day cycles. Right message at Day 35 — not a blanket email at Day 90.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔁</div>
+        <div class="pillar-title">Retain</div>
+        <div class="pillar-desc">Multi-return customers recognised and rewarded. Every cycle, they become more valuable — not less.</div>
+      </div>
+    </div>
+    <div class="closing">
+      Boomerang_v1 is not a churn report. It's a behavioral operating system — one that treats every drop-off as a <em>recovery opportunity,</em> and every return as proof that loyalty doesn't always look linear.
+    </div>
+    <div class="foot"><span class="foot-brand">Alametria</span><span class="foot-pg">11 / 11</span></div>
+  </div>
+
+</div>
+
+<script>
+const steps = [
+  { cx:   630, cy:   60, scale: 1,     rotate:  0 },
+  { cx: -2170, cy: -340, scale: 1,     rotate:  7 },
+  { cx:  3230, cy: -540, scale: 1,     rotate: -5 },
+  { cx: -2970, cy: 1060, scale: 1,     rotate: -7 },
+  { cx:  3830, cy:  860, scale: 1,     rotate:  6 },
+  { cx: -2570, cy: 2460, scale: 1,     rotate:  5 },
+  { cx:   230, cy: 2460, scale: 1,     rotate: -4 },
+  { cx:  3230, cy: 2260, scale: 1,     rotate:  7 },
+  { cx: -1370, cy: 3860, scale: 1,     rotate: -6 },
+  { cx:  1830, cy: 4060, scale: 1,     rotate:  4 },
+  { cx:   830, cy: 5460, scale: 1,     rotate:  0 },
+  { cx:   430, cy: 2460, scale: 0.125, rotate:  0 },
+];
+let current = 0;
+const universe = document.getElementById('universe');
+const dots     = [...document.querySelectorAll('.nd')];
+const counter  = document.getElementById('counter');
+const slides   = [...document.querySelectorAll('.slide')];
+const overlay  = document.getElementById('overlay');
+const hint     = document.getElementById('hint');
+function goTo(i) {
+  if (i < 0 || i >= steps.length) return;
+  if (current < slides.length) slides[current].classList.remove('active');
+  dots[current].classList.remove('on');
+  current = i;
+  const s = steps[i];
+  const vw = window.innerWidth / 2;
+  const vh = window.innerHeight / 2;
+  const fit = Math.min(1, window.innerWidth / 1160, window.innerHeight / 700);
+  universe.style.transform =
+    `translateX(${vw}px) translateY(${vh}px) ` +
+    `scale(${s.scale * fit}) rotate(${s.rotate}deg) ` +
+    `translateX(${-s.cx}px) translateY(${-s.cy}px)`;
+  if (i < slides.length) slides[i].classList.add('active');
+  dots[i].classList.add('on');
+  counter.textContent = `${String(i+1).padStart(2,'0')} / ${String(steps.length).padStart(2,'0')}`;
+  overlay.classList.toggle('show', i === steps.length - 1);
+  hint.style.opacity = i === steps.length - 1 ? '0' : '';
+}
+window.addEventListener('load',   () => goTo(0));
+window.addEventListener('resize', () => goTo(current));
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(current+1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(current-1); }
+});
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; },{passive:true});
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (dx < -50) goTo(current+1);
+  if (dx >  50) goTo(current-1);
+});
+</script>
+</body>
+</html>
