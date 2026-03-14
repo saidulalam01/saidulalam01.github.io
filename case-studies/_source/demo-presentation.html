@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Demo — Prezi-style</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  background: #060b12;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  cursor: default;
+  user-select: none;
+}
+
+/* ─── THE INFINITE CANVAS ─── */
+#universe {
+  position: absolute;
+  top: 0; left: 0;
+  transform-origin: 0 0;
+  transition: transform 1.1s cubic-bezier(0.86, 0, 0.07, 1);
+  will-change: transform;
+}
+
+/* ─── SLIDE BASE ─── */
+.slide {
+  position: absolute;
+  width: 860px;
+  padding: 60px 70px 50px;
+  background: #0d1a28;
+  border-radius: 22px;
+  border: 1px solid rgba(0,200,255,0.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,200,255,0.05);
+  transition: box-shadow 0.4s;
+}
+.slide.active {
+  box-shadow: 0 30px 100px rgba(0,200,255,0.15), 0 0 0 1px rgba(0,200,255,0.2);
+}
+
+/* ─── TYPOGRAPHY ─── */
+.kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #00c8ff;
+  margin-bottom: 22px;
+}
+.bar {
+  width: 50px; height: 3px;
+  background: linear-gradient(90deg, #00c8ff, #0066ff);
+  border-radius: 2px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+h1 em { font-style: normal; color: #00c8ff; }
+
+h2 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+h2 em { font-style: normal; color: #00c8ff; }
+
+.sub {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #4a7090;
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* ─── STAT CARDS ─── */
+.stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+.stat {
+  flex: 1;
+  background: #0a1520;
+  border: 1px solid rgba(0,200,255,0.12);
+  border-radius: 14px;
+  padding: 28px 22px;
+}
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #2a4a65;
+  margin-bottom: 10px;
+}
+.stat-num {
+  font-size: 38px;
+  font-weight: 900;
+  color: #00c8ff;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.stat-desc {
+  font-size: 12px;
+  color: #2a4a65;
+  margin-top: 7px;
+  line-height: 1.4;
+}
+
+/* ─── TIMELINE ─── */
+.timeline { margin-top: 30px; }
+.tl-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.tl-row:last-child { border-bottom: none; }
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.d-red   { background:#ff3344; box-shadow: 0 0 8px #ff334488; }
+.d-orange{ background:#ff8800; box-shadow: 0 0 8px #ff880088; }
+.d-cyan  { background:#00c8ff; box-shadow: 0 0 8px #00c8ff88; }
+.d-green { background:#00e676; box-shadow: 0 0 8px #00e67688; }
+.tl-day  { font-size:12px; font-weight:700; color:#00c8ff; min-width:80px; }
+.tl-text { font-size:14px; color:#9ab4c8; flex:1; }
+.pill {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.p-red   { background:rgba(255,51,68,0.12);  color:#ff3344; border:1px solid rgba(255,51,68,0.3); }
+.p-orange{ background:rgba(255,136,0,0.12); color:#ff8800; border:1px solid rgba(255,136,0,0.3); }
+.p-cyan  { background:rgba(0,200,255,0.1);  color:#00c8ff; border:1px solid rgba(0,200,255,0.25); }
+.p-green { background:rgba(0,230,118,0.1);  color:#00e676; border:1px solid rgba(0,230,118,0.25); }
+
+/* ─── FINAL GRID ─── */
+.fin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+.fin-card {
+  background: #0a1520;
+  border: 1px solid rgba(0,200,255,0.1);
+  border-top: 3px solid #00c8ff;
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+.fin-icon { font-size: 24px; margin-bottom: 10px; }
+.fin-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.fin-desc  { font-size: 12px; color: #2a5a7a; line-height: 1.5; }
+
+/* ─── FOOTER ─── */
+.foot {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot-brand { font-size: 11px; color: #1a3a52; font-weight:700; letter-spacing:2px; }
+.foot-pg    { font-size: 11px; color: #1a3a52; }
+
+/* ─── NAVIGATION ─── */
+#nav {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+.nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.nav-dot.on {
+  background: #00c8ff;
+  box-shadow: 0 0 10px #00c8ff;
+  transform: scale(1.3);
+}
+
+#hint {
+  position: fixed;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(0,200,255,0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 100;
+  animation: blink 2.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
+
+/* ─── SLIDE NUMBERS ─── */
+#counter {
+  position: fixed;
+  top: 28px;
+  right: 36px;
+  font-size: 12px;
+  color: rgba(0,200,255,0.3);
+  letter-spacing: 2px;
+  z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<div id="counter">01 / 04</div>
+<div id="hint">← → to navigate &nbsp;·&nbsp; click dots</div>
+
+<div id="nav">
+  <div class="nav-dot on" onclick="goTo(0)"></div>
+  <div class="nav-dot"    onclick="goTo(1)"></div>
+  <div class="nav-dot"    onclick="goTo(2)"></div>
+  <div class="nav-dot"    onclick="goTo(3)"></div>
+</div>
+
+<!-- ════════ CANVAS ════════ -->
+<div id="universe">
+
+  <!-- SLIDE 1 · Title · position 0,0 -->
+  <div class="slide active" id="s1" style="left:0px; top:0px;">
+    <div class="kicker">Strategy &amp; Analytics · FY 2024–2025</div>
+    <div class="bar"></div>
+    <h1>Churn is not<br>a <em>destination.</em></h1>
+    <p class="sub">
+      How reframing user drop-off as a lifecycle behavior
+      unlocked hidden value for a digital platform of 581,000 users.
+    </p>
+    <div class="foot">
+      <span class="foot-brand">QUANTELLANT</span>
+      <span class="foot-pg">01 / 04</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 · Stats · far right, rotated -->
+  <div class="slide" id="s2" style="left:3200px; top:-600px; transform:rotate(12deg);">
+    <div class="kicker">Market Reality</div>
+    <div class="bar"></div>
+    <h2>The data <em>whispered</em><br>before it spoke.</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Total Users</div>
+        <div class="stat-num">581K</div>
+        <div class="stat-desc">Analyzed across 5 lifecycle cycles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Inactive Pool</div>
+        <div class="stat-num">438K</div>
+        <div class="stat-desc">Identified as recoverable</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Return Rate</div>
+        <div class="stat-num">42–50%</div>
+        <div class="stat-desc">In later lifecycle cycles</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="foot-brand">QUANTELLANT</span>
+      <span class="foot-pg">02 / 04</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 · Timeline · below-left, counter-rotated -->
+  <div class="slide" id="s3" style="left:1000px; top:3000px; transform:rotate(-9deg);">
+    <div class="kicker">Go-To-Market Execution</div>
+    <div class="bar"></div>
+    <h2>Timing is <em>everything.</em></h2>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="dot d-red"></div>
+        <div class="tl-day">Day 1–15</div>
+        <div class="tl-text">Highest risk — onboarding intensity critical</div>
+        <div class="pill p-red">Highest Risk</div>
+      </div>
+      <div class="tl-row">
+        <div class="dot d-orange"></div>
+        <div class="tl-day">Day 31</div>
+        <div class="tl-text">Inactivity threshold triggered — user flagged as Dropped</div>
+        <div class="pill p-orange">Flag</div>
+      </div>
+      <div class="tl-row">
+        <div class="dot d-cyan"></div>
+        <div class="tl-day">Day 35</div>
+        <div class="tl-text">First win-back — behavioral trigger activated</div>
+        <div class="pill p-cyan">Intervene</div>
+      </div>
+      <div class="tl-row">
+        <div class="dot d-green"></div>
+        <div class="tl-day">Day 60/90</div>
+        <div class="tl-text">Second &amp; final recovery — precision over volume</div>
+        <div class="pill p-green">Re-Engage</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="foot-brand">QUANTELLANT</span>
+      <span class="foot-pg">03 / 04</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 · Conclusion (we zoom out to see all 3) -->
+  <div class="slide" id="s4" style="left:1600px; top:1100px;">
+    <div class="kicker">Why This Matters</div>
+    <div class="bar"></div>
+    <h2>A scalable <em>capability,</em><br>not a one-time fix.</h2>
+    <div class="fin-grid">
+      <div class="fin-card">
+        <div class="fin-icon">🔍</div>
+        <div class="fin-title">Predict</div>
+        <div class="fin-desc">31-day threshold identifies disengagement before permanent loss.</div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">⚡</div>
+        <div class="fin-title">Intervene</div>
+        <div class="fin-desc">Trigger-based outreach at Day 35, 60 and 90 beats blanket campaigns.</div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">↩</div>
+        <div class="fin-title">Recover</div>
+        <div class="fin-desc">30–35% of total usage from returning users — zero new spend.</div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="foot-brand">QUANTELLANT</span>
+      <span class="foot-pg">04 / 04</span>
+    </div>
+  </div>
+
+</div><!-- #universe -->
+
+<script>
+// ─── SLIDE CAMERA POSITIONS ─────────────────────────────────────────────────
+// Each step: { cx, cy } = canvas point to center, { scale } = zoom level,
+// { rotate } = camera rotation (opposite of slide rotation to straighten it)
+const steps = [
+  { cx: 430,  cy: 280,  scale: 1,    rotate: 0   },  // Slide 1
+  { cx: 3630, cy: -320, scale: 1,    rotate: -12 },  // Slide 2 (straighten the 12deg tilt)
+  { cx: 1430, cy: 3280, scale: 1,    rotate: 9   },  // Slide 3 (straighten the -9deg tilt)
+  { cx: 2000, cy: 1300, scale: 0.32, rotate: 0   },  // Zoom-out overview
+];
+
+let current = 0;
+const universe = document.getElementById('universe');
+const dots     = document.querySelectorAll('.nav-dot');
+const counter  = document.getElementById('counter');
+const slides   = document.querySelectorAll('.slide');
+
+function goTo(index) {
+  if (index < 0 || index >= steps.length) return;
+
+  // remove active
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('on');
+
+  current = index;
+  const s  = steps[current];
+  const vw = window.innerWidth  / 2;
+  const vh = window.innerHeight / 2;
+
+  // Prezi camera formula:
+  // move world so (cx,cy) is at viewport center, apply scale & rotation
+  universe.style.transform =
+    `translateX(${vw}px) translateY(${vh}px) ` +
+    `scale(${s.scale}) rotate(${s.rotate}deg) ` +
+    `translateX(${-s.cx}px) translateY(${-s.cy}px)`;
+
+  slides[current].classList.add('active');
+  dots[current].classList.add('on');
+  counter.textContent = `0${current+1} / 0${steps.length}`;
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => goTo(0));
+window.addEventListener('resize', () => goTo(current));
+
+// ─── KEYBOARD ───────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown'  || e.key === ' ') goTo(current + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                      goTo(current - 1);
+});
+
+// ─── TOUCH ──────────────────────────────────────────────────────────────────
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (dx < -50) goTo(current + 1);
+  if (dx >  50) goTo(current - 1);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Theme Picker — Retention Intelligence Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0e13;font-family:'Outfit',sans-serif;color:#eee;padding:48px 40px;}
+h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;}
+.sub{font-size:13px;color:#666;margin-bottom:40px;}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+
+/* ── Each theme card ── */
+.tc{border-radius:16px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color 0.2s,transform 0.2s;}
+.tc:hover{transform:translateY(-3px);}
+.tc-label{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888;}
+.tc-num{font-size:18px;font-weight:900;margin-right:6px;}
+
+/* ── Mini slide ── */
+.ms{padding:22px 24px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);}
+.ms-kicker{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.ms-bar{width:28px;height:2px;border-radius:2px;margin-bottom:14px;}
+.ms-h{font-size:17px;font-weight:900;line-height:1.1;letter-spacing:-0.5px;margin-bottom:8px;}
+.ms-lead{font-size:9px;line-height:1.6;margin-bottom:14px;}
+.ms-row{display:flex;gap:8px;margin-bottom:14px;}
+.ms-stat{flex:1;border-radius:8px;padding:10px 10px 8px;border:1px solid rgba(255,255,255,0.06);}
+.ms-stat-lbl{font-size:7px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;opacity:0.5;}
+.ms-stat-num{font-size:20px;font-weight:900;line-height:1;letter-spacing:-0.5px;}
+.ms-foot{display:flex;justify-content:space-between;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.4;}
+.ms-nav{display:flex;gap:4px;justify-content:center;margin-top:12px;}
+.ms-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.2);}
+</style>
+</head>
+<body>
+
+<h1>Pick Your Theme</h1>
+<p class="sub">12 color combinations — same slide structure. Hover to highlight. Choose a number.</p>
+
+<div class="grid">
+
+<!-- ① Indigo + Violet (current) -->
+<div class="tc" style="border-color:#a78bfa22;background:#0f0d27;">
+  <div class="tc-label" style="background:#0f0d27;"><span class="tc-num" style="color:#a78bfa;">01</span>Indigo + Violet <span style="color:#a78bfa;font-size:9px;">(current)</span></div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#1c1440;">
+      <div class="ms-kicker" style="color:#a78bfa;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#a78bfa,#60a5fa);"></div>
+      <div class="ms-h">What Does <span style="color:#a78bfa;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b4b4d4;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#160c33;">
+          <div class="ms-stat-lbl" style="color:#b4b4d4;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#a78bfa;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#160c33;">
+          <div class="ms-stat-lbl" style="color:#b4b4d4;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#a78bfa;box-shadow:0 0 5px #a78bfa;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ② Deep Teal + Emerald -->
+<div class="tc" style="border-color:#34d39922;background:#0d221e;">
+  <div class="tc-label" style="background:#0d221e;"><span class="tc-num" style="color:#34d399;">02</span>Teal + Emerald</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#132e2b;">
+      <div class="ms-kicker" style="color:#34d399;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#34d399,#22d3ee);"></div>
+      <div class="ms-h">What Does <span style="color:#34d399;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b4d4cc;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#0d1f1c;">
+          <div class="ms-stat-lbl" style="color:#b4d4cc;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#34d399;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#0d1f1c;">
+          <div class="ms-stat-lbl" style="color:#b4d4cc;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#34d399;box-shadow:0 0 5px #34d399;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ Midnight + Cyan -->
+<div class="tc" style="border-color:#22d3ee22;background:#09111e;">
+  <div class="tc-label" style="background:#09111e;"><span class="tc-num" style="color:#22d3ee;">03</span>Midnight + Cyan</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#0f1e30;">
+      <div class="ms-kicker" style="color:#22d3ee;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#22d3ee,#60a5fa);"></div>
+      <div class="ms-h">What Does <span style="color:#22d3ee;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b0ccd8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#091828;">
+          <div class="ms-stat-lbl" style="color:#b0ccd8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#22d3ee;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#091828;">
+          <div class="ms-stat-lbl" style="color:#b0ccd8;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#22d3ee;box-shadow:0 0 5px #22d3ee;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ Obsidian + Electric Blue -->
+<div class="tc" style="border-color:#60a5fa22;background:#0d1220;">
+  <div class="tc-label" style="background:#0d1220;"><span class="tc-num" style="color:#60a5fa;">04</span>Obsidian + Blue</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#161e38;">
+      <div class="ms-kicker" style="color:#60a5fa;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#60a5fa,#a78bfa);"></div>
+      <div class="ms-h">What Does <span style="color:#60a5fa;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b0bcd8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#0d1228;">
+          <div class="ms-stat-lbl" style="color:#b0bcd8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#60a5fa;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#0d1228;">
+          <div class="ms-stat-lbl" style="color:#b0bcd8;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#60a5fa;box-shadow:0 0 5px #60a5fa;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ Dark Forest + Lime -->
+<div class="tc" style="border-color:#86efac22;background:#0b1c0e;">
+  <div class="tc-label" style="background:#0b1c0e;"><span class="tc-num" style="color:#86efac;">05</span>Forest + Lime</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#132818;">
+      <div class="ms-kicker" style="color:#86efac;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#86efac,#34d399);"></div>
+      <div class="ms-h">What Does <span style="color:#86efac;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b0d0b8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#0b1a0e;">
+          <div class="ms-stat-lbl" style="color:#b0d0b8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#86efac;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#0b1a0e;">
+          <div class="ms-stat-lbl" style="color:#b0d0b8;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#86efac;box-shadow:0 0 5px #86efac;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ Warm Charcoal + Amber -->
+<div class="tc" style="border-color:#fbbf2422;background:#18120a;">
+  <div class="tc-label" style="background:#18120a;"><span class="tc-num" style="color:#fbbf24;">06</span>Charcoal + Amber</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#241c10;">
+      <div class="ms-kicker" style="color:#fbbf24;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#fbbf24,#f97316);"></div>
+      <div class="ms-h">What Does <span style="color:#fbbf24;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#d4c8b4;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#18100a;">
+          <div class="ms-stat-lbl" style="color:#d4c8b4;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#fbbf24;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#18100a;">
+          <div class="ms-stat-lbl" style="color:#d4c8b4;">Impact</div>
+          <div class="ms-stat-num" style="color:#34d399;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#fbbf24;box-shadow:0 0 5px #fbbf24;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ Deep Rose + Pink -->
+<div class="tc" style="border-color:#f472b622;background:#1a0c16;">
+  <div class="tc-label" style="background:#1a0c16;"><span class="tc-num" style="color:#f472b6;">07</span>Deep Rose + Pink</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#271428;">
+      <div class="ms-kicker" style="color:#f472b6;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#f472b6,#a78bfa);"></div>
+      <div class="ms-h">What Does <span style="color:#f472b6;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#d4b4c8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#180a18;">
+          <div class="ms-stat-lbl" style="color:#d4b4c8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#f472b6;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#180a18;">
+          <div class="ms-stat-lbl" style="color:#d4b4c8;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#f472b6;box-shadow:0 0 5px #f472b6;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ Dark Rust + Coral -->
+<div class="tc" style="border-color:#fb923c22;background:#1a0e08;">
+  <div class="tc-label" style="background:#1a0e08;"><span class="tc-num" style="color:#fb923c;">08</span>Dark Rust + Coral</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#271810;">
+      <div class="ms-kicker" style="color:#fb923c;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#fb923c,#fbbf24);"></div>
+      <div class="ms-h">What Does <span style="color:#fb923c;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#d4c0b0;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#180e08;">
+          <div class="ms-stat-lbl" style="color:#d4c0b0;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#fb923c;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#180e08;">
+          <div class="ms-stat-lbl" style="color:#d4c0b0;">Impact</div>
+          <div class="ms-stat-num" style="color:#34d399;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#fb923c;box-shadow:0 0 5px #fb923c;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑨ Slate + Ice Blue -->
+<div class="tc" style="border-color:#bae6fd22;background:#0d1520;">
+  <div class="tc-label" style="background:#0d1520;"><span class="tc-num" style="color:#bae6fd;">09</span>Slate + Ice Blue</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#162030;">
+      <div class="ms-kicker" style="color:#bae6fd;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#bae6fd,#60a5fa);"></div>
+      <div class="ms-h">What Does <span style="color:#bae6fd;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#c0d4e4;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#0d1828;">
+          <div class="ms-stat-lbl" style="color:#c0d4e4;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#bae6fd;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#0d1828;">
+          <div class="ms-stat-lbl" style="color:#c0d4e4;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#bae6fd;box-shadow:0 0 5px #bae6fd;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑩ Purple Universe + Gold -->
+<div class="tc" style="border-color:#f0a83022;background:#140d28;">
+  <div class="tc-label" style="background:#140d28;"><span class="tc-num" style="color:#f0a830;">10</span>Purple + Gold</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#201540;">
+      <div class="ms-kicker" style="color:#f0a830;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#f0a830,#fcd860);"></div>
+      <div class="ms-h">What Does <span style="color:#f0a830;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#c4b8d8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#160c30;">
+          <div class="ms-stat-lbl" style="color:#c4b8d8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#f0a830;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#160c30;">
+          <div class="ms-stat-lbl" style="color:#c4b8d8;">Impact</div>
+          <div class="ms-stat-num" style="color:#34d399;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#f0a830;box-shadow:0 0 5px #f0a830;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑪ Dark Teal + Aqua -->
+<div class="tc" style="border-color:#2dd4bf22;background:#08181a;">
+  <div class="tc-label" style="background:#08181a;"><span class="tc-num" style="color:#2dd4bf;">11</span>Dark Teal + Aqua</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#0f2628;">
+      <div class="ms-kicker" style="color:#2dd4bf;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#2dd4bf,#22d3ee);"></div>
+      <div class="ms-h">What Does <span style="color:#2dd4bf;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#b0d0d4;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#081820;">
+          <div class="ms-stat-lbl" style="color:#b0d0d4;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#2dd4bf;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#081820;">
+          <div class="ms-stat-lbl" style="color:#b0d0d4;">Impact</div>
+          <div class="ms-stat-num" style="color:#f0a830;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#2dd4bf;box-shadow:0 0 5px #2dd4bf;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑫ Near Black + Red-Orange -->
+<div class="tc" style="border-color:#f8717122;background:#160c0c;">
+  <div class="tc-label" style="background:#160c0c;"><span class="tc-num" style="color:#f87171;">12</span>Near Black + Red</div>
+  <div style="padding:0 12px 14px;">
+    <div class="ms" style="background:#241414;">
+      <div class="ms-kicker" style="color:#f87171;">Retention Intelligence</div>
+      <div class="ms-bar" style="background:linear-gradient(90deg,#f87171,#fb923c);"></div>
+      <div class="ms-h">What Does <span style="color:#f87171;">87%</span> Actually Mean?</div>
+      <div class="ms-lead" style="color:#d4b8b8;">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="ms-row">
+        <div class="ms-stat" style="background:#160c0c;">
+          <div class="ms-stat-lbl" style="color:#d4b8b8;">Golden Segment</div>
+          <div class="ms-stat-num" style="color:#f87171;">71%</div>
+        </div>
+        <div class="ms-stat" style="background:#160c0c;">
+          <div class="ms-stat-lbl" style="color:#d4b8b8;">Impact</div>
+          <div class="ms-stat-num" style="color:#34d399;">$10.2M</div>
+        </div>
+      </div>
+      <div class="ms-foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="ms-nav">
+      <div class="ms-dot" style="background:#f87171;box-shadow:0 0 5px #f87171;transform:scale(1.5);"></div>
+      <div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div><div class="ms-dot"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .grid -->
+
+<p style="margin-top:36px;font-size:12px;color:#444;text-align:center;">Open the file in Chrome · Tell me the number · I apply it to the full slide deck</p>
+</body>
+</html>

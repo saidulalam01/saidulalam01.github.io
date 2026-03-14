@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Design Picker — Slide Layouts</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0e13;font-family:'Outfit',sans-serif;color:#eee;padding:48px 40px;}
+h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;}
+.sub{font-size:13px;color:#555;margin-bottom:8px;}
+.note{font-size:11px;color:#334;background:#111820;border:1px solid #1e2a38;border-radius:8px;padding:10px 16px;margin-bottom:36px;display:inline-block;}
+.note span{color:#a78bfa;}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+
+/* shared */
+.dc{border-radius:16px;overflow:hidden;border:1px solid #1a1a2e;cursor:pointer;transition:border-color 0.2s,transform 0.2s;}
+.dc:hover{border-color:#a78bfa55;transform:translateY(-3px);}
+.dc-label{padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#555;display:flex;align-items:center;gap:8px;}
+.dc-num{font-size:16px;font-weight:900;color:#a78bfa;}
+.dc-name{color:#888;}
+.slide-wrap{padding:0 12px 14px;}
+
+/* accent color used across all designs */
+/* --a: #a78bfa  --bg:#0f0d27  --card:#1c1440  --bg2:#160c33 */
+
+/* ═══════════════════════════════════════════════
+   DESIGN 01 — Classic (current)
+═══════════════════════════════════════════════ */
+.d01{background:#0f0d27;}.d01 .dc-label{background:#0f0d27;}
+.d01 .ms{background:#1c1440;border-radius:12px;padding:22px 22px 16px;border:1px solid rgba(167,139,250,0.08);}
+.d01 .kicker{font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:8px;}
+.d01 .bar{width:28px;height:2px;background:linear-gradient(90deg,#a78bfa,#60a5fa);border-radius:2px;margin-bottom:12px;}
+.d01 .heading{font-size:16px;font-weight:900;line-height:1.15;letter-spacing:-0.4px;margin-bottom:7px;}
+.d01 .heading em{color:#a78bfa;font-style:normal;}
+.d01 .lead{font-size:9px;color:#b4b4d4;line-height:1.6;margin-bottom:12px;}
+.d01 .stats{display:flex;gap:7px;margin-bottom:12px;}
+.d01 .stat{flex:1;background:#160c33;border-radius:7px;padding:9px 9px 7px;border:1px solid rgba(255,255,255,0.05);}
+.d01 .sl{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:#68688a;margin-bottom:3px;}
+.d01 .sn{font-size:19px;font-weight:900;color:#a78bfa;line-height:1;}
+.d01 .foot{display:flex;justify-content:space-between;padding-top:9px;border-top:1px solid rgba(255,255,255,0.05);font-size:7px;letter-spacing:1px;color:#44445a;}
+.d01 .nav{display:flex;gap:3px;justify-content:center;margin-top:10px;}
+.d01 .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.15);}
+.d01 .dot.on{background:#a78bfa;box-shadow:0 0 4px #a78bfa;transform:scale(1.4);}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 02 — Split Panel (left accent bar + content)
+═══════════════════════════════════════════════ */
+.d02{background:#0f0d27;}.d02 .dc-label{background:#0f0d27;}
+.d02 .ms{background:#1c1440;border-radius:12px;padding:0;border:1px solid rgba(167,139,250,0.08);overflow:hidden;display:flex;}
+.d02 .left-bar{width:4px;background:linear-gradient(180deg,#a78bfa,#60a5fa);flex-shrink:0;}
+.d02 .left-panel{width:52px;background:#160c33;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px 0;}
+.d02 .left-label{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;writing-mode:vertical-rl;transform:rotate(180deg);}
+.d02 .left-num{font-size:18px;font-weight:900;color:#a78bfa;}
+.d02 .left-pg{font-size:7px;color:#44445a;}
+.d02 .right{padding:18px 18px 14px;flex:1;}
+.d02 .kicker{font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#68688a;margin-bottom:8px;}
+.d02 .heading{font-size:15px;font-weight:900;line-height:1.15;letter-spacing:-0.4px;margin-bottom:6px;}
+.d02 .heading em{color:#a78bfa;font-style:normal;}
+.d02 .lead{font-size:8.5px;color:#b4b4d4;line-height:1.6;margin-bottom:10px;}
+.d02 .stats{display:flex;gap:6px;}
+.d02 .stat{flex:1;background:#160c33;border-radius:6px;padding:8px 8px 6px;border:1px solid rgba(255,255,255,0.04);}
+.d02 .sl{font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:#68688a;margin-bottom:2px;}
+.d02 .sn{font-size:16px;font-weight:900;color:#a78bfa;line-height:1;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 03 — Hero Number (giant stat dominates)
+═══════════════════════════════════════════════ */
+.d03{background:#0f0d27;}.d03 .dc-label{background:#0f0d27;}
+.d03 .ms{background:#1c1440;border-radius:12px;padding:22px 22px 16px;border:1px solid rgba(167,139,250,0.08);}
+.d03 .kicker{font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;}
+.d03 .hero-row{display:flex;align-items:flex-end;gap:12px;margin-bottom:8px;}
+.d03 .hero-num{font-size:54px;font-weight:900;color:#a78bfa;line-height:1;letter-spacing:-3px;}
+.d03 .hero-right{padding-bottom:6px;}
+.d03 .hero-label{font-size:11px;font-weight:800;line-height:1.2;margin-bottom:4px;}
+.d03 .hero-sub{font-size:8px;color:#b4b4d4;line-height:1.5;}
+.d03 .divider{height:1px;background:rgba(167,139,250,0.12);margin-bottom:10px;}
+.d03 .bottom-row{display:flex;gap:8px;}
+.d03 .btag{font-size:8px;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(167,139,250,0.1);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);}
+.d03 .btag.g{background:rgba(52,211,153,0.1);color:#34d399;border-color:rgba(52,211,153,0.2);}
+.d03 .foot{display:flex;justify-content:space-between;padding-top:10px;margin-top:10px;border-top:1px solid rgba(255,255,255,0.05);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 04 — Minimal Lines (clean, ruled paper)
+═══════════════════════════════════════════════ */
+.d04{background:#080814;}.d04 .dc-label{background:#080814;}
+.d04 .ms{background:#0d0b20;border-radius:12px;padding:22px 22px 16px;border:1px solid rgba(167,139,250,0.06);}
+.d04 .kicker{font-size:7px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#a78bfa;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(167,139,250,0.15);}
+.d04 .heading{font-size:16px;font-weight:800;line-height:1.15;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.d04 .heading em{color:#a78bfa;font-style:normal;}
+.d04 .row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.d04 .row:last-of-type{border-bottom:none;}
+.d04 .rl{font-size:8.5px;color:#b4b4d4;}
+.d04 .rv{font-size:13px;font-weight:800;color:#a78bfa;}
+.d04 .foot{display:flex;justify-content:space-between;padding-top:10px;margin-top:6px;border-top:1px solid rgba(167,139,250,0.12);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 05 — Dashboard Grid (metric tiles)
+═══════════════════════════════════════════════ */
+.d05{background:#0f0d27;}.d05 .dc-label{background:#0f0d27;}
+.d05 .ms{background:#1c1440;border-radius:12px;padding:16px 16px 14px;border:1px solid rgba(167,139,250,0.08);}
+.d05 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.d05 .title{font-size:11px;font-weight:800;letter-spacing:-0.2px;}
+.d05 .badge{font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:rgba(167,139,250,0.1);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);}
+.d05 .tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.d05 .tile{background:#160c33;border-radius:8px;padding:10px 10px 8px;border:1px solid rgba(255,255,255,0.04);position:relative;}
+.d05 .tile-dot{width:4px;height:4px;border-radius:50%;background:#a78bfa;position:absolute;top:8px;right:8px;}
+.d05 .tile-dot.g{background:#34d399;}
+.d05 .tl{font-size:6.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#68688a;margin-bottom:4px;}
+.d05 .tn{font-size:20px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:#a78bfa;}
+.d05 .tn.gold{color:#f0a830;}
+.d05 .td{font-size:7.5px;color:#b4b4d4;margin-top:3px;line-height:1.4;}
+.d05 .bar-row{display:flex;align-items:center;gap:8px;}
+.d05 .bar-label{font-size:7px;color:#68688a;min-width:60px;}
+.d05 .bar-track{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.d05 .bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#a78bfa,#60a5fa);}
+.d05 .bar-val{font-size:7px;font-weight:700;color:#a78bfa;min-width:24px;text-align:right;}
+.d05 .foot{display:flex;justify-content:space-between;padding-top:8px;margin-top:8px;border-top:1px solid rgba(255,255,255,0.05);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 06 — Terminal / Code
+═══════════════════════════════════════════════ */
+.d06{background:#090d0a;}.d06 .dc-label{background:#090d0a;}
+.d06 .ms{background:#0d1110;border-radius:12px;padding:0;border:1px solid rgba(167,139,250,0.1);overflow:hidden;font-family:'JetBrains Mono',monospace;}
+.d06 .term-bar{background:#161c16;padding:7px 12px;display:flex;gap:5px;align-items:center;border-bottom:1px solid rgba(167,139,250,0.08);}
+.d06 .dot-r{width:7px;height:7px;border-radius:50%;background:#f87171;}
+.d06 .dot-y{width:7px;height:7px;border-radius:50%;background:#fbbf24;}
+.d06 .dot-g{width:7px;height:7px;border-radius:50%;background:#34d399;}
+.d06 .term-title{font-size:7px;color:#68688a;margin-left:6px;letter-spacing:1px;}
+.d06 .term-body{padding:16px 18px 14px;}
+.d06 .prompt{font-size:8px;color:#a78bfa;margin-bottom:10px;}
+.d06 .prompt span{color:#34d399;}
+.d06 .line{font-size:8px;color:#b4d4b4;margin-bottom:5px;line-height:1.5;}
+.d06 .line .key{color:#a78bfa;}
+.d06 .line .val{color:#fbbf24;}
+.d06 .line .str{color:#34d399;}
+.d06 .line .cmt{color:#44664a;}
+.d06 .block{background:#121a12;border-radius:6px;padding:10px 12px;margin:10px 0;border:1px solid rgba(52,211,153,0.1);}
+.d06 .block-label{font-size:6.5px;letter-spacing:2px;color:#34d399;margin-bottom:6px;}
+.d06 .block-nums{display:flex;gap:12px;}
+.d06 .bn{text-align:center;}
+.d06 .bnv{font-size:16px;font-weight:700;color:#a78bfa;}
+.d06 .bnl{font-size:6px;color:#44664a;letter-spacing:1px;}
+.d06 .cursor{display:inline-block;width:6px;height:9px;background:#a78bfa;margin-left:2px;animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 07 — Executive Brief (premium, negative space)
+═══════════════════════════════════════════════ */
+.d07{background:#080810;}.d07 .dc-label{background:#080810;}
+.d07 .ms{background:#0e0c22;border-radius:12px;padding:24px 24px 18px;border:1px solid rgba(167,139,250,0.07);}
+.d07 .eyebrow{font-size:7px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:#44445a;margin-bottom:18px;}
+.d07 .big-statement{font-size:14px;font-weight:800;line-height:1.4;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid rgba(167,139,250,0.1);}
+.d07 .big-statement em{color:#a78bfa;font-style:normal;}
+.d07 .metrics{display:flex;gap:0;}
+.d07 .metric{flex:1;padding:0 14px;border-right:1px solid rgba(255,255,255,0.05);}
+.d07 .metric:first-child{padding-left:0;}
+.d07 .metric:last-child{border-right:none;}
+.d07 .ml{font-size:6.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#44445a;margin-bottom:5px;}
+.d07 .mv{font-size:18px;font-weight:900;color:#a78bfa;line-height:1;}
+.d07 .mv.gold{color:#f0a830;}
+.d07 .ms-desc{font-size:7.5px;color:#68688a;margin-top:3px;}
+.d07 .foot{display:flex;justify-content:space-between;padding-top:14px;margin-top:14px;border-top:1px solid rgba(167,139,250,0.07);font-size:7px;color:#2a2a3a;letter-spacing:2px;text-transform:uppercase;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 08 — Magazine Editorial (bold type-first)
+═══════════════════════════════════════════════ */
+.d08{background:#0c0c14;}.d08 .dc-label{background:#0c0c14;}
+.d08 .ms{background:#141422;border-radius:12px;padding:20px 20px 14px;border:1px solid rgba(167,139,250,0.06);}
+.d08 .mag-tag{display:inline-block;background:#a78bfa;color:#0f0d27;font-size:7px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:10px;}
+.d08 .mag-h{font-size:22px;font-weight:900;line-height:1.05;letter-spacing:-0.8px;margin-bottom:10px;}
+.d08 .mag-h em{font-style:normal;-webkit-text-stroke:1.5px #a78bfa;color:transparent;}
+.d08 .mag-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:10px;}
+.d08 .mag-col p{font-size:8px;color:#b4b4d4;line-height:1.7;}
+.d08 .mag-num-row{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(167,139,250,0.06);border-radius:6px;border-left:2px solid #a78bfa;}
+.d08 .mag-num{font-size:22px;font-weight:900;color:#a78bfa;}
+.d08 .mag-num-label{font-size:8px;color:#b4b4d4;line-height:1.4;}
+.d08 .foot{display:flex;justify-content:space-between;padding-top:9px;margin-top:9px;border-top:1px solid rgba(255,255,255,0.05);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 09 — Blueprint (grid bg, technical)
+═══════════════════════════════════════════════ */
+.d09{background:#080f18;}.d09 .dc-label{background:#080f18;}
+.d09 .ms{background:#0c1620;border-radius:12px;padding:18px 18px 14px;border:1px solid rgba(96,165,250,0.15);
+  background-image:linear-gradient(rgba(96,165,250,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(96,165,250,0.03) 1px,transparent 1px);
+  background-size:18px 18px;}
+.d09 .bp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.d09 .bp-id{font-size:7px;font-family:'JetBrains Mono',monospace;color:#60a5fa;letter-spacing:1px;}
+.d09 .bp-stamp{font-size:6px;color:#334;letter-spacing:1.5px;text-transform:uppercase;border:1px solid #1a2840;padding:2px 6px;border-radius:3px;}
+.d09 .bp-title{font-size:15px;font-weight:900;line-height:1.15;margin-bottom:4px;}
+.d09 .bp-title em{color:#60a5fa;font-style:normal;}
+.d09 .bp-sub{font-size:8px;font-family:'JetBrains Mono',monospace;color:#60a5fa;margin-bottom:12px;opacity:0.6;}
+.d09 .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.d09 .bp-box{border:1px solid rgba(96,165,250,0.15);border-radius:5px;padding:9px 10px;background:rgba(12,22,32,0.8);}
+.d09 .bp-label{font-size:6.5px;font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:#60a5fa;margin-bottom:4px;opacity:0.7;}
+.d09 .bp-val{font-size:18px;font-weight:900;color:#60a5fa;line-height:1;}
+.d09 .bp-desc{font-size:7px;color:#6a8090;margin-top:2px;line-height:1.4;}
+.d09 .foot{display:flex;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(96,165,250,0.1);font-size:7px;font-family:'JetBrains Mono',monospace;color:#334;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 10 — Heavy Border (brutalist-clean)
+═══════════════════════════════════════════════ */
+.d10{background:#0a0a12;}.d10 .dc-label{background:#0a0a12;}
+.d10 .ms{background:#10101e;border-radius:4px;padding:20px 20px 14px;border:2px solid rgba(167,139,250,0.3);}
+.d10 .kicker{font-size:7px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#a78bfa;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.d10 .kicker::after{content:'';flex:1;height:1px;background:rgba(167,139,250,0.3);}
+.d10 .heading{font-size:16px;font-weight:900;line-height:1.15;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid rgba(167,139,250,0.2);}
+.d10 .heading em{color:#a78bfa;font-style:normal;}
+.d10 .lead{font-size:8.5px;color:#b4b4d4;line-height:1.6;margin-bottom:10px;}
+.d10 .stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}
+.d10 .stat{padding:9px 10px;border:1px solid rgba(167,139,250,0.2);border-radius:3px;}
+.d10 .sl{font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:#68688a;margin-bottom:3px;}
+.d10 .sn{font-size:18px;font-weight:900;color:#a78bfa;line-height:1;}
+.d10 .foot{display:flex;justify-content:space-between;padding-top:9px;border-top:2px solid rgba(167,139,250,0.15);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 11 — Layered / Depth Cards
+═══════════════════════════════════════════════ */
+.d11{background:#0f0d27;}.d11 .dc-label{background:#0f0d27;}
+.d11 .ms-outer{position:relative;height:196px;margin-bottom:0;}
+.d11 .card-back{position:absolute;top:10px;left:8px;right:-8px;height:170px;background:#160c33;border-radius:12px;border:1px solid rgba(167,139,250,0.05);}
+.d11 .card-mid{position:absolute;top:5px;left:4px;right:-4px;height:178px;background:#1a1248;border-radius:12px;border:1px solid rgba(167,139,250,0.07);}
+.d11 .card-front{position:absolute;top:0;left:0;right:0;background:#221a50;border-radius:12px;padding:18px 18px 14px;border:1px solid rgba(167,139,250,0.15);box-shadow:0 0 30px rgba(167,139,250,0.08);}
+.d11 .kicker{font-size:7px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:7px;}
+.d11 .bar{width:24px;height:2px;background:linear-gradient(90deg,#a78bfa,#60a5fa);border-radius:2px;margin-bottom:10px;}
+.d11 .heading{font-size:15px;font-weight:900;line-height:1.15;margin-bottom:7px;}
+.d11 .heading em{color:#a78bfa;font-style:normal;}
+.d11 .stats{display:flex;gap:6px;margin-bottom:10px;}
+.d11 .stat{flex:1;background:rgba(22,12,51,0.6);border-radius:6px;padding:8px 8px 6px;border:1px solid rgba(167,139,250,0.1);}
+.d11 .sl{font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:#68688a;margin-bottom:3px;}
+.d11 .sn{font-size:17px;font-weight:900;color:#a78bfa;line-height:1;}
+.d11 .foot{display:flex;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(167,139,250,0.1);font-size:7px;color:#44445a;letter-spacing:1px;}
+
+/* ═══════════════════════════════════════════════
+   DESIGN 12 — Data Rows (structured, report-style)
+═══════════════════════════════════════════════ */
+.d12{background:#0a0e12;}.d12 .dc-label{background:#0a0e12;}
+.d12 .ms{background:#111820;border-radius:12px;padding:0;border:1px solid rgba(167,139,250,0.08);overflow:hidden;}
+.d12 .ms-head{background:#161e2c;padding:14px 18px;border-bottom:1px solid rgba(167,139,250,0.1);}
+.d12 .ms-head-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}
+.d12 .ms-title{font-size:12px;font-weight:800;letter-spacing:-0.2px;}
+.d12 .ms-title em{color:#a78bfa;font-style:normal;}
+.d12 .ms-badge{font-size:6.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:rgba(167,139,250,0.1);color:#a78bfa;border:1px solid rgba(167,139,250,0.2);}
+.d12 .ms-sub{font-size:7.5px;color:#68688a;}
+.d12 .ms-body{padding:12px 18px 14px;}
+.d12 .col-heads{display:grid;grid-template-columns:1fr 70px 70px;gap:0;margin-bottom:4px;}
+.d12 .ch{font-size:6.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#44445a;padding:0 0 4px;}
+.d12 .ch:not(:first-child){text-align:right;}
+.d12 .data-row{display:grid;grid-template-columns:1fr 70px 70px;gap:0;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;}
+.d12 .data-row:last-child{border-bottom:none;}
+.d12 .dr-label{font-size:8.5px;color:#b4b4d4;display:flex;align-items:center;gap:5px;}
+.d12 .dr-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;}
+.d12 .dr-val{font-size:11px;font-weight:800;color:#a78bfa;text-align:right;}
+.d12 .dr-val.gold{color:#f0a830;}
+.d12 .dr-val.green{color:#34d399;}
+.d12 .dr-delta{font-size:8px;font-weight:700;text-align:right;color:#34d399;}
+.d12 .dr-delta.down{color:#f87171;}
+.d12 .ms-foot{background:#0e1520;padding:7px 18px;border-top:1px solid rgba(167,139,250,0.08);display:flex;justify-content:space-between;font-size:6.5px;color:#44445a;letter-spacing:1px;}
+
+</style>
+</head>
+<body>
+
+<h1>Pick Your Design</h1>
+<p class="sub">12 layout styles — all using the same color. Pick a design here, pick a color from the color picker.</p>
+<div class="note">All previews use <span>Indigo + Violet</span> — color is separate. Open <span>theme-picker.html</span> to choose color.</div>
+
+<div class="grid">
+
+<!-- ① Classic -->
+<div class="dc d01">
+  <div class="dc-label"><span class="dc-num">01</span><span class="dc-name">Classic</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="kicker">Retention Intelligence</div>
+      <div class="bar"></div>
+      <div class="heading">What Does <em>87%</em> Actually Mean?</div>
+      <div class="lead">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="stats">
+        <div class="stat"><div class="sl">Golden Segment</div><div class="sn">71%</div></div>
+        <div class="stat"><div class="sl">Impact</div><div class="sn" style="color:#f0a830;">$10.2M</div></div>
+      </div>
+      <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+    <div class="nav"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  </div>
+</div>
+
+<!-- ② Split Panel -->
+<div class="dc d02">
+  <div class="dc-label"><span class="dc-num">02</span><span class="dc-name">Split Panel</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="left-bar"></div>
+      <div class="left-panel">
+        <div class="left-label">Retention Intelligence</div>
+        <div class="left-num">71%</div>
+        <div class="left-pg">01/11</div>
+      </div>
+      <div class="right">
+        <div class="kicker">Key Discovery</div>
+        <div class="heading">What Does <em>87%</em><br>Actually Mean?</div>
+        <div class="lead">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+        <div class="stats">
+          <div class="stat"><div class="sl">Segment</div><div class="sn">71%</div></div>
+          <div class="stat"><div class="sl">Impact</div><div class="sn" style="color:#f0a830;">$10.2M</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ Hero Number -->
+<div class="dc d03">
+  <div class="dc-label"><span class="dc-num">03</span><span class="dc-name">Hero Number</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="kicker">Retention Intelligence · Key Discovery</div>
+      <div class="hero-row">
+        <div class="hero-num">71%</div>
+        <div class="hero-right">
+          <div class="hero-label">Monthly Retention<br>Golden Segment</div>
+          <div class="hero-sub">~13,800 purchases/month<br>Most predictable cohort</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="bottom-row">
+        <div class="btag">$10.2M Impact</div>
+        <div class="btag">581K Users</div>
+        <div class="btag g">$0 Acquisition</div>
+      </div>
+      <div class="foot"><span>Alametria · Saidul Alam Rahat</span><span>07 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ Minimal Lines -->
+<div class="dc d04">
+  <div class="dc-label"><span class="dc-num">04</span><span class="dc-name">Minimal Lines</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="kicker">Retention Intelligence · Alametria</div>
+      <div class="heading">What Does <em>87%</em> Actually Mean?</div>
+      <div class="row"><span class="rl">Golden Segment (Monthly)</span><span class="rv">71%</span></div>
+      <div class="row"><span class="rl">Acquisition Burst Rate</span><span class="rv">83%</span></div>
+      <div class="row"><span class="rl">Combined Impact</span><span class="rv" style="color:#f0a830;">$10.2M</span></div>
+      <div class="row"><span class="rl">Users Analyzed</span><span class="rv">581K</span></div>
+      <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ Dashboard Grid -->
+<div class="dc d05">
+  <div class="dc-label"><span class="dc-num">05</span><span class="dc-name">Dashboard</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="top">
+        <div class="title">Retention Overview</div>
+        <div class="badge">FY 2026</div>
+      </div>
+      <div class="tile-grid">
+        <div class="tile"><div class="tile-dot"></div><div class="tl">Golden Segment</div><div class="tn">71%</div><div class="td">Monthly retention cohort</div></div>
+        <div class="tile"><div class="tile-dot gold" style="background:#f0a830;"></div><div class="tl">Total Impact</div><div class="tn gold">$10.2M</div><div class="td">Combined projection</div></div>
+        <div class="tile"><div class="tile-dot"></div><div class="tl">Burst Rate</div><div class="tn">83%</div><div class="td">Stack in first 7 days</div></div>
+        <div class="tile"><div class="tile-dot g"></div><div class="tl">Win-Back</div><div class="tn" style="color:#34d399;">42%</div><div class="td">Used promo code</div></div>
+      </div>
+      <div class="bar-row"><div class="bar-label">Monthly Ret.</div><div class="bar-track"><div class="bar-fill" style="width:75%;"></div></div><div class="bar-val">71%</div></div>
+      <div class="bar-row" style="margin-top:4px;"><div class="bar-label">Burst Rate</div><div class="bar-track"><div class="bar-fill" style="width:83%;"></div></div><div class="bar-val">83%</div></div>
+      <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ Terminal -->
+<div class="dc d06">
+  <div class="dc-label"><span class="dc-num">06</span><span class="dc-name">Terminal</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="term-bar"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><div class="term-title">retention_intelligence.py</div></div>
+      <div class="term-body">
+        <div class="prompt"><span>$</span> run analyze --dataset=alametria --users=581000</div>
+        <div class="line"><span class="cmt"># Loading behavioral lifecycle framework...</span></div>
+        <div class="line"><span class="key">segments_found</span> = <span class="val">10</span></div>
+        <div class="line"><span class="key">golden_segment</span> = <span class="str">"Monthly Retention"</span></div>
+        <div class="line"><span class="key">coverage</span> = <span class="val">71.0</span><span class="cmt">  # % of volume</span></div>
+        <div class="block">
+          <div class="block-label">// OUTPUT METRICS</div>
+          <div class="block-nums">
+            <div class="bn"><div class="bnv">$10.2M</div><div class="bnl">IMPACT</div></div>
+            <div class="bn"><div class="bnv">83%</div><div class="bnl">BURST_RATE</div></div>
+            <div class="bn"><div class="bnv">31d</div><div class="bnl">THRESHOLD</div></div>
+          </div>
+        </div>
+        <div class="line"><span class="cmt"># Analysis complete</span><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ Executive Brief -->
+<div class="dc d07">
+  <div class="dc-label"><span class="dc-num">07</span><span class="dc-name">Executive Brief</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="eyebrow">Alametria · Retention Intelligence · FY 2026</div>
+      <div class="big-statement">One retention number was hiding <em>ten completely different</em> trader behaviors — each requiring a different response.</div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="ml">Users</div>
+          <div class="mv">581K</div>
+          <div class="ms-desc">Analyzed</div>
+        </div>
+        <div class="metric">
+          <div class="ml">Segments</div>
+          <div class="mv">10</div>
+          <div class="ms-desc">Identified</div>
+        </div>
+        <div class="metric">
+          <div class="ml">Impact</div>
+          <div class="mv gold">$10.2M</div>
+          <div class="ms-desc">Projected</div>
+        </div>
+      </div>
+      <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ Magazine Editorial -->
+<div class="dc d08">
+  <div class="dc-label"><span class="dc-num">08</span><span class="dc-name">Editorial</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="mag-tag">Retention Intelligence</div>
+      <div class="mag-h">87% Was a <em>Lie.</em></div>
+      <div class="mag-cols">
+        <div class="mag-col"><p>One number was hiding ten completely different trader behaviors. We built a framework to finally see — and act on — each one differently.</p></div>
+        <div class="mag-col"><p>581,000 users. 10 behavioral segments. 31-day empirical threshold. A $10.2M opportunity hiding inside a single retention metric.</p></div>
+      </div>
+      <div class="mag-num-row">
+        <div class="mag-num">71%</div>
+        <div class="mag-num-label">Monthly Retention —<br>the Golden Segment</div>
+      </div>
+      <div class="foot"><span>Alametria · Saidul Alam Rahat</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑨ Blueprint -->
+<div class="dc d09">
+  <div class="dc-label"><span class="dc-num">09</span><span class="dc-name">Blueprint</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="bp-top">
+        <div class="bp-id">RI-FRAMEWORK-v2.1</div>
+        <div class="bp-stamp">Confidential</div>
+      </div>
+      <div class="bp-title">Retention <em>Intelligence</em></div>
+      <div class="bp-sub">BEHAVIORAL_LIFECYCLE_SEGMENTATION · ALAMETRIA</div>
+      <div class="bp-grid">
+        <div class="bp-box"><div class="bp-label">USERS_ANALYZED</div><div class="bp-val">581K</div><div class="bp-desc">Total dataset</div></div>
+        <div class="bp-box"><div class="bp-label">SEGMENTS</div><div class="bp-val">10</div><div class="bp-desc">Behavioral clusters</div></div>
+        <div class="bp-box"><div class="bp-label">GOLDEN_COV</div><div class="bp-val">71%</div><div class="bp-desc">Monthly retention</div></div>
+        <div class="bp-box"><div class="bp-label">IMPACT_EST</div><div class="bp-val" style="color:#f0a830;">$10.2M</div><div class="bp-desc">Combined</div></div>
+      </div>
+      <div class="foot"><span>DOC-ALAMETRIA-RI-2026</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑩ Heavy Border -->
+<div class="dc d10">
+  <div class="dc-label"><span class="dc-num">10</span><span class="dc-name">Heavy Border</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="kicker">Retention Intelligence</div>
+      <div class="heading">What Does <em>87%</em> Actually Mean?</div>
+      <div class="lead">One number hiding 10 completely different trader behaviors — and a framework to finally see all of them.</div>
+      <div class="stats">
+        <div class="stat"><div class="sl">Golden Segment</div><div class="sn">71%</div></div>
+        <div class="stat"><div class="sl">Impact</div><div class="sn" style="color:#f0a830;">$10.2M</div></div>
+      </div>
+      <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑪ Layered Cards -->
+<div class="dc d11">
+  <div class="dc-label"><span class="dc-num">11</span><span class="dc-name">Layered Depth</span></div>
+  <div class="slide-wrap">
+    <div class="ms-outer">
+      <div class="card-back"></div>
+      <div class="card-mid"></div>
+      <div class="card-front">
+        <div class="kicker">Retention Intelligence</div>
+        <div class="bar"></div>
+        <div class="heading">What Does <em>87%</em> Actually Mean?</div>
+        <div class="stats">
+          <div class="stat"><div class="sl">Golden Segment</div><div class="sn">71%</div></div>
+          <div class="stat"><div class="sl">Impact</div><div class="sn" style="color:#f0a830;">$10.2M</div></div>
+        </div>
+        <div class="foot"><span>Alametria</span><span>01 / 11</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑫ Data Rows -->
+<div class="dc d12">
+  <div class="dc-label"><span class="dc-num">12</span><span class="dc-name">Data Rows</span></div>
+  <div class="slide-wrap">
+    <div class="ms">
+      <div class="ms-head">
+        <div class="ms-head-top">
+          <div class="ms-title">Retention <em>Intelligence</em></div>
+          <div class="ms-badge">FY 2026</div>
+        </div>
+        <div class="ms-sub">Alametria · Behavioral Lifecycle Analysis · 581,000 users</div>
+      </div>
+      <div class="ms-body">
+        <div class="col-heads"><div class="ch">Segment / Metric</div><div class="ch">Value</div><div class="ch">Δ Impact</div></div>
+        <div class="data-row"><div class="dr-label"><div class="dr-dot" style="background:#a78bfa;"></div>Monthly Retention</div><div class="dr-val">71%</div><div class="dr-delta">+$2.3M</div></div>
+        <div class="data-row"><div class="dr-label"><div class="dr-dot" style="background:#60a5fa;"></div>Acquisition Burst</div><div class="dr-val">83%</div><div class="dr-delta">+$4.1M</div></div>
+        <div class="data-row"><div class="dr-label"><div class="dr-dot" style="background:#f0a830;"></div>Combined Impact</div><div class="dr-val gold">$10.2M</div><div class="dr-delta">Projected</div></div>
+        <div class="data-row"><div class="dr-label"><div class="dr-dot" style="background:#34d399;"></div>Win-Back (Promo)</div><div class="dr-val green">42%</div><div class="dr-delta">+$1.9M</div></div>
+      </div>
+      <div class="ms-foot"><span>Alametria · Saidul Alam Rahat</span><span>01 / 11</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .grid -->
+<p style="margin-top:36px;font-size:12px;color:#334;text-align:center;">Tell me a design number + a color number → I build the full deck</p>
+</body>
+</html>
