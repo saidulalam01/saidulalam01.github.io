@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Project Boomerang — Case Study · Alametria</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta property="og:title" content="Project Boomerang — Case Study · Alametria"/>
 <meta property="og:description" content="1 in 3 customers who drop off come back. We built the system to predict, track, and act on every cycle — turning accidental returns into a $8.3M opportunity."/>
 <meta property="og:type" content="article"/>
@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 :root{
   --ink:#111318; --ink2:#3d4452; --ink3:#7a8394;
   --bg:#faf9f7; --bg2:#f2f0ec; --bg3:#e8e4de;
@@ -23,7 +24,7 @@
   --red:#b83232; --redbg:rgba(184,50,50,0.07); --redbr:rgba(184,50,50,0.2);
   --border:#e0dbd4; --max:720px;
 }
-body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.7;font-size:16px;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.7;font-size:16px;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom);}
 @page{size:A4;margin:18mm 16mm;}
 @media print{
   .no-print{display:none!important;}
@@ -167,12 +168,95 @@ tbody td:first-child{font-weight:700;color:var(--ink);white-space:nowrap;}
 .appendix-table td{padding:8px 12px;border:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.4;}
 .appendix-table td:first-child{font-family:monospace;font-size:11px;color:var(--gold);white-space:nowrap;background:var(--bg2);}
 /* DOC ACTION BAR */
-.doc-bar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:rgba(17,19,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.doc-bar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;padding-top:calc(10px + env(safe-area-inset-top));padding-left:calc(24px + env(safe-area-inset-left));padding-right:calc(24px + env(safe-area-inset-right));background:rgba(17,19,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);}
 .doc-bar-back{display:flex;align-items:center;gap:7px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);background:none;border:none;cursor:pointer;text-decoration:none;transition:color 0.2s;padding:0;}
 .doc-bar-back:hover{color:#f0a830;}
 .doc-bar-save{display:flex;align-items:center;gap:7px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.5px;color:#fff;background:#c87a14;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;transition:background 0.2s;}
 .doc-bar-save:hover{background:#e8961a;}
 body{padding-top:52px;}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Cover */
+  .cover { padding: 40px 0 32px; }
+  .cover-title { font-size: clamp(32px, 8vw, 44px); }
+  .cover-sub { font-size: 15px; }
+  .cover-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cover-tagline { font-size: 14px; }
+
+  /* Doc bar */
+  .doc-bar { padding: 10px 12px; }
+  .doc-bar-back { padding: 8px 0; min-height: 44px; display: flex; align-items: center; }
+  .doc-bar-save { padding: 12px 18px; min-height: 44px; }
+
+  /* Executive Summary */
+  .exec-title { font-size: 22px; }
+  .exec-stat-row { grid-template-columns: 1fr; }
+  .exec-stat-num { font-size: 26px; }
+
+  /* Body */
+  .body-wrap { padding: 32px 16px 48px; }
+
+  /* Sections */
+  .sec-title { font-size: clamp(22px, 5vw, 28px); }
+
+  /* Grids → single column */
+  .two-col { grid-template-columns: 1fr; }
+  .states-grid { grid-template-columns: 1fr; }
+  .stat-boxes { grid-template-columns: 1fr; }
+
+  /* Tables — horizontal scroll */
+  table, .impact-table, .appendix-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  tbody td:first-child { white-space: normal; }
+  .appendix-table td:first-child { white-space: normal; }
+  .impact-table td.impact { white-space: normal; }
+
+  /* Closing */
+  .closing-quote { font-size: 16px; padding-left: 16px; }
+
+  /* Callouts */
+  .callout { padding: 14px 16px; }
+
+  /* Cycle track */
+  .cycle-row { flex-wrap: wrap; gap: 4px; }
+  .cycle-lbl { min-width: auto; width: 100%; }
+  .cycle-seg { font-size: 10px; padding: 5px 8px; }
+
+  /* Tree — prevent arrow orphaning at narrow widths */
+  .tree-row { flex-wrap: wrap; gap: 6px; padding: 10px 12px; }
+  .tree-q { min-width: 0; }
+}
+
+@media (max-width: 480px) {
+  .body-wrap { padding: 24px 12px 40px; }
+  .cover-title { font-size: 32px; }
+  .exec-title { font-size: 20px; }
+  .sec-title { font-size: 22px; }
+  .stat-box-num { font-size: 24px; }
+  .cover-tag { letter-spacing: 2px; font-size: 10px; }
+  .callout { padding: 12px 12px; }
+  /* Tree arrow orphan fix: hide standalone arrow, prepend to tag */
+  .tree-arrow { display: none; }
+  .tree-tag::before { content: '\2192\00a0'; font-weight: 400; }
+  .tree-row:first-child .tree-tag::before { content: none; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .cover { min-height: auto; padding: 32px 0 24px; }
+}
+
+/* ── TABLE SCROLL HINT ── */
+.table-scroll-wrap{position:relative;}
+.table-scroll-wrap::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:32px;
+  background:linear-gradient(to left,var(--bg) 0%,transparent 100%);
+  pointer-events:none;opacity:1;transition:opacity 0.3s;
+}
+.table-scroll-wrap.scrolled-end::after{opacity:0;}
 </style>
 </head>
 <body>
@@ -648,5 +732,22 @@ body{padding-top:52px;}
 </div>
 
 </div><!-- body-wrap -->
+<script>
+/* Table scroll hint: wrap scrollable tables and toggle gradient */
+document.querySelectorAll('table,.impact-table,.appendix-table').forEach(function(tbl){
+  if(tbl.parentElement.classList.contains('table-scroll-wrap')) return;
+  var wrap=document.createElement('div');
+  wrap.className='table-scroll-wrap';
+  tbl.parentNode.insertBefore(wrap,tbl);
+  wrap.appendChild(tbl);
+  function check(){
+    var atEnd=tbl.scrollLeft+tbl.clientWidth>=tbl.scrollWidth-2;
+    wrap.classList.toggle('scrolled-end',atEnd||tbl.scrollWidth<=tbl.clientWidth);
+  }
+  tbl.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('resize',check,{passive:true});
+  check();
+});
+</script>
 </body>
 </html>

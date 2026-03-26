@@ -9,3 +9,7 @@ __pycache__/
 optimal_version/
 .claude/
 .DS_Store
+
+# Working directories
+qa/
+tmp/

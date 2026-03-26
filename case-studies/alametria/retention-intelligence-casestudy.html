@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Retention Intelligence — Case Study · Alametria</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta property="og:title" content="Retention Intelligence — Case Study · Alametria"/>
 <meta property="og:description" content="581,000 users. One retention label hiding 10 behaviors. $10.2M combined impact — from the existing user base alone."/>
 <meta property="og:type" content="article"/>
@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 :root{
   --ink:    #111318;
   --ink2:   #3d4452;
@@ -35,7 +36,7 @@
 }
 
 /* ── GLOBAL ── */
-body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.7;font-size:16px;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-height:1.7;font-size:16px;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom);}
 
 @page{
   size: A4;
@@ -115,7 +116,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;line-
 .doc-bar{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
-  padding:10px 24px;
+  padding:10px 24px;padding-top:calc(10px + env(safe-area-inset-top));padding-left:calc(24px + env(safe-area-inset-left));padding-right:calc(24px + env(safe-area-inset-right));
   background:rgba(17,19,24,0.92);backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.07);
 }
@@ -381,8 +382,117 @@ h3:first-child{margin-top:0;}
 .appendix-table td:first-child{font-weight:700;color:var(--ink);font-family:monospace;font-size:11px;}
 .appendix-table tr:last-child td{border-bottom:none;}
 
+/* ── TABLE SCROLL HINT ── */
+.table-scroll-wrap{position:relative;}
+.table-scroll-wrap::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:32px;
+  background:linear-gradient(to left,var(--bg) 0%,transparent 100%);
+  pointer-events:none;opacity:1;transition:opacity 0.3s;
+}
+.table-scroll-wrap.scrolled-end::after{opacity:0;}
+
 /* ── HR ── */
 hr{border:none;border-top:1px solid var(--border);margin:0;}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Cover */
+  .cover-inner { padding: 16% 6%; }
+  .cover-title { font-size: clamp(32px, 8vw, 48px); }
+  .cover-sub { font-size: 15px; }
+  .cover-footer { padding: 20px 6%; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .cover-footer-meta { text-align: left; }
+
+  /* Doc bar */
+  .doc-bar { padding: 10px 12px; }
+  .doc-bar-back { padding: 8px 0; min-height: 44px; display: flex; align-items: center; }
+  .doc-bar-save { padding: 12px 18px; min-height: 44px; }
+
+  /* Executive Summary */
+  .exec-summary { padding: 40px 6%; }
+  .exec-headline { font-size: 22px; }
+  .exec-body { font-size: 14px; }
+  .exec-stats { grid-template-columns: 1fr 1fr; }
+  .exec-stat-num { font-size: 26px; }
+
+  /* Body */
+  .body-wrap { padding: 0 16px; }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .sec-header { flex-direction: column; gap: 8px; }
+  h2 { font-size: clamp(24px, 5vw, 32px); }
+
+  /* Grids → single column (!important to override inline styles) */
+  .problem-grid,
+  .distinction,
+  .stat-row,
+  .team-grid { grid-template-columns: 1fr !important; }
+
+  /* Segment profile */
+  .segment-profile { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
+  .sp-num { font-size: 48px; }
+
+  /* Stat numbers */
+  .stat-num { font-size: 32px; }
+
+  /* Funnel */
+  .funnel-name { min-width: 100px; font-size: 11px; }
+  .funnel-val { min-width: 48px; font-size: 11px; }
+  .funnel-row { flex-wrap: wrap; gap: 8px; }
+
+  /* Tables — horizontal scroll (no blanket white-space:nowrap) */
+  .fw-table, .res-table, .appendix-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fw-table td, .fw-table th,
+  .res-table td, .res-table th,
+  .appendix-table td, .appendix-table th {
+    white-space: normal;
+  }
+  .fw-name { white-space: nowrap; }
+
+  /* Pull quote */
+  .pull-quote { padding: 16px 18px; }
+  .pull-quote p { font-size: 15px; }
+
+  /* Callouts */
+  .callout { padding: 16px 16px; }
+
+  /* Closing */
+  .closing { padding: 48px 6%; }
+  .closing h2 { font-size: clamp(24px, 5vw, 32px); }
+
+  /* Decision tree */
+  .dt-row { padding: 10px 14px; gap: 8px; flex-wrap: wrap; }
+  .dt-condition { min-width: 0; }
+}
+
+@media (max-width: 480px) {
+  .exec-stats { grid-template-columns: 1fr; }
+  .cover-inner { padding: 20% 5%; }
+  .exec-summary { padding: 32px 5%; }
+  .cover-footer { padding: 16px 5%; }
+  .closing { padding: 40px 5%; }
+  .closing-brand { letter-spacing: 2px; font-size: 10px; word-break: break-word; }
+  .body-wrap { padding: 0 12px; }
+  .funnel-name { min-width: auto; width: 100%; }
+  .funnel-bar-wrap { flex: 1; min-width: 0; }
+  .cover-label { letter-spacing: 2px; font-size: 10px; }
+  .callout { padding: 14px 12px; }
+  /* Decision tree arrow orphan fix */
+  .dt-arrow { display: none; }
+  .dt-tag::before { content: '\2192\00a0'; font-weight: 400; }
+  .dt-header + .dt-row .dt-tag::before { content: none; }
+}
+
+/* ── LANDSCAPE FIX ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .cover { min-height: auto; }
+  .cover-inner { padding: 10% 8%; }
+}
 </style>
 </head>
 <body>
@@ -985,5 +1095,22 @@ hr{border:none;border-top:1px solid var(--border);margin:0;}
   </div>
 </div>
 
+<script>
+/* Table scroll hint: wrap scrollable tables and toggle gradient */
+document.querySelectorAll('.fw-table,.res-table,.appendix-table').forEach(function(tbl){
+  if(tbl.parentElement.classList.contains('table-scroll-wrap')) return;
+  var wrap=document.createElement('div');
+  wrap.className='table-scroll-wrap';
+  tbl.parentNode.insertBefore(wrap,tbl);
+  wrap.appendChild(tbl);
+  function check(){
+    var atEnd=tbl.scrollLeft+tbl.clientWidth>=tbl.scrollWidth-2;
+    wrap.classList.toggle('scrolled-end',atEnd||tbl.scrollWidth<=tbl.clientWidth);
+  }
+  tbl.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('resize',check,{passive:true});
+  check();
+});
+</script>
 </body>
 </html>

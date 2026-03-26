@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Saidul Alam Rahat — Analytics Engineer | Portfolio",
-    "description": "Saidul Alam Rahat — Analytics Engineer at FundedNext. 3+ years building data tools, automating analytics pipelines, and turning raw databases into self-service platforms. Based in Dhaka, Bangladesh.",
+    "description": "Saidul Alam Rahat — Analytics Engineer at FundedNext. Building data tools, automating analytics pipelines, and turning databases into self-service platforms.",
     "keywords": "Saidul Alam Rahat, Analytics Engineer, Data Engineering, Data Analyst, FundedNext, SQL, Python, Streamlit, PostgreSQL, Automation, Dhaka Bangladesh",
     "author": "Saidul Alam Rahat",
     "google_verification": "Gv1FAxl2eZcLn4Y1khg58qcaYjwtRwAIO63vewgL_DA",
@@ -25,7 +25,7 @@
 
   "nav": {
     "logo": "RAHAT",
-    "links": ["About", "Experience", "Projects", "Achievements", "Skills", "Contact"]
+    "links": ["About", "Experience", "Projects", "Case Studies", "Achievements", "Skills", "Contact"]
   },
 
   "hero": {
@@ -48,7 +48,7 @@
       {"icon": "&#128202;", "text": "SQL"},
       {"icon": "&#9889;", "text": "Python"}
     ],
-    "quote": "I may lose everything tomorrow, but what's the best thing I can do than trying!"
+    "quote": "I may lose everything tomorrow — but what better thing can I do than keep trying!"
   },
 
   "about": {
@@ -171,20 +171,12 @@
         "github_url": "https://github.com/saidulalam01/codebridge"
       },
       {
-        "id": "trustpilot-scraper",
-        "icon": "document",
-        "title": "TrustPilot Web Scraper",
-        "description": "Python scraper for extracting structured review data from Trustpilot. Built for competitive analysis and learning web scraping fundamentals.",
-        "tech": ["Python", "BeautifulSoup", "Web Scraping"],
-        "github_url": "https://github.com/saidulalam01/TrustPilot-Webscrapping"
-      },
-      {
-        "id": "fun-projects",
+        "id": "x-intelligence",
         "icon": "layers",
-        "title": "Fun Projects",
-        "description": "A collection of small web experiments and creative coding — built for fun and to explore front-end technologies.",
-        "tech": ["HTML", "JavaScript", "CSS"],
-        "github_url": "https://github.com/saidulalam01/fun_projects_1"
+        "title": "X Intelligence",
+        "description": "Automated Twitter/X monitoring system that tracks 216 competitor accounts with AI-powered sentiment analysis. Delivers real-time competitive intelligence alerts to Discord with structured storage in SQLite.",
+        "tech": ["Python", "Playwright", "SQLite", "Discord API", "AI/NLP"],
+        "github_url": "https://github.com/saidulalam01/x-intelligence"
       }
     ],
     "portfolio": [

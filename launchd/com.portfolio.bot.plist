@@ -8,11 +8,11 @@
     <key>ProgramArguments</key>
     <array>
         <string>/Users/saidulalamrahat/anaconda3/bin/python3</string>
-        <string>/Users/saidulalamrahat/work/portfolio-website/bot.py</string>
+        <string>/Users/saidulalamrahat/work/Claude-Company-Work/github-projects/saidulalam01.github.io/bot.py</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <string>/Users/saidulalamrahat/work/portfolio-website</string>
+    <string>/Users/saidulalamrahat/work/Claude-Company-Work/github-projects/saidulalam01.github.io</string>
 
     <key>RunAtLoad</key>
     <true/>
@@ -21,10 +21,10 @@
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/Users/saidulalamrahat/work/portfolio-website/logs/bot-stdout.log</string>
+    <string>/Users/saidulalamrahat/work/Claude-Company-Work/github-projects/saidulalam01.github.io/logs/bot-stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/saidulalamrahat/work/portfolio-website/logs/bot-stderr.log</string>
+    <string>/Users/saidulalamrahat/work/Claude-Company-Work/github-projects/saidulalam01.github.io/logs/bot-stderr.log</string>
 
     <key>EnvironmentVariables</key>
     <dict>
